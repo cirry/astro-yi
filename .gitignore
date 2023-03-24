@@ -2,7 +2,6 @@
 dist/
 .output/
 .astro/
-.pnpm-lock.yaml/
 
 
 # dependencies
