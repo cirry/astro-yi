@@ -1,0 +1,56 @@
+---
+import "../styles/donate.css";
+import { donate as donateConfig } from "../config.yml";
+---
+
+<div class="esa-sponsor text-skin-base">
+  <div class="tip flex items-center justify-center my-4">
+    {donateConfig.tip}
+  </div>
+  <div class="flex items-center justify-center">
+    <div id="alipay" class="border rounded-tl-lg rounded-bl-lg p-2">
+      <img id="donate-item-img" src="/alipay.svg" class="h-4" alt="" />
+    </div>
+    <div id="wechatpay" class="border-t border-b p-2">
+      <img id="donate-item-img" src="/wechat.svg" class="h-4" alt="" />
+    </div>
+    <a
+      class="border rounded-tr-lg rounded-br-lg p-2"
+      href={donateConfig.paypalUrl}
+      target="_blank"
+    >
+      <img id="donate-item-img" src="/paypal.svg" class="h-4" alt="" />
+    </a>
+  </div>
+  <div class="qrshow">
+    <img src={donateConfig.alipayQRCode} alt="" />
+  </div>
+  <div class="qrshow">
+    <img src={donateConfig.wechatQRCode} alt="" />
+  </div>
+</div>
+
+<script>
+  import { donate as donateConfig } from "../config.yml";
+  let qrDiv = document.getElementsByClassName("qrshow");
+  let aliDiv = document.getElementById("alipay");
+  let wechatDiv = document.getElementById("wechatpay");
+  if (qrDiv) {
+    if (aliDiv && donateConfig.alipayQRCode) {
+      aliDiv.addEventListener("mouseenter", () => {
+        qrDiv[0].style.display = "block";
+      });
+      aliDiv.addEventListener("mouseleave", () => {
+        qrDiv[0].style.display = "none";
+      });
+    }
+    if (wechatDiv && donateConfig.wechatQRCode) {
+      wechatDiv.addEventListener("mouseenter", () => {
+        qrDiv[1].style.display = "block";
+      });
+      wechatDiv.addEventListener("mouseleave", () => {
+        qrDiv[1].style.display = "none";
+      });
+    }
+  }
+</script>

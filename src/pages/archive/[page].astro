@@ -1,0 +1,48 @@
+---
+import Layout from "src/layouts/layout.astro";
+import { site as site } from "$/config.yml";
+import Pagination from "src/components/Pagination.astro";
+import { sortPostsByDate } from "src/utils/sortPostsByDate";
+import getPostsByYear from "src/utils/getPostsByYear";
+import _ from "lodash";
+import dayjs from "dayjs";
+import { getCollectionByName } from "src/utils/getCollectionByName";
+export async function getStaticPaths({ paginate }) {
+  let posts = await getCollectionByName("blog");
+  posts = sortPostsByDate(posts);
+  return paginate(posts, { pageSize: site.archivePageSize });
+}
+// 所有分页数据都将传递给 "page" 参数
+const { page } = Astro.props;
+let resultPosts = getPostsByYear(page.data);
+---
+
+<Layout activeNav="archive">
+  {
+    _.keys(resultPosts)
+      .sort((a: string, b: string) => Number(b) - Number(a))
+      .map((year: string) => (
+        <div>
+          <div class="text-2xl font-extrabold my-4">{year}</div>
+          <ul>
+            {resultPosts[year].map((post) => (
+              <li style="list-style-type: disc;" class="ml-4 my-2">
+                <a href={post.url}>
+                  <span class="mr-4">
+                    {dayjs(post.data.date).format("YYYY-MM-DD")}
+                  </span>
+                  {post.data.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+  }
+  <Pagination
+    currentPage={page.currentPage}
+    totalPage={page.lastPage}
+    prefixUrl="/archive/"
+    url={page.url}
+  />
+</Layout>

@@ -1,0 +1,42 @@
+---
+import Layout from "src/layouts/layout.astro";
+import dayjs from "dayjs";
+import getPostsByYear from "src/utils/getPostsByYear";
+import { sortPostsByDate } from "src/utils/sortPostsByDate";
+import _ from "lodash";
+import { site as site } from "$/config.yml";
+import Pagination from "src/components/Pagination.astro";
+import { getCollectionByName } from "src/utils/getCollectionByName";
+
+let posts = await getCollectionByName("blog");
+let totalPage = _.ceil(_.divide(posts.length, site.archivePageSize));
+
+let sortedPosts = sortPostsByDate(posts);
+sortedPosts = sortedPosts.splice(0, site.archivePageSize);
+let resultPosts = getPostsByYear(sortedPosts);
+---
+
+<Layout activeNav="archive">
+  {
+    _.keys(resultPosts)
+      .sort((a: string, b: string) => Number(b) - Number(a))
+      .map((year: string) => (
+        <div>
+          <div class="text-2xl font-extrabold my-4">{year}</div>
+          <ul>
+            {resultPosts[year].map((post) => (
+              <li style="list-style-type: disc;" class="ml-4 my-2">
+                <a href={post.url}>
+                  <span class="mr-4">
+                    {dayjs(post.data.date).format("YYYY-MM-DD")}
+                  </span>
+                  {post.data.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+  }
+  <Pagination currentPage={1} totalPage={totalPage} prefixUrl="/archive/" />
+</Layout>

@@ -1,0 +1,108 @@
+---
+import _ from "lodash";
+let pager = []; // 实际显示的分页组件内容
+/**
+ * prefixUrl : 点击页面跳转的路由地址前缀，比如/blog/1,/tags/1, /category/1等等
+ */
+const {
+  currentPage,
+  totalPage,
+  prefixUrl = "/blog/",
+  url = { prev: "", next: "" },
+} = Astro.props;
+
+if (totalPage === 1) {
+  pager = [];
+} else if (totalPage <= 5) {
+  pager = new Array(totalPage).fill(0).map((i, index) => index + 1);
+} else {
+  if (currentPage > totalPage) {
+    console.warn("页数错误");
+    return;
+  }
+  let diffNextPages = 2 - (totalPage - currentPage);
+
+  let diffPrevPages = currentPage - 1;
+
+  if (diffNextPages <= 2 && diffNextPages >= 0) {
+    pager = [
+      currentPage - 2 - diffNextPages,
+      currentPage - 1 - diffNextPages,
+      currentPage - diffNextPages,
+      currentPage + 1 - diffNextPages,
+      currentPage + 2 - diffNextPages,
+    ];
+  } else if (diffPrevPages <= 1 && diffPrevPages >= 0) {
+    pager = [1, 2, 3, 4, 5];
+  } else {
+    pager = [
+      currentPage - 2,
+      currentPage - 1,
+      currentPage,
+      currentPage + 1,
+      currentPage + 2,
+    ];
+  }
+}
+---
+
+<div class="flex items-center justify-center my-16">
+  {
+    pager.length > 4 && (
+      <a href={prefixUrl + "1"} style="font-size:24px;line-height:32px;">
+        <i class="ri-arrow-left-s-fill" />
+      </a>
+    )
+  }
+  <!-- 上一批分页数据 -->
+  {
+    url.prev && (
+      <a href={url.prev}>
+        <i class="ri-arrow-left-s-line" style="line-height:32px;" />
+      </a>
+    )
+  }
+  <!-- 当前分页数据 -->
+  {
+    pager.map((i) =>
+      currentPage === i ? (
+        <a
+          class="text-skin-active"
+          href={prefixUrl + i}
+          style="line-height:32px;"
+        >
+          {i}
+        </a>
+      ) : (
+        <a href={prefixUrl + i} style="line-height:32px;">
+          {i}
+        </a>
+      )
+    )
+  }
+  <!-- 下一批分页数据 -->
+  {
+    url.next && (
+      <a href={url.next}>
+        <i class="ri-arrow-right-s-line" style="line-height:32px;" />
+      </a>
+    )
+  }
+  {
+    pager.length > 4 && (
+      <a
+        href={prefixUrl + totalPage}
+        style="font-size:24px;line-height:32px;"
+      >
+        <i class="ri-arrow-right-s-fill" />
+      </a>
+    )
+  }
+  {totalPage > 5 && "共" + totalPage + "页"}
+</div>
+
+<style>
+  a {
+    @apply border mr-2 h-8 w-8 text-center leading-8 rounded cursor-pointer text-skin-base hover:text-skin-active;
+  }
+</style>

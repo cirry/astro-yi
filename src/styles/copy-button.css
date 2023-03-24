@@ -1,0 +1,31 @@
+   /* 鼠标放在代码块上时，显示复制按钮 */
+   .code-wrapper {
+       position: relative;
+   }
+
+   .code-wrapper:hover .copy-button {
+       display: inline-block;
+   }
+
+   /* 复制按钮样式 */
+   .copy-button {
+       display: none;
+       position: absolute;
+       top: 4px;
+       right: 4px;
+       padding: 0 12px;
+       background-color: #f2f2f2;
+       border: none;
+       border-radius: 6px;
+       line-height: 32px;
+       color: #000;
+       font-size: 12px;
+       font-weight: 700;
+       cursor: pointer;
+       transition: all 0.2s ease;
+   }
+
+   /* 鼠标放在复制按钮上时，改变背景颜色 */
+   .copy-button:hover {
+       background-color: #ddd;
+   }

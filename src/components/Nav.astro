@@ -1,0 +1,106 @@
+---
+import { site as site, category as headerCategories } from "$/config.yml";
+const { active } = Astro.props;
+---
+
+<div class="fixed top-0 w-full bg-skin-fill text-skin-base z-10">
+  <div class="flex items-center justify-between container mx-auto h-16">
+    <a class="logo text-2xl cursor-pointer ml-4 md:ml-0" href="/"
+      >{site.title}</a
+    >
+    <div class="hidden md:block">
+      <div class="flex text-md">
+        {
+          headerCategories.map((cate) => (
+            <a
+              class={
+                "mx-4 cursor-pointer hover:border-b-2 hover:border-b-skin-base flex items-center" +
+                (active === cate.activeName ? " nava" : "")
+              }
+              href={cate.href}
+            >
+              <i class={cate.iconClass + " mr-1"} />
+              <div>{cate.name}</div>
+            </a>
+          ))
+        }
+        {
+          (
+            <span
+              id="theme-btn"
+              class="cursor-pointer"
+              title="Toggles light & dark"
+              aria-label="auto"
+              aria-live="polite"
+            >
+              <i
+                id="moon-icon"
+                class="ri-moon-line bg-skin-fill hover:text-skin-active"
+              />
+              <i
+                id="sun-icon"
+                class="ri-sun-line bg-skin-fill hover:text-skin-active"
+              />
+            </span>
+          )
+        }
+      </div>
+    </div>
+    <div class="md:hidden flex items-center">
+      {
+        (
+          <span
+            id="theme-btn-mobile"
+            class="cursor-pointer mr-4 text-xl"
+            title="Toggles light & dark"
+            aria-label="auto"
+            aria-live="polite"
+          >
+            <i
+              id="moon-icon"
+              class="ri-moon-line bg-skin-fill hover:text-skin-active"
+            />
+            <i
+              id="sun-icon"
+              class="ri-sun-line bg-skin-fill hover:text-skin-active"
+            />
+          </span>
+        )
+      }
+      <i id="menu-icon" class="ri-menu-fill mr-4 text-2xl"></i>
+      <i id="menu-close-icon" class="ri-close-fill mr-4 hidden text-2xl"></i>
+    </div>
+  </div>
+  <div id="mobile-menu" class="mb-2 hidden">
+    {
+      headerCategories.map((cate) => (
+        <div class="flex h-8 w-full">
+          <a
+            class="flex w-screen items-center justify-center border-t border-t-skin-normal py-2"
+            href={cate.href}
+          >
+            <i class={cate.iconClass + " mr-2"} />
+            <div>{cate.name}</div>
+          </a>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  let menuIcon = document.getElementById("menu-icon");
+  let menuCloseIcon = document.getElementById("menu-close-icon");
+  let menu = document.getElementById("mobile-menu");
+  menuIcon.addEventListener("click", () => {
+    menuIcon.classList.add("hidden");
+    menuCloseIcon.classList.remove("hidden");
+    menu.classList.remove("hidden");
+    menu.classList.add("fadeIn");
+  });
+  menuCloseIcon.addEventListener("click", () => {
+    menuCloseIcon.classList.add("hidden");
+    menu.classList.add("hidden");
+    menuIcon.classList.remove("hidden");
+  });
+</script>

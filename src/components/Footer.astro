@@ -1,0 +1,53 @@
+---
+import { site as siteConfig } from "../config.yml";
+---
+
+<div id="footer" class="container mx-auto hidden">
+  <div class="flex items-center justify-center mt-4 text-skin-base">
+    <span id="busuanzi_container_site_pv">
+      总访问量<span id="busuanzi_value_site_pv"></span>次
+    </span>
+    <div class="divider-vertical"></div>
+    <span id="busuanzi_container_site_uv">
+      总访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+  <div class="flex items-center justify-center my-4 text-skin-base">
+    <a href="/about">关于本站</a>
+    <div class="divider-vertical"></div>
+    <a href="/friends">友情链接</a>
+    <div class="divider-vertical"></div>
+    <a href="/sitemap-0.xml">站点地图</a>
+  </div>
+  <div class="flex items-center justify-center mb-4 text-skin-base">
+    <div>
+      <span class="cursor-default">Copyright</span>
+      <i class="ri-copyright-line align-middle"></i>
+      <span class="align-middle">2023</span>
+    </div>
+    {
+      siteConfig.beian && (
+        <>
+          <div class="divider-vertical" />
+          <a rel="nofollow" target="_blank" href="https://beian.miit.gov.cn/">
+            {siteConfig.beian}
+          </a>
+        </>
+      )
+    }
+  </div>
+</div>
+
+<script>
+  let footer = document.getElementById("footer");
+  let height = document.getElementById("app").offsetHeight + 60;
+  if (height < window.innerHeight) {
+    footer.classList.remove("hidden");
+    footer.classList.add("footer-fixed");
+    footer.classList.add("block");
+  } else {
+    footer.classList.remove("hidden");
+    footer.classList.add("footer");
+    footer.classList.add("block");
+  }
+</script>

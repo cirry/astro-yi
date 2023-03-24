@@ -1,0 +1,11 @@
+---
+import Layout from "src/layouts/layout.astro";
+import { Search } from "../components/search";
+import { getCollectionByName } from "src/utils/getCollectionByName";
+const posts = await getCollectionByName("blog");
+---
+
+<Layout activeNav="search">
+  <div class="text-2xl mb-4">搜索</div>
+  <Search client:load posts={posts} />
+</Layout>

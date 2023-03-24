@@ -1,0 +1,28 @@
+#donate-item-img {
+    -webkit-filter: grayscale(1);
+    filter: grayscale(1);
+}
+
+#donate-item-img:hover {
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+    cursor: pointer;
+}
+
+.esa-sponsor {
+    position: relative;
+    width: 100%;
+    margin: 40px 0;
+}
+
+.esa-sponsor .qrshow {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+    left: calc(50% - 100px);
+    top: -170px;
+    z-index: 999;
+    display: none;
+    box-shadow: 0 1px 15px rgba(27, 31, 35, .15), 0 0 1px rgba(106, 115, 125, .35);
+}

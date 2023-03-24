@@ -1,0 +1,28 @@
+---
+const { data, body, url } = Astro.props.post;
+import dayjs from "dayjs";
+import tz from "dayjs/plugin/timezone";
+import relativeTime from "dayjs/plugin/relativeTime";
+// import "dayjs/locale/zh-cn";
+dayjs.extend(tz);
+dayjs.extend(relativeTime);
+dayjs.tz.guess(); // 猜测用户时区
+// dayjs.locale("zh-cn");
+let postDateFromNow = dayjs(data.date).fromNow();
+---
+
+<div>
+  <p
+    class="break-all text-skin-base first-letter cursor-default tracking-wide first-letter:font-semibold first-letter:text-2xl"
+  >
+    {
+      body.length > 140
+        ? body.substring(0, 140).replace(/#/gi, "") + "..."
+        : body
+    }
+  </p>
+  <div class="flex items-center mt-2 text-sm">
+    <span class="mr-2">发表于：{postDateFromNow}</span>
+    <a class="text-skin-active font-semibold" href={url}>查看评论</a>
+  </div>
+</div>

@@ -1,0 +1,79 @@
+site:
+  siteUrl: https://demo.demo # required
+  author: Astro
+  title: Astro Theme YI
+  description: Astro Blog
+  motto: "吾将上下而求索"
+  indexPageSize: 10 # 首页展示文章数量
+  pageSize: 10 # 博客文章分页大小
+  archivePageSize: 25 # 归档分页大小
+  beian: # 备案号
+category:
+  - name: "首页"
+    iconClass: "ri-home-4-line"
+    href: "/"
+    activeName: "home"
+  - name: "博客"
+    iconClass: "ri-draft-line"
+    href: "/blog/1"
+    activeName: "blog"
+  - name: "动态"
+    iconClass: "ri-lightbulb-flash-line"
+    href: "/activity/1"
+    activeName: "activity"
+  - name: "归档"
+    iconClass: "ri-archive-line"
+    href: "/archive/1"
+    activeName: "archive"
+  - name: "关于"
+    iconClass: "ri-user-3-line"
+    href: "/about"
+    activeName: "about"
+  - name: "留言"
+    iconClass: "ri-chat-1-line"
+    href: "/message"
+    activeName: "message"
+  - name: "搜索"
+    iconClass: "ri-search-line"
+    href: "/search"
+    activeName: "search"
+info:
+  outlinks:
+    - icon: ri-bilibili-fill
+      name: bilibili
+      outlink:
+    - icon: ri-mail-fill
+      name:
+      outlink:
+    - icon: ri-github-fill
+      name: github
+      outlink:
+    - icon: ri-rss-fill
+      name: rss
+      outlink: /rss.xml
+donate:
+  enable: false
+  tip: "感谢大佬送来的咖啡☕"
+  wechatQRCode:
+  alipayQRCode:
+  paypalUrl:
+
+comment:
+  enable: false # 是否开启评论功能
+  serverUrl: # Waline 的服务端地址
+  pageSize: 20 ## The desired number of comments shown in each page.
+  wordLimit: ## Limit input word count, 0 means no limit
+  requiredMeta: ["nick", "mail"] ## required user information e.g. ['nick','mail','link']
+  count: 5 ## The number of recent comments,default. 10
+  pageview: false ## 流量统计
+  reaction: false ## 是否开启文章反应
+ad:
+  enable: false
+  adItems:
+    - link:
+      pic:
+friends:
+  - name: Cirry
+    description: 喜欢折腾的前端开发
+    url: https://cirry.cn
+    avatar: https://cirry.cn/avatar.png

@@ -1,0 +1,11 @@
+---
+import Layout from "src/layouts/layout.astro";
+let posts = await Astro.glob("./about.md");
+let { Content, frontmatter } = posts[0];
+---
+
+<Layout activeNav="about" frontmatter={frontmatter}>
+  <article class="markdown-body">
+    <Content />
+  </article>
+</Layout>

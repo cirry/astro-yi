@@ -1,0 +1,110 @@
+---
+import _ from "lodash";
+import { sortPostsByDate } from "../utils/sortPostsByDate";
+import getUniqueTags from "src/utils/getUniqueTags";
+import getCountByCategory from "src/utils/getCountByCategory";
+import { getCollectionByName } from "src/utils/getCollectionByName";
+import Comment from "./Comment.astro";
+import { info as infoConfig, site as siteConfig, ad } from "$/config.yml";
+const randomAdIndex = _.random(0, ad.length - 1);
+const posts = await getCollectionByName("blog");
+
+let tagArr = getUniqueTags(posts);
+let categotyCount = getCountByCategory(posts);
+
+let sortPosts = await sortPostsByDate(posts);
+let resultPosts = sortPosts.splice(0, 10);
+---
+
+<div
+  class="shadow-lg rounded-lg h-64 flex flex-col items-center justify-center bg-skin-card text-skin-base"
+>
+  <img class="avatar mb-4" src="/avatar.png" alt="" />
+  <div class="motto mb-2 text-center">{siteConfig.motto}</div>
+  <div class="flex items-center justify-center">
+    {
+      infoConfig.outlinks.map((infoItem, index) => (
+        <a title={infoItem.name} href={infoItem.outlink} target="_blank">
+          <i class={infoItem.icon + " text-2xl mr-2 cursor-pointer"} />
+        </a>
+      ))
+    }
+  </div>
+</div>
+
+{
+  _.keys(categotyCount).length > 0 && (
+    <div class="flex items-center w-full border-b border-b-gray-300 mt-4 text-skin-base">
+      <i class="ri-folder-line text-2xl mr-2" />
+      分类
+    </div>
+  )
+}
+
+{
+  _.keys(categotyCount).map((category) => (
+    <a
+      class="block my-1 text-skin-base hover:text-skin-active"
+      href={"/category/" + category}
+    >
+      {category + " (" + categotyCount[category] + ")"}
+    </a>
+  ))
+}
+{
+  tagArr.length > 0 && (
+    <div class="flex items-center w-full border-b border-b-gray-300 mt-4 text-skin-base select-none">
+      <i class="ri-price-tag-3-line text-2xl mr-2" />
+      标签
+    </div>
+  )
+}
+
+<div class="flex flex-wrap">
+  {
+    tagArr &&
+      tagArr.map((tag) => (
+        <a
+          class="inline-block m-1 text-skin-base  hover:text-skin-active"
+          href={"/tags/" + tag}
+        >
+          #{tag}
+        </a>
+      ))
+  }
+</div>
+
+<div
+  class="flex items-center w-full border-b border-b-gray-300 mt-4 text-skin-base"
+>
+  <i class="ri-file-line text-2xl mr-2"></i>最近文章
+</div>
+<div class="flex flex-col">
+  {
+    resultPosts.map((post) => (
+      <a
+        href={post.url}
+        class="truncate cursor-pointr mt-1 text-skin-base hover:text-skin-active"
+        title={post.data.title}
+      >
+        {post.data.title}
+      </a>
+    ))
+  }
+</div>
+<Comment />
+{
+  ad.enable && ad.adItems.length > 0 && (
+    <div>
+      <div class="flex items-center w-full border-b border-b-gray-300 my-4 text-skin-base">
+        <i class="ri-notification-line text-2xl mr-2" />
+        广告
+      </div>
+      {
+        <a href={ad.adItems[randomAdIndex]?.link} target="_blank" class="mb-2">
+          <img src={ad.adItems[randomAdIndex]?.pic} class="mb-2" alt="" />
+        </a>
+      }
+    </div>
+  )
+}

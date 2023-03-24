@@ -1,0 +1,25 @@
+---
+const { data: post, url } = Astro.props.post;
+import PostTitle from "./PostTitle.astro";
+---
+
+<div>
+  <PostTitle
+    category={post.category || []}
+    date={post.date}
+    tags={post.tags}
+    title={post.title}
+    url={url}
+    isSticky={post.sticky}
+    update={post.update ? post.update : ""}
+    pageType="page"
+  />
+  <p class="break-all text-skin-base">
+    {
+      post.description || Astro.props.post.body.length > 140
+        ? Astro.props.post.body.substring(0, 140).replace(/#/gi, "") + "..."
+        : Astro.props.post.body
+    }
+  </p>
+  <a class="text-skin-active text-sm font-semibold" href={url}>阅读全文</a>
+</div>

@@ -1,0 +1,19 @@
+---
+const { name, avatar, description, url } = Astro.props;
+---
+
+<a
+  class="flex items-center h-16 shadow rounded hover:cursor-pointer bg-skin-card"
+  href={url}
+  target="_blank"
+>
+  <img class="h-12 w-12 rounded m-2" src={avatar} alt="avatar" />
+  <div>
+    <div style="width:240px;">{name}</div>
+    <div
+      style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width:240px;"
+    >
+      {description}
+    </div>
+  </div>
+</a>
