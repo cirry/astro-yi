@@ -5,7 +5,7 @@ import { friends, comment as commentConfig } from "../../config.yml";
 ---
 
 <Layout activeNav="" frontmatter={{ comment: true }}>
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 w-full">
     {friends ? friends.map((friend) => <Friends {...friend} />) : ""}
   </div>
 
