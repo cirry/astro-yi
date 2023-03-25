@@ -9,10 +9,7 @@ import PostInfo from "src/components/postInfo.astro";
 import Donate from "src/components/Donate.astro";
 // 当前激活的nav,当前文章的heading,frontmatter post页面才有值，page页面为undefined
 const { activeNav, frontmatter, type = "page" } = Astro.props;
-import {
-  comment as commentConfig,
-  donate as donateConfig,
-} from "../config.yml";
+import { comment as commentConfig, donate as donateConfig } from "$/config.yml";
 ---
 
 <!DOCTYPE html>
@@ -45,7 +42,7 @@ import {
     </div>
     <script>
       import { init } from "@waline/client";
-      import { comment as commentConfig } from "../config.yml";
+      import { comment as commentConfig } from "$/config.yml";
       import Zooming from "zooming";
       import "@waline/client/dist/waline.css";
       const zooming = new Zooming();

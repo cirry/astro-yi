@@ -37,4 +37,4 @@ npm run dev
 
 将您喜欢的文章写入`src/content/blog`文件夹下，将想要发的动态写入`src/content/activity`文件夹下。
 
-更多写作技巧内容请查看文章： [Astro-YI Write Skill](https://cirry.cn/blog/frontend/astro/write-skill)
+更多写作技巧内容请查看文章： [Astro-Yi主题配置和写作技巧](https://cirry.cn/blog/frontend/astro/config-and-write-skill)

@@ -16,7 +16,9 @@ import PostTitle from "./PostTitle.astro";
   />
   <p class="break-all text-skin-base">
     {
-      post.description || Astro.props.post.body.length > 140
+      post.description
+        ? post.description
+        : Astro.props.post.body.length > 140
         ? Astro.props.post.body.substring(0, 140).replace(/#/gi, "") + "..."
         : Astro.props.post.body
     }
