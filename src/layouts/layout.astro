@@ -24,7 +24,7 @@ import { comment as commentConfig, donate as donateConfig } from "$/config.yml";
     >
       <div class="flex justify-between mt-16 p-4 xl:px-0">
         <!-- 修复md文档宽度缩放的问题 -->
-        <div class="text-skin-base lg:mr-8 overflow-hidden w-full">
+        <div class="text-skin-base lg:mr-8 responsive-container">
           <slot />
 
           {donateConfig.enable && frontmatter?.donate && <Donate />}

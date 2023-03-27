@@ -2,6 +2,7 @@
 dist/
 .output/
 .astro/
+.vscode
 
 
 # dependencies

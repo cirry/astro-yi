@@ -197,3 +197,19 @@ menu {
     line-height: 60px;
     font-size: 16px;
 }
+
+
+/* 响应式设计 */
+
+@media (min-width: 1080px) {
+    .responsive-container {
+        width: calc(100% - 20em);
+    }
+}
+
+@media (max-width: 1080px) {
+    .responsive-container {
+        width: 100%;
+    }
+
+}
