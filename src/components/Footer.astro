@@ -40,7 +40,8 @@ import { site as siteConfig } from "../config.yml";
 
 <script>
   let footer = document.getElementById("footer");
-  let height = document.getElementById("app").offsetHeight + 60;
+  let height = document.getElementById("app").offsetHeight + 200;
+  console.log(height);
   if (height < window.innerHeight) {
     footer.classList.remove("hidden");
     footer.classList.add("footer-fixed");
