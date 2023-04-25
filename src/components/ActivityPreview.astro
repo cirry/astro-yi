@@ -1,13 +1,15 @@
 ---
+import ActivityPostDate from "./ActivityPostDate.astro";
 const { data, body, url } = Astro.props.post;
+const { index } = Astro.props;
 import dayjs from "dayjs";
 import tz from "dayjs/plugin/timezone";
 import relativeTime from "dayjs/plugin/relativeTime";
-// import "dayjs/locale/zh-cn";
+import "dayjs/locale/zh-cn";
 dayjs.extend(tz);
 dayjs.extend(relativeTime);
 dayjs.tz.guess(); // 猜测用户时区
-// dayjs.locale("zh-cn");
+dayjs.locale("zh-cn");
 let postDateFromNow = data.date ? dayjs(data.date).fromNow() : "";
 ---
 
@@ -22,7 +24,7 @@ let postDateFromNow = data.date ? dayjs(data.date).fromNow() : "";
     }
   </p>
   <div class="flex items-center mt-2 text-sm">
-    {postDateFromNow && <span class="mr-2">发表于：{postDateFromNow}</span>}
+    <ActivityPostDate date={data.date} index={index} />
     <a class="text-skin-active font-semibold" href={url}>阅读全文</a>
   </div>
 </div>
