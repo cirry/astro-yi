@@ -41,8 +41,9 @@ import { site as siteConfig } from "../config.yml";
 <script>
   let footer = document.getElementById("footer");
   let height = document.getElementById("app").offsetHeight + 200;
-  console.log(height);
-  if (height < window.innerHeight) {
+
+  // 取消search页面的footer固定
+  if (height < window.innerHeight && window.location.pathname !== "/search") {
     footer.classList.remove("hidden");
     footer.classList.add("footer-fixed");
     footer.classList.add("block");
