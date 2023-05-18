@@ -21,7 +21,6 @@ const posts = await getCollectionByName("activity");
 const sortPosts = sortPostsByDate(posts);
 
 let postDate = post.data.date ? dayjs(post.data.date).format("YYYY-MM-DD HH:mm:ss"): '';
-let postDateFromNow = dayjs(post.data.date).fromNow();
 const currentPostIndex = sortPosts.findIndex(
   (postItem) => postItem.data.date === post.data.date
 );
@@ -50,10 +49,7 @@ if (sortPosts[currentPostIndex - 1]) {
         {postDate &&<div class="flex items-center cursor-pointer">
           <i class="ri-calendar-2-fill mr-1" />
           <div class="tag">{postDate}</div>
-        </div>
-        <div class="divider-vertical" />
-        <div>{postDateFromNow}</div>}
-        
+        </div>}
         {commentConfig.enable && commentConfig.pageview &&  (
         <div class="divider-vertical" />
         <a href="#" title="当前页面阅读量" class="flex items-center">

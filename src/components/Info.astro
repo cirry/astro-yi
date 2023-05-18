@@ -65,10 +65,10 @@ let resultPosts = sortPosts.splice(0, 10);
     tagArr &&
       tagArr.map((tag) => (
         <a
-          class="inline-block m-1 text-skin-base  hover:text-skin-active"
+          class="inline-block m-1 border p-1 text-sm rounded text-skin-base hover:text-skin-active"
           href={"/tags/" + tag}
         >
-          #{tag}
+          {tag}
         </a>
       ))
   }
@@ -100,11 +100,11 @@ let resultPosts = sortPosts.splice(0, 10);
         <i class="ri-notification-line text-2xl mr-2" />
         广告
       </div>
-      {
-        <a href={ad.adItems[randomAdIndex]?.link} target="_blank" class="mb-2">
-          <img src={ad.adItems[randomAdIndex]?.pic} class="mb-2" alt="" />
+      {ad.adItems.map((adItem) => (
+        <a href={adItem.link} target="_blank" class="mb-2">
+          <img src={adItem.pic} class="mb-2" alt="" />
         </a>
-      }
+      ))}
     </div>
   )
 }
