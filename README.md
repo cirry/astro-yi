@@ -1,4 +1,8 @@
-Astro Theme YI
+## Astro Theme YI
+
+[Demo](https://astro-yi.cirry.cn/)
+
+**注意：作者无意升级到V3和以后的版本。**
 
 一个以内容展示为主的Astro博客主题，YI也就是易，简简单单的意思。
 
