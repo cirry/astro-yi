@@ -94,12 +94,12 @@ export const infoLinks = [
   {
     icon: "ri-bilibili-fill",
     name: "bilibili",
-    outlink: "https://space.bilibili.com/89561082",
+    outlink: "https://space.bilibili.com/xxxxxxxx",
   },
   {
     icon: 'ri-mail-fill',
-    name: 'cdxtrv@qq.com',
-    outlink: 'mailto:cdxtrv@qq.com',
+    name: 'xxxxxxx@gmail.com',
+    outlink: 'mailto:xxxxxxx@gmail.com',
   },
   {
     icon: 'ri-github-fill',
@@ -131,7 +131,7 @@ export const donate = {
 export const friendlyLinks =
   [
     {
-      name: '菜小牛的博客',
+      name: "Cirry's Blog",
       url: 'https://cirry.cn',
       avatar: "https://cirry.cn/avatar.png",
       description: '前端开发的日常'
