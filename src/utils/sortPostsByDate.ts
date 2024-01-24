@@ -1,4 +1,3 @@
-import _ from 'lodash'
 import dayjs from 'dayjs'
 export const sortPostsByDate = (posts) =>
     posts

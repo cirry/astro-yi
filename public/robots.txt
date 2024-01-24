@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://astro-yi.cn/sitemap-0.xml

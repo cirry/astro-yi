@@ -1,0 +1,17 @@
+---
+import {site, infoLinks} from "../consts";
+---
+
+<div class="shadow-lg rounded-lg h-64 w-auto flex flex-col items-center justify-center bg-skin-card">
+  <img class="avatar mb-4" src="/avatar.png" alt=""/>
+  <div class="mb-2 text-center">{site.motto}</div>
+  <div class="flex items-center justify-center">
+    {
+      infoLinks.map((infoItem) => (
+        <a title={infoItem.name} href={infoItem.outlink} target="_blank">
+          <i class={infoItem.icon + " text-2xl mr-2 cursor-pointer"}/>
+        </a>
+      ))
+    }
+  </div>
+</div>

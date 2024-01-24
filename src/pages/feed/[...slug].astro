@@ -1,0 +1,96 @@
+---
+import {sortPostsByDate} from "src/utils/sortPostsByDate";
+import {getCollectionByName} from "../../utils/getCollectionByName";
+import BlogPost from '../../layouts/BlogPost.astro'
+import {comment} from "../../consts";
+import {formatDate} from '../../utils/formatDate'
+
+export async function getStaticPaths() {
+  const posts = await getCollectionByName("feed");
+  return posts.map((post) => ({
+    params: {slug: post.slug},
+    props: post,
+  }));
+}
+
+const post = Astro.props;
+const {Content} = await post.render();
+const posts = await getCollectionByName("feed");
+const sortPosts = sortPostsByDate(posts);
+
+let postDate = post.data.date ? formatDate(post.data.date) : '';
+const currentPostIndex = sortPosts.findIndex(
+  (postItem) => postItem.data.date === post.data.date
+);
+let prevPost: any, nextPost: any;
+if (sortPosts[currentPostIndex + 1]) {
+  prevPost = sortPosts[currentPostIndex + 1];
+}
+if (sortPosts[currentPostIndex - 1]) {
+  nextPost = sortPosts[currentPostIndex - 1];
+}
+---
+
+<BlogPost frontmatter={post.data}>
+  {
+    (
+      <div class="flex items-center mb-2">
+        {postDate &&
+          <div class="flex items-center cursor-pointer">
+            <i class="ri-calendar-2-fill mr-1"/>
+            <div class="tag">{postDate}</div>
+          </div>}
+        {comment.enable && comment.pageview && (
+          <div class="divider-vertical"/>
+          <a href="#" title="当前页面阅读量" class="flex items-center">
+            <i class="ri-fire-fill mr-1"/>
+            <span class="waline-pageview-count" data-path={'/' + post.collection + '/' + post.slug}/>
+          </a>
+          <div class="divider-vertical"/>
+          <a href="#waline" title="当前页面评论数" class="flex items-center">
+            <i class="ri-discuss-fill mr-1"/>
+            <span class="waline-comment-count" data-path={'/' + post.collection + '/' + post.slug}/>
+          </a>
+        )}
+      </div>
+    )
+  }
+  <div class="divider-horizontal"></div>
+  <article class="markdown-body scroll-smooth mb-4">
+    <Content/>
+  </article>
+  <div class="divider-horizontal"></div>
+  {
+    (
+      <div>
+        {nextPost ? (
+          <a
+            class="truncate  w-auto max-w-[40%] float-left"
+            href={'/' + nextPost.collection + '/' + nextPost.slug}
+            title={nextPost.data.title}
+          >
+            <i class="ri-arrow-left-s-fill"/>
+            上一条动态
+          </a>
+        ) : (
+          <div/>
+        )}
+        {prevPost ? (
+          <div class="flex item-center float-right w-auto max-w-[40%] text-right">
+            <a
+              class="truncate "
+              href={'/' + prevPost.collection + '/' + prevPost.slug}
+              title={prevPost.data.title}
+            >
+              下一条动态
+            </a>
+            <i class="ri-arrow-right-s-fill float-right"/>
+          </div>
+        ) : (
+          <div/>
+        )}
+      </div>
+    )
+  }
+  <div class="h-4"></div>
+</BlogPost>

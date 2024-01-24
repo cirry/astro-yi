@@ -1,37 +1,12 @@
 ---
-import Layout from "src/layouts/layout.astro";
+import IndexPage from "src/layouts/IndexPage.astro";
+
 import Friends from "src/components/Friends.astro";
-import { friends, comment as commentConfig } from "../../config.yml";
+import  {friendlyLinks} from "../../consts";
 ---
 
-<Layout activeNav="" frontmatter={{ comment: true }}>
+<IndexPage frontmatter={{ comment: true }}>
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 w-full">
-    {friends ? friends.map((friend) => <Friends {...friend} />) : ""}
+    {friendlyLinks ? friendlyLinks.map((friend) => <Friends {...friend} />) : ""}
   </div>
-
-  <div class="flex justify-center text-2xl font-bold mt-8">友链申请须知</div>
-  <div class="flex justify-center mt-4">
-    本网站友链根据本人冲浪中遇到的比较欣赏的博客随缘添加。
-  </div>
-  <div class="flex justify-center mt-4">
-    多数情况下只添加原创，长期更新，有趣的博客友链。
-  </div>
-  <div class="flex justify-center mt-4">
-    请不要通过本页面以外的留言框申请友链，与页面主题无关的评论可能会被删除。
-  </div>
-  <div class="flex justify-center mt-4">
-    以下是本站的信息，可供参考：(您可以直接复制下面内容进行修改)
-  </div>
-  <div class="flex justify-center font-semibold mt-4">
-    网站名称：Cirry的博客
-  </div>
-  <div class="flex justify-center font-semibold mt-4">
-    网站描述：喜欢折腾的前端开发
-  </div>
-  <div class="flex justify-center font-semibold mt-4">
-    网站链接：https://cirry.cn
-  </div>
-  <div class="flex justify-center font-semibold mt-4">
-    头像地址：https://cirry.cn/avatar.png
-  </div>
-</Layout>
+</IndexPage>

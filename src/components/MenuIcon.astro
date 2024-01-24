@@ -1,0 +1,29 @@
+---
+---
+<button type="button" id="menu-icon" class="header-btn" title="Menu">
+  <i class="ri-menu-fill"/>
+</button>
+<button type="button" id="menu-icon-close" class="header-btn hidden" title="Menu">
+  <i class="ri-close-fill"></i>
+</button>
+
+
+<script>
+  let menuIcon = document.getElementById("menu-icon");
+  let menuCloseIcon = document.getElementById("menu-icon-close");
+  let menu = document.getElementById("mobile-menu");
+  menuIcon.addEventListener("click", () => {
+    menuIcon.classList.toggle("hidden");
+    menuCloseIcon.classList.toggle("hidden");
+    menu.classList.toggle("hidden");
+    menu.classList.add("fadeIn");
+    // 给背景添加蒙版
+    document.getElementById('app').classList.toggle("opacity-50");
+  });
+  menuCloseIcon.addEventListener("click", () => {
+    menuCloseIcon.classList.toggle("hidden");
+    menu.classList.toggle("hidden");
+    menuIcon.classList.toggle("hidden");
+    document.getElementById('app').classList.toggle("opacity-50");
+  });
+</script>

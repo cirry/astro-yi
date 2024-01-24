@@ -1,0 +1,120 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Profile from '../components/Profile.astro'
+import Comment from '../components/Comment.astro'
+import Toc from '../components/Toc.astro'
+import {comment} from "../consts";
+import ScrollToTop from '../components/ScrollToTop.astro'
+
+const {frontmatter = {comment: false, donate: false, toc: false, mathjax: false}} = Astro.props
+---
+
+<html lang="en">
+<BaseHead mathjax={frontmatter.mathjax}/>
+
+<body class="bg-skin-secondary">
+<Header/>
+<main class="container p-4  pt-20 cursor-default text-skin-base min-h-full pb-32 relative" id="app">
+  <div class="grid grid-cols-4 gap-8">
+    <div class="col-span-4 xl:col-span-3 space-y-6">
+      <button class="flex items-center text-md cursor-pointer hover:text-skin-active outline-none" style="background-color: inherit;" onclick="history.back()">
+        <i class="ri-arrow-left-line mr-2"/>
+        <span style="word-spacing: 4em;">返回</span>
+      </button>
+      <slot/>
+      {
+        frontmatter.comment && comment.enable &&
+        <Comment></Comment>
+      }
+    </div>
+    <div class="hidden xl:block col-span-1 relative">
+      <Profile></Profile>
+      {
+        frontmatter.toc &&
+        <Toc></Toc>
+      }
+    </div>
+    <ScrollToTop></ScrollToTop>
+
+  </div>
+  <Footer/>
+
+</main>
+</body>
+</html>
+
+
+<script>
+  import ClipboardJS from "clipboard";
+
+  import Zooming from "zooming";
+
+  const zooming = new Zooming();
+
+  // 给所有的a标签添加target属性和不追踪
+  const markdownBody = document.querySelector(".markdown-body");
+  // 如果没有markdownBody则直接返回
+  if (markdownBody) {
+    const clipboard = new ClipboardJS(".copy-button");
+    clipboard.on("success", function (e) {
+      e.clearSelection();
+    });
+    clipboard.on("error", function (e) {
+    });
+    // 给所有的代码块添加复制功能
+    let codePre = markdownBody.querySelectorAll("pre");
+    codePre.forEach((codeBlock, i) => {
+      // 给pre外层外层添加div
+      let codeWrapper = document.createElement("div");
+      codeWrapper.classList.add("code-wrapper");
+      codeBlock.parentNode.insertBefore(codeWrapper, codeBlock);
+      codeWrapper.appendChild(codeBlock);
+
+      // 给div里添加button按钮，与pre平级
+      const id = `code-block-${i + 1}`;
+      codeBlock.setAttribute("id", id);
+      const button = document.createElement("button");
+      button.innerHTML = "Copy";
+      button.setAttribute("class", "copy-button");
+      button.setAttribute("data-clipboard-target", `#${id}`);
+      codeBlock.parentNode.insertBefore(button, codeBlock.nextSibling);
+      button.addEventListener("click", () => {
+        button.innerHTML = "Code copied to clipboard";
+        setTimeout(() => {
+          button.innerHTML = "Copy";
+        }, 2000);
+      });
+    });
+
+    let images = markdownBody.querySelectorAll("img");
+    const callback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const image = entry.target;
+          const data_src = image.getAttribute("alt");
+          image.setAttribute("src", data_src);
+          observer.unobserve(image);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(callback);
+    images.forEach((image) => {
+      observer.observe(image);
+
+      // 图片添加点击放大功能
+      image.classList.add("zooming-image");
+      zooming.listen(".zooming-image");
+    });
+
+    var links = markdownBody.querySelectorAll("a");
+    // 循环遍历链接标签
+    for (var i = 0; i < links.length; i++) {
+      // 给每个链接标签添加 target 属性
+      links[i].setAttribute("target", "_blank");
+      links[i].setAttribute("rel", "nofollow");
+    }
+  }
+</script>

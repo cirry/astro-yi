@@ -1,9 +1,6 @@
 ---
-import _ from "lodash";
 let pager = []; // 实际显示的分页组件内容
-/**
- * prefixUrl : 点击页面跳转的路由地址前缀，比如/blog/1,/tags/1, /category/1等等
- */
+//prefixUrl : 点击页面跳转的路由地址前缀，比如/blog/1,/tags/1, /category/1等等
 const {
   currentPage,
   totalPage,
@@ -17,8 +14,7 @@ if (totalPage === 1) {
   pager = new Array(totalPage).fill(0).map((i, index) => index + 1);
 } else {
   if (currentPage > totalPage) {
-    console.warn("页数错误");
-    return;
+    return
   }
   let diffNextPages = 2 - (totalPage - currentPage);
 
@@ -44,9 +40,10 @@ if (totalPage === 1) {
     ];
   }
 }
+
 ---
 
-<div class="flex items-center justify-center my-16">
+<div class="flex items-center justify-center my-16 text-skin-base">
   {
     pager.length > 4 && (
       <a href={prefixUrl + "1"} style="font-size:24px;line-height:32px;">
@@ -103,6 +100,6 @@ if (totalPage === 1) {
 
 <style>
   a {
-    @apply border mr-2 h-8 w-8 text-center leading-8 rounded cursor-pointer text-skin-base hover:text-skin-active;
+    @apply border mr-2 h-8 w-8 text-center leading-8 rounded cursor-pointer hover:text-skin-active;
   }
 </style>

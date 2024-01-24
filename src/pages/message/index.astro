@@ -1,20 +1,19 @@
 ---
-import Layout from "src/layouts/layout.astro";
+import IndexPage from "src/layouts/IndexPage.astro";
 let posts = await Astro.glob("./message.md");
-import PostTitle from "src/components/PostTitle.astro";
+import PostViewTitle from "src/components/PostViewTitle.astro";
 let { frontmatter, Content } = posts[0];
 ---
 
-<Layout activeNav="message" frontmatter={frontmatter}>
-  <PostTitle
+<IndexPage activeNav="message" frontmatter={frontmatter}>
+  <PostViewTitle
     title={frontmatter.title}
     date={frontmatter.date}
     tags={frontmatter.tags}
     category={frontmatter.category}
-    url={frontmatter.url}
     isSticky={frontmatter.sticky}
   />
   <article class="markdown-body">
     <Content />
   </article>
-</Layout>
+</IndexPage>

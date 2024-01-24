@@ -1,11 +1,11 @@
 ---
-import Layout from "src/layouts/layout.astro";
+import IndexPage from "src/layouts/IndexPage.astro";
 let posts = await Astro.glob("./about.md");
-let { Content, frontmatter } = posts[0];
+let {Content, frontmatter} = posts[0];
 ---
 
-<Layout activeNav="about" frontmatter={frontmatter}>
+<IndexPage frontmatter={frontmatter}>
   <article class="markdown-body">
-    <Content />
+    <Content/>
   </article>
-</Layout>
+</IndexPage>

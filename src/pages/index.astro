@@ -1,37 +1,28 @@
 ---
-import Layout from "../layouts/layout.astro";
-import PostPreviewList from "../components/PostPreviewList.astro";
-import { sortPostsByDate } from "src/utils/sortPostsByDate";
-import { sortPostsBySticky } from "src/utils/sortPostsBySticky";
-import { site as site } from "$/config.yml";
-import { getCollectionByName } from "src/utils/getCollectionByName";
-let posts = await getCollectionByName("blog");
+import PostView from '../components/PostView.astro'
+import IndexPage from '../layouts/IndexPage.astro'
+import {getCollectionByName} from "../utils/getCollectionByName";
+import {orderBySticky} from "../utils/orderBySticky";
+import {site} from '../consts'
 
-let stickyPosts = sortPostsBySticky(posts);
-let partPosts = [];
-if (stickyPosts.length <= site.indexPageSize) {
-  // 过滤已经置顶的文章
-  partPosts = sortPostsByDate(posts).filter((post) => !post.data.sticky);
-  partPosts = partPosts.splice(0, site.indexPageSize - stickyPosts.length);
-} else {
-  stickyPosts = stickyPosts.splice(0, site.indexPageSize);
+let blogs = await getCollectionByName("blog");
+let sortedPosts = await orderBySticky(blogs);
+if (sortedPosts.length > site.indexPageSize) {
+  sortedPosts = sortedPosts.splice(0, site.indexPageSize);
 }
 ---
 
-<Layout activeNav="home">
-  <PostPreviewList posts={stickyPosts} />
-  {stickyPosts.length > 0 && <div class="my-8" />}
-  <PostPreviewList posts={partPosts} />
+<IndexPage>
   {
-    posts.length > site.indexPageSize && (
-      <div class="flex justify-center my-16">
-        <a
-          class="px-4 border py-1 text-sm text-white rounded-md shadow-sm hover:scale-110 ease-in-out duration-150"
-          href="/blog/1"
-        >
-          更多文章
-        </a>
+    sortedPosts.map(blog =>
+      <PostView blog={blog}></PostView>)
+  }
+  {
+    blogs.length > site.indexPageSize && (
+      <div class="text-center">
+        <a class="px-4 border py-1 rounded-md  hover:text-skin-active" href="/blog/1">更多文章</a>
       </div>
     )
   }
-</Layout>
+</IndexPage>
+

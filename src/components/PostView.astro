@@ -1,0 +1,26 @@
+---
+import PostViewTitle from '../components/PostViewTitle.astro'
+
+const {blog} = Astro.props;
+const {data, slug} = blog
+---
+
+<div>
+  <PostViewTitle
+    slug={`/blog/${slug}`}
+    {...data}
+  >
+  </PostViewTitle>
+  <p class="break-all text-skin-base mb-2">
+    {
+      data.description
+        ? data.description
+        : blog.body.length > 140
+          ? blog.body.substring(0, 140).replace(/#/gi, "") + "..."
+          : blog.body
+    }
+  </p>
+  <div class="text-right">
+    <a class="hover:text-skin-active text-sm border rounded py-1 px-2" href={`/blog/${slug}`}>阅读全文</a>
+  </div>
+</div>

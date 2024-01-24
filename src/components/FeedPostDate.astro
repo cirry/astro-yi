@@ -2,24 +2,17 @@
 const { date, index } = Astro.props;
 ---
 
-<activity-post-date
-  class={date ? "mr-2" : ""}
-  data-date={date}
-  data-index={index}
->
+<feed-post-date class={date ? "mr-2" : ""} data-date={date} data-index={index}>
   <span class="postTimeEle"></span>
-</activity-post-date>
+</feed-post-date>
 
 <script>
   import dayjs from "dayjs";
-  import tz from "dayjs/plugin/timezone";
   import relativeTime from "dayjs/plugin/relativeTime";
   import "dayjs/locale/zh-cn";
-  dayjs.extend(tz);
   dayjs.extend(relativeTime);
-  dayjs.tz.guess(); // 猜测用户时区
   dayjs.locale("zh-cn");
-  class ActivityPostDate extends HTMLElement {
+  class FeedPostDate extends HTMLElement {
     constructor() {
       super();
       // 从 data（数据）属性中读取消息。
@@ -27,11 +20,9 @@ const { date, index } = Astro.props;
       const index = this.dataset.index;
 
       let timeSpan = document.getElementsByClassName("postTimeEle");
-      let postDateFromNow = date
-        ? dayjs(date).fromNow()
-        : dayjs().format("YYYY-MM-DD");
+      let postDateFromNow = date ? dayjs(date).fromNow() : dayjs().format("YYYY-MM-DD");
       timeSpan[index].innerHTML = `发表于：${postDateFromNow}`;
     }
   }
-  customElements.define("activity-post-date", ActivityPostDate);
+  customElements.define("feed-post-date", FeedPostDate);
 </script>

@@ -32,7 +32,7 @@ function reflectPreference() {
 // set early so no page flashes / CSS is made aware
 reflectPreference();
 
-window.onload = () => {
+function init() {
   // set on load so screen readers can get the latest value on the button
   reflectPreference();
 
@@ -45,12 +45,23 @@ window.onload = () => {
     themeValue = themeValue === "light" ? "dark" : "light";
     setPreference();
   });
+}
+
+
+window.onload = () => {
+  init()
 };
 
 // sync with system changes
-window
-  .matchMedia("(prefers-color-scheme: dark)")
-  .addEventListener("change", ({ matches: isDark }) => {
+window.matchMedia("(prefers-color-scheme: dark)")
+  .addEventListener("change", ({matches: isDark}) => {
     themeValue = isDark ? "dark" : "light";
     setPreference();
   });
+
+
+document.addEventListener('astro:after-swap',
+  () => {
+    init()
+  })
+

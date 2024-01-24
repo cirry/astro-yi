@@ -1,8 +1,0 @@
----
-import ActivityPreview from "./ActivityPreview.astro";
-const { posts } = Astro.props;
----
-
-<section class="post-preview__list">
-  {posts.map((post, index) => <ActivityPreview post={post} index={index} />)}
-</section>

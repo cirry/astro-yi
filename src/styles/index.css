@@ -1,94 +1,118 @@
-@import url('./github-markdown.css');
 @import url('./preflight.css');
+@import url('./github-markdown.css');
 @import url('./copy-button.css');
+
+@import "remixicon/fonts/remixicon.css";
+@import "tocbot/dist/tocbot.css";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "jetbrains-mono";
+  src: url('./JetBrainsMono-Regular.ttf');
+}
+
+
 @layer base {
+  :root,
+  html[data-theme="light"] {
+    --color-fill: 241, 241, 241;
+    --color-fill-secondary: 251, 251, 251;
+    --color-card: 241, 241, 241;
+    --color-text: 80, 73, 69;
+    --color-text-active: 181, 118, 20;
+    --color-border: 104, 157, 106;
+    --color-border-active: 14, 192, 124;
+    --color-modal: 52, 58, 64;
+  }
 
-    :root,
-    html[data-theme="light"] {
-        /* --color-fill: 241, 229, 178;
-        --color-fill-secondary: 235, 219, 178;
-        --color-card: 234, 223, 200; */
-        --color-fill: 241, 241, 241;
-        --color-fill-secondary: 251, 251, 251;
-        --color-card: 241, 241, 241;
-        --color-text: 80, 73, 69;
-        --color-text-active: 181, 118, 20;
-        --color-border: 104, 157, 106;
-        --color-border-active: 14, 192, 124;
-    }
+  html[data-theme="dark"] {
+    --color-fill: 40, 40, 40;
+    --color-fill-secondary: 52, 58, 64;
+    --color-card: 40, 42, 54;
+    --color-text: 249, 244, 227;
+    --color-text-active: 250, 189, 47;
+    --color-border: 214, 93, 14;
+    --color-border-active: 7, 102, 120;
+    --color-modal: 251, 251, 251;
+  }
 
-    html[data-theme="dark"] {
-        --color-fill: 40, 40, 40;
-        --color-fill-secondary: 52, 58, 64;
-        --color-card: 40, 42, 54;
-        --color-text: 249, 244, 227;
-        --color-text-active: 250, 189, 47;
-        --color-border: 214, 93, 14;
-        --color-border-active: 7, 102, 120;
-    }
+  #sun-icon,
+  html[data-theme="dark"] #moon-icon {
+    display: none;
+  }
 
-    #sun-icon,
-    html[data-theme="dark"] #moon-icon {
-        display: none;
-    }
-
-    #moon-icon,
-    html[data-theme="dark"] #sun-icon {
-        display: block;
-    }
+  #moon-icon,
+  html[data-theme="dark"] #sun-icon {
+    display: block;
+  }
 
 }
 
 @layer components {
-    .nava {
-        @apply border-b-2 border-skin-base;
-    }
+  /* 导航栏的按钮样式 */
+  .header-link-active {
+    @apply underline underline-offset-4 decoration-wavy decoration-skin-active;
+  }
 
-    .post-preview__list {
-        @apply flex flex-col gap-12 mx-auto container;
-    }
-}
+  .header-link-hover {
+    @apply underline underline-offset-4 decoration-wavy decoration-skin-base;
+  }
 
-@font-face {
-    font-family: "jetbrains-mono";
-    src: url('./JetBrainsMono-Regular.ttf');
+  .header-btn {
+    @apply cursor-pointer border rounded py-1 px-2 bg-skin-fill hover:text-skin-active mr-4
+  }
+
+  /*侧边栏每个栏目共有样式*/
+  .aside-widget{
+    @apply flex items-center w-full border-b mb-2;
+  }
+
+  /* 侧边最近评论列表样式 */
+  .waline-comment-content {
+    @apply p-1 overflow-auto max-h-72 break-words hover:text-skin-active;
+  }
+  .waline-comment-author{
+    @apply text-end mb-1 break-words hover:text-skin-active;
+  }
+
+  a {
+    @apply cursor-pointer;
+  }
 }
 
 * {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 /* 分割线 */
 .divider-vertical {
-    position: relative;
-    top: -.06em;
-    display: inline-block;
-    height: .9em;
-    margin: 0 8px;
-    vertical-align: middle;
-    border-top: 0;
-    border-left: 1px solid rgba(0, 0, 0, .06);
-    background-color: rgb(var(--color-text));
+  position: relative;
+  top: -.06em;
+  display: inline-block;
+  height: .9em;
+  margin: 0 8px;
+  vertical-align: middle;
+  border-top: 0;
+  border-left: 1px solid rgba(0, 0, 0, .06);
+  background-color: rgba(var(--color-text), .3);
 }
 
 .divider-horizontal {
-    display: flex;
-    clear: both;
-    width: 100%;
-    height: 1px;
-    min-width: 100%;
-    margin: 16px 0;
-    background-color: rgb(var(--color-text));
+  display: flex;
+  clear: both;
+  width: 100%;
+  height: 1px;
+  min-width: 100%;
+  margin: 16px 0;
+  background-color: rgba(var(--color-text), .3);
 }
 
 /* 重写markdown样式 */
 .markdown-body {
-    background-color: inherit;
+  background-color: inherit;
 }
 
 .markdown-body p,
@@ -97,119 +121,94 @@ ul,
 ol,
 div,
 a {
-    line-height: 24px;
+  line-height: 24px;
 }
 
 .avatar {
-    border-radius: 50%;
-    padding: 4px;
-    width: 96px;
-    height: 96px;
-    background-color: transparent;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  padding: 4px;
+  width: 96px;
+  height: 96px;
+  background-color: transparent;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
-
-/* recent-comments waline style*/
-.waline-comment-content {
-    padding: 6px;
-    border-radius: 6px;
-    overflow: auto;
-    max-height: 300px;
-}
-
 
 .waline-comment-content-author {
-    text-align: end;
-    margin-bottom: 6px;
+  text-align: end;
+  margin-bottom: 6px;
 }
 
 .wl-emoji {
-    height: 24px;
+  height: 24px;
 }
 
 /*  网站列表样式清空 */
 ul,
 ol,
 menu {
-    list-style: none;
+  list-style: none;
 }
 
 /* markdown 列表样式 */
 .markdown-body menu,
 .markdown-body ul {
-    list-style: disc;
+  list-style: disc;
 }
 
 .markdown-body ol {
-    list-style: decimal;
+  list-style: decimal;
 }
 
 .markdown-body code,
-.markdown-body kde {
-    font-family: jetbrains-mono;
+.markdown-body pre {
+  font-family: jetbrains-mono, serif;
 }
 
 .markdown-body img {
-    margin: 0 auto;
+  /* 修改图片居中 */
+  /* margin: 0 auto; */
 }
 
 /* 修改滚动条样式 */
 
 ::-webkit-scrollbar {
-    width: 10px;
-    height: 8px;
-    background-color: #edede9;
+  width: 10px;
+  height: 8px;
+  background-color: #edede9;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #c0c4cc;
-    border-radius: 4px;
+  background-color: #c0c4cc;
+  border-radius: 4px;
 }
 
 /* 置顶文字样式 */
 .post-sticky {
-    font-weight: 400;
-    height: 20px;
-    padding: 0 6px;
-    margin-right: 5px;
-    line-height: 20px;
-    font-size: 16px;
-    white-space: nowrap;
-    vertical-align: 2px;
-    color: #edeff1;
-    background-color: #223449;
-    opacity: 0.8;
-    border-radius: 2px 6px;
+  font-weight: 400;
+  height: 20px;
+  padding: 0 6px;
+  margin-right: 5px;
+  line-height: 20px;
+  font-size: 16px;
+  white-space: nowrap;
+  vertical-align: 2px;
+  color: #edeff1;
+  background-color: #223449;
+  opacity: 0.8;
+  border-radius: 2px 6px;
 }
 
-
-/* footer样式 */
-.footer {
-    text-align: center;
-    line-height: 60px;
-    font-size: 16px;
+/* 修复toc 样式问题*/
+/*  覆写toc选中的链接文字颜色 */
+.is-active-link {
+  color: rgb(var(--color-text-active)) !important;
 }
 
-.footer-fixed {
-    position: fixed;
-    bottom: 0;
-    text-align: center;
-    line-height: 60px;
-    font-size: 16px;
+#toc a:hover{
+  color: rgb(var(--color-text-active));
 }
 
-
-/* 响应式设计 */
-
-@media (min-width: 1080px) {
-    .responsive-container {
-        width: calc(100% - 20em);
-    }
-}
-
-@media (max-width: 1080px) {
-    .responsive-container {
-        width: 100%;
-    }
-
+/* tocbot自带的border样式会穿透有问题，以被覆写 */
+.toc-link::before {
+  display: none !important;
 }

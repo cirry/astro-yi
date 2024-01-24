@@ -1,0 +1,49 @@
+---
+import '../styles/index.css'
+import {site, config} from "../consts";
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+const {mathjax = false} = Astro.props
+---
+<head>
+  <!-- Global Metadata -->
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+  <meta name="generator" content={Astro.generator}/>
+  <!-- Canonical URL -->
+  <link rel="canonical" href={canonicalURL}/>
+
+  <!-- Primary Meta Tags -->
+  <meta name="title" content={site.title}/>
+  <meta name="description" content={site.description}/>
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content={Astro.url}/>
+  <meta property="og:title" content={site.title}/>
+  <meta property="og:description" content={site.description}/>
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image"/>
+  <meta property="twitter:url" content={Astro.url}/>
+  <meta property="twitter:title" content={site.title}/>
+  <meta property="twitter:description" content={site.description}/>
+
+  <meta httpEquiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="msapplication-TileColor" content="#da532c"/>
+  <meta name="msapplication-config" content="/browserconfig.xml"/>
+  <meta name="theme-color" content="#ffffff"/>
+
+  <link rel="sitemap" href="/sitemap-0.xml"/>
+  <title>{site.title}</title>
+  <script is:inline src="/toggle-theme.js"></script>
+  {
+    mathjax &&
+    <script async type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js"></script>
+  }
+  {
+    config.busuanzi && <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  }
+
+</head>

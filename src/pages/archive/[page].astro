@@ -1,12 +1,11 @@
 ---
-import Layout from "src/layouts/layout.astro";
-import { site as site } from "$/config.yml";
+import IndexPage from "src/layouts/IndexPage.astro";
 import Pagination from "src/components/Pagination.astro";
 import { sortPostsByDate } from "src/utils/sortPostsByDate";
 import getPostsByYear from "src/utils/getPostsByYear";
-import _ from "lodash";
+import  {site} from "../../consts";
 import dayjs from "dayjs";
-import { getCollectionByName } from "src/utils/getCollectionByName";
+import { getCollectionByName } from "../../utils/getCollectionByName";
 export async function getStaticPaths({ paginate }) {
   let posts = await getCollectionByName("blog");
   posts = sortPostsByDate(posts);
@@ -17,21 +16,23 @@ const { page } = Astro.props;
 let resultPosts = getPostsByYear(page.data);
 ---
 
-<Layout activeNav="archive">
+<IndexPage activeNav="archive">
   {
-    _.keys(resultPosts)
-      .sort((a: string, b: string) => Number(b) - Number(a))
-      .map((year: string) => (
+    Object.keys(resultPosts)
+      .sort((a, b) => Number(b) - Number(a))
+      .map((year) => (
         <div>
           <div class="text-2xl font-extrabold my-4">{year}</div>
           <ul>
             {resultPosts[year].map((post) => (
               <li style="list-style-type: disc;" class="ml-4 my-2">
-                <a href={post.url}>
+                <a href={'/' + post.collection + '/' + post.slug}>
                   <span class="mr-4">
                     {dayjs(post.data.date).format("YYYY-MM-DD")}
                   </span>
+                  <span class="hover:text-skin-active">
                   {post.data.title}
+                  </span>
                 </a>
               </li>
             ))}
@@ -43,6 +44,6 @@ let resultPosts = getPostsByYear(page.data);
     currentPage={page.currentPage}
     totalPage={page.lastPage}
     prefixUrl="/archive/"
-    url={page.url}
+    url={page.slug}
   />
-</Layout>
+</IndexPage>

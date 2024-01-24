@@ -1,25 +1,30 @@
 ---
-import { site as site } from "$/config.yml";
-import Layout from "src/layouts/layout.astro";
-import PostPreviewList from "src/components/PostPreviewList.astro";
-import Pagination from "src/components/Pagination.astro";
-import { sortPostsByDate } from "src/utils/sortPostsByDate";
-import { getCollectionByName } from "src/utils/getCollectionByName";
-export async function getStaticPaths({ paginate }) {
+import {site} from "../../consts";
+import PostView from '../../components/PostView.astro'
+import IndexPage from '../../layouts/IndexPage.astro'
+import Pagination from '../../components/Pagination.astro';
+import {getCollectionByName} from "../../utils/getCollectionByName";
+import {sortPostsByDate} from "../../utils/sortPostsByDate";
+
+export async function getStaticPaths({paginate}) {
   let posts = await getCollectionByName("blog");
-  posts = sortPostsByDate(posts);
-  // 将根据宇航员数组生成两个页面
-  return paginate(posts, { pageSize: site.pageSize });
+  let sortedPosts = await sortPostsByDate(posts);
+  return paginate(sortedPosts, {pageSize: site.postPageSize});
 }
 // 所有分页数据都将传递给 "page" 参数
-const { page } = Astro.props;
+const {page} = Astro.props;
 ---
 
-<Layout activeNav="blog">
-  <PostPreviewList posts={page.data} />
+
+<IndexPage frontmatter={{comment:false}}>
+  {
+    page.data.map((blog, index) =>
+      <PostView blog={blog}></PostView>)
+  }
   <Pagination
     currentPage={page.currentPage}
     totalPage={page.lastPage}
     url={page.url}
   />
-</Layout>
+</IndexPage>
+

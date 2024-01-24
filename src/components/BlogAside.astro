@@ -1,0 +1,68 @@
+---
+import Comment from './CommentAside.astro'
+import {getCollectionByName} from "../utils/getCollectionByName";
+import getUniqueTags from "../utils/getUniqueTags";
+import getCountByCategory from "../utils/getCountByCategory";
+import {sortPostsByDate} from "../utils/sortPostsByDate";
+import {site} from '../consts'
+const blogs = await getCollectionByName('blog')
+let tagArr = getUniqueTags(blogs);
+let categoryCount = getCountByCategory(blogs);
+let sortPosts = await sortPostsByDate(blogs);
+let resultPosts = sortPosts.splice(0, site.recentBlogSize);
+---
+
+<div>
+  {
+    Object.keys(categoryCount).length > 0 && (
+      <div class="aside-widget">
+        <i class="ri-folder-line text-2xl mr-2"/>分类
+      </div>)
+  }
+  {
+    Object.keys(categoryCount).map((category) => (
+      <a class="my-1 truncate block hover:text-skin-active" title={category + " (" + categoryCount[category] + ")"} href={"/category/" + category}>
+        {category + " (" + categoryCount[category] + ")"}
+      </a>
+    ))
+  }
+</div>
+<div>
+  {
+    tagArr.length > 0 && (
+      <div class="aside-widget">
+        <i class="ri-price-tag-3-line text-2xl mr-2"/>
+        标签
+      </div>
+    )
+  }
+  <div class="flex flex-wrap">
+    {
+      tagArr &&
+      tagArr.map((tag) =>
+        <a class="inline-block truncate m-1 border p-1 text-sm rounded hover:text-skin-active" title={tag} href={"/tags/" + tag}>{tag}</a>
+      )
+    }
+  </div>
+</div>
+
+<div>
+  <div class="aside-widget">
+    <i class="ri-file-line text-2xl mr-2"></i>最近文章
+  </div>
+  <div class="flex flex-col">
+    {
+      resultPosts.map((post) => (
+        <a
+          href={post.slug}
+          class="truncate cursor-pointr mt-1 hover:text-skin-active"
+          title={post.data.title}
+        >
+          {post.data.title}
+        </a>
+      ))
+    }
+  </div>
+</div>
+
+<Comment></Comment>

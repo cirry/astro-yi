@@ -1,0 +1,21 @@
+---
+import FeedPostDate from "./FeedPostDate.astro";
+const {data, body, slug} = Astro.props.post;
+const {index} = Astro.props;
+---
+
+<div>
+  <p
+    class="break-all first-letter cursor-default tracking-wide first-letter:font-semibold first-letter:text-2xl"
+  >
+    {
+      body.length > 140
+        ? body.substring(0, 140).replace(/#/gi, "") + "..."
+        : body
+    }
+  </p>
+  <div class="flex items-center justify-between mt-2 text-sm">
+    <FeedPostDate date={data.date} index={index}/>
+    <a class="hover:text-skin-active text-sm border rounded py-1 px-2" href={`/feed/${slug}`}>阅读全文</a>
+  </div>
+</div>

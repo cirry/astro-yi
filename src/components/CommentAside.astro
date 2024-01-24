@@ -1,0 +1,63 @@
+---
+import {comment} from '../consts'
+---
+
+{
+  comment.enable && (
+  <div>
+    <div class="aside-widget">
+      <i class="ri-chat-1-line text-2xl mr-2"/>
+      最近评论
+    </div>
+    <div id="waline-comment"/>
+  </div>
+    )
+  }
+
+<script>
+  import {comment} from "../consts";
+  import {formatDate} from "../utils/formatDate";
+
+  let commentDiv = document.getElementById("waline-comment");
+  if (comment.enable && commentDiv) {
+    let recentCommentUrl = comment.serverUrl + "/comment?type=recent&count=" + comment.count;
+    fetch(recentCommentUrl).then((comment) => {
+      return comment.json()
+    }).then((recentComments) => {
+      let comments = "<ul>";
+      recentComments.forEach((comment, index) => {
+        comments += `<li>${index + 1}、${formatDate(comment.insertedAt)}`
+        if (comment.pid) {
+          let {href, author, str} = dealComment(comment.comment);
+          comments += `<div class="waline-comment-content"><a class="block" href="${window.location.origin + comment.url}">${str}</a></div>`
+        } else {
+          comments += `<div class="waline-comment-content"><a class="block" href="${window.location.origin + comment.url}">${comment.comment}</a></div>`
+        }
+        comments += `<div class="waline-comment-author ">--${comment.nick}</div></li>`
+      });
+      comments += "</ul>";
+      let commentDiv = document.getElementById("waline-comment");
+      commentDiv.innerHTML = comments;
+    })
+  }
+
+  // 处理评论
+  function dealComment(commentStr) {
+    let re = /<a[^>]*href=['"]([^\\"]*)['"][^>]*>(.*?)<\/a>/g;
+    let arr = [];
+    while (re.exec(commentStr) != null) {
+      arr.push(RegExp.$1); //如果是RegExp.$1那么匹配的就是href里的属性了!
+      arr.push(RegExp.$2);
+    }
+    if (arr.length > 0) {
+      // 说明有匹配到回复
+      commentStr = commentStr.replace(/<a[^>](.*?)<\/a>/, arr[1]);
+      return {
+        href: arr[0],
+        author: arr[1],
+        str: commentStr,
+      };
+    }
+    return {href: "", author: "", str: ""};
+  }
+</script>

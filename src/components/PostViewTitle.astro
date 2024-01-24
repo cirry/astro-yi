@@ -1,0 +1,45 @@
+---
+import {formatDate} from "../utils/formatDate";
+import {dealLabel} from "../utils/dealLabel";
+
+const {title, date, slug, category, tags, sticky = false} = Astro.props
+---
+
+<div class="text-skin-base">
+  <!-- title -->
+  <div class="flex items-center">
+    {sticky > 0 &&
+      <div class="post-sticky select-none">置顶</div>}
+    <a class="flex text-xl underline-offset-4 cursor-pointer decoration-skin-base decoration-wavy hover:underline hover:decoration-sky-500 font-bold" href={slug}>
+      {title}
+    </a>
+  </div>
+
+  <div class="flex flex-wrap items-center my-2 space-x-2">
+    <!-- date -->
+    {
+      date && (
+        <i class="ri-calendar-2-fill"/>
+        <div>{formatDate(date)}</div>
+      )
+    }
+
+    <!-- category -->
+    {
+      category && dealLabel(category).map((categoryName) => (
+        <div class="divider-vertical"/>
+        <i class="ri-folder-3-line"/>
+        <a href={"/category/" + categoryName} class="text-wrap break-all hover:text-skin-active">{categoryName}</a>
+      ))
+    }
+
+    <!-- tag -->
+    {
+      tags && dealLabel(tags).map((tagName) => (
+        <div class="divider-vertical"/>
+        <i class="ri-price-tag-3-line"/>
+        <a href={"/tags/" + tagName} class="text-wrap break-all hover:text-skin-active">{tagName}</a>
+      ))
+    }
+  </div>
+</div>

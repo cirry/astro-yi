@@ -1,0 +1,58 @@
+---
+import HeaderLink from './HeaderLink.astro';
+import ThemeIcon from './ThemeIcon.astro'
+import MenuIcon from './MenuIcon.astro'
+import {site, categories} from '../consts';
+---
+
+<header class="fixed top-0 w-full bg-skin-fill text-skin-base z-10">
+  <div class="flex items-center justify-between container">
+    <a class="text-2xl p-4" href="/">{site.title}</a>
+    <div class="flex items-center">
+      <div class="hidden xl:block">
+        <div class="flex items-center space-x-6 pr-4">
+          {
+            categories.map(category => (
+              <HeaderLink href={category.href} icon={category.iconClass} children={category.children ? category.children : []}>{category.name}</HeaderLink>
+            ))
+          }
+        </div>
+      </div>
+
+      <ThemeIcon></ThemeIcon>
+      <div class="block xl:hidden">
+        <MenuIcon></MenuIcon>
+      </div>
+    </div>
+  </div>
+  <div id="mobile-menu" class="mb-2 hidden">
+    {
+      categories.map((category) => (
+        <div class="flex flex-col space-y-4">
+          <div class="py-2">
+            <a class="flex w-screen items-center justify-center space-x-4 hover:text-skin-active" href={category.href}>
+              <i class={category.iconClass}/>
+              <span>{category.name}</span>
+            </a>
+            {
+              category.children && category.children.length > 0 &&
+              <div class="divider-horizontal"></div>
+            }
+            <div class="flex flex-col space-y-4 text-sm">
+              {
+                category.children && category.children.map(sub =>
+                  (
+                    <a class="flex w-screen items-center justify-center space-x-4 hover:text-skin-active" href={sub.href}>
+                      <i class={sub.iconClass}/>
+                      <span>{sub.name}</span>
+                    </a>
+                  )
+                )
+              }
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</header>

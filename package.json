@@ -1,8 +1,7 @@
 {
-  "name": "@example/basics",
+  "name": "astro-blog",
   "type": "module",
-  "version": "0.0.1",
-  "private": true,
+  "version": "0.0.2",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -11,25 +10,27 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/rss": "^1.2.1",
-    "@astrojs/sitemap": "^1.0.1",
-    "@astrojs/solid-js": "^2.0.2",
-    "@astrojs/tailwind": "^3.0.1",
-    "@babel/core": "7.21.0",
-    "@rollup/plugin-yaml": "^4.0.1",
-    "astro": "^2.0.15",
+    "@astrojs/mdx": "^2.0.5",
+    "@astrojs/rss": "^4.0.2",
+    "@astrojs/sitemap": "^3.0.5",
+    "@astrojs/solid-js": "^4.0.1",
+    "@astrojs/tailwind": "^5.1.0",
+    "@waline/client": "2",
+    "astro": "^4.2.1",
+    "child_process": "^1.0.2",
     "clipboard": "^2.0.11",
-    "dayjs": "^1.11.7",
+    "dayjs": "^1.11.10",
     "lodash": "^4.17.21",
-    "remixicon": "^2.5.0",
-    "sass": "^1.58.0",
-    "solid-js": "^1.6.10",
-    "tailwindcss": "^3.2.4",
-    "tocbot": "^4.20.1",
-    "unist-util-visit": "^4.1.2",
+    "mdast-util-to-string": "^4.0.0",
+    "reading-time": "^1.5.0",
+    "remixicon": "^4.1.0",
+    "solid-js": "^1.8.11",
+    "tailwindcss": "^3.4.1",
+    "tocbot": "^4.25.0",
+    "typescript": "^5.3.3",
     "zooming": "^2.1.1"
   },
   "devDependencies": {
-    "@waline/client": "^2.14.7"
+    "sass": "^1.69.7"
   }
 }
