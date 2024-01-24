@@ -1,8 +1,8 @@
 ## Astro Theme YI
 
-Demo地址：[Astro-Theme-Yi](https://astro-yi.cn)
+Demo：[Astro-Theme-Yi](https://astro-yi.cirry.cn)
 
-一个以内容展示为主的Astro博客主题，YI也就是易，简简单单的意思。
+A content-focused Astro blog theme, YI, meaning simplicity and ease.
 
 ![](https://pic-19d9.obs.cn-east-3.myhuaweicloud.com/astroyi/home.png)
 
@@ -10,52 +10,49 @@ Demo地址：[Astro-Theme-Yi](https://astro-yi.cn)
 
 ### 🔥 Features
 
-- [x] 支持多端显示
-- [x] 支持暗黑模式
-- [x] 支持搜索功能
-- [x] SEO友好
-- [x] 支持sitemap和rss
-- [x] 支持文章草稿和分页
-- [x] 支持Waline评论系统
-- [x] 添加动态页面
-- [x] 图片懒加载和缩放
-- [x] 支持文章固定链接
+- [x] Supports multi-platform display.
+- [x] Supports dark mode.
+- [x] Supports search functionality.
+- [x] SEO-friendly
+- [x] Supports sitemap and RSS.
+- [x] Supports article drafts and pagination.
+- [x] Supports Waline.
+- [x] Image lazy loading and scaling support.
+- [x] Supports fixed permalinks for articles.
 
 ......
 
-### 👨🏻‍💻 Running Locally
+### 👨🏻‍💻 Installation
 
-推荐使用`nodejs >= 18`，`pnpm >= 8`。
-
-如何使用：
+Recommended for use `nodejs >= 18`，`pnpm >= 8`。
 
 ```bash
 git clone https://github.com/cirry/astro-yi.git
 cd astro-yi
 pnpm i 
-npm run dev # 预览
+npm run dev # preview
 ```
 
-将您喜欢的文章写入`src/content/blog`文件夹下，将想要发的动态写入`src/content/feed`文件夹下。
+Write your favorite articles in the `src/content/blog` folder, and write the dynamic content you want to post in the `src/content/feed` folder.
 
-更多写作技巧内容请查看文章： [Astro-YI Write Skill](https://cirry.cn/blog/frontend/astro/config-and-write-skill)
+For more writing tips, please refer to the article： [Astro-YI Write Skill](https://cirry.cn/blog/frontend/astro/config-and-write-skill)
 
 ```bash
-npm run build # 打包
+npm run build # build
 ```
 
-打包完成后，将在根目录下生成dist文件夹，将dist文件夹上传到网页服务器目录下即可。
+After the packaging is completed, a `dist` folder will be generated in the root directory. Upload the 'dist' folder to the web server directory to complete the process.
 
 ## Configuration
 
-在`src/const.ts`文件中，可以根据您的需要进行一些修改。
+In the `src/const.ts` file, you can make some modifications according to your needs.
 
 ```ts
 // Place any global data in this file.
 // You can import this data from anywhere in your site by using the `import` keyword.
 
 /**
- * 站点信息
+ * Site information
  * title：网站标题
  * description：网站描述
  * author：作者
@@ -212,17 +209,18 @@ export const comment = {
   reaction: false,
   requiredMeta: ["nick", "mail"],
 }
-
 ```
 
-请修改自己的网站配置，评论系统配置，赞赏功能图片，个人信息链接，当然也可以修改其他配置内容。
 
-### 额外注意：
+Please modify your website configuration, comment system configuration, appreciation function image, personal information links, and of course, you can also modify other configuration content.
 
-在根目录下的`astro.config.mjs`中，建议修改`site`属性用来正确生成站点地图。
+### Note
+
+In the `astro.config.mjs` file in the root directory, it is recommended to modify the `site` property to correctly generate the site map.
+
 ```js
 export default defineConfig({
-  site: 'https://astro-yi.cn',// 修改为您自己的网站地址
+  site: 'https://astro-yi.cirry.cn',// 修改为您自己的网站地址
    // ...
 })
 ```
