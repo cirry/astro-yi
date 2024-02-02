@@ -38,6 +38,15 @@ const {mathjax = false} = Astro.props
   <link rel="sitemap" href="/sitemap-0.xml"/>
   <title>{site.title}</title>
   <script is:inline src="/toggle-theme.js"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [
+          ["\\(", "\\)"],
+        ],
+      },
+    });
+  </script>
   {
     mathjax &&
     <script async type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js"></script>
