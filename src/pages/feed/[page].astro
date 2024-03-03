@@ -11,7 +11,7 @@ export async function getStaticPaths({ paginate }) {
   let posts = await getCollectionByName("feed");
   posts = sortPostsByDate(posts);
   // 将根据宇航员数组生成两个页面
-  return paginate(posts, { pageSize: site.archivePageSize });
+  return paginate(posts, { pageSize: site.feedPageSize });
 }
 // 所有分页数据都将传递给 "page" 参数
 

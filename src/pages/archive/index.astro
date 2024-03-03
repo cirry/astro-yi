@@ -16,7 +16,7 @@ sortedPosts = sortedPosts.splice(0, site.archivePageSize);
 let resultPosts = getPostsByYear(sortedPosts);
 ---
 
-<IndexPage activeNav="archive">
+<IndexPage>
   {
     Object.keys(resultPosts)
       .sort((a, b) => Number(b) - Number(a))

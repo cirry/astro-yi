@@ -5,7 +5,7 @@ import PostViewTitle from "src/components/PostViewTitle.astro";
 let { frontmatter, Content } = posts[0];
 ---
 
-<IndexPage activeNav="message" frontmatter={frontmatter}>
+<IndexPage frontmatter={frontmatter}>
   <PostViewTitle
     title={frontmatter.title}
     date={frontmatter.date}

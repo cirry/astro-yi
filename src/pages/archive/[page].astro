@@ -16,7 +16,7 @@ const { page } = Astro.props;
 let resultPosts = getPostsByYear(page.data);
 ---
 
-<IndexPage activeNav="archive">
+<IndexPage>
   {
     Object.keys(resultPosts)
       .sort((a, b) => Number(b) - Number(a))
