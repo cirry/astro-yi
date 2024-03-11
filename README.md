@@ -22,7 +22,15 @@ A content-focused Astro blog theme, YI, meaning simplicity and ease.
 
 ......
 
-### 👨🏻‍💻 Installation
+### Vercel Deplyment
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https%3A%2F%2Fgithub.com%2Fcirry%2Fastro-yi)
+
+试试吧，点击上面的按钮，就可以一键部署了。
+
+Give it a try! Click the button above, and you can deploy with just one click.
+
+### 👨🏻‍💻 Manual Installation
 
 Recommended for use `nodejs >= 18`，`pnpm >= 8`。
 

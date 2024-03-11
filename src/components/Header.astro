@@ -13,7 +13,7 @@ import {site, categories} from '../consts';
         <div class="flex items-center space-x-6 pr-4">
           {
             categories.map(category => (
-              <HeaderLink href={category.href} icon={category.iconClass} children={category.children ? category.children : []}>{category.name}</HeaderLink>
+              <HeaderLink href={category.href} icon={category.iconClass} target={category.target? category.target: '_self'} children={category.children ? category.children : []}>{category.name}</HeaderLink>
             ))
           }
         </div>

@@ -37,7 +37,11 @@ export const config = {
 }
 
 /**
- * 导航栏
+ * 导航栏 nav
+ * name {string}
+ * iconClass {string} icon style
+ * href {string}  link url
+ * target {string} "_self|_blank" open in current window / open in new window
  */
 export const categories = [
   {
@@ -84,6 +88,7 @@ export const categories = [
         name: '友情链接',
         iconClass: 'ri-user-5-line',
         href: '/friends',
+        target: '_self',
       },
     ]
   }
@@ -128,16 +133,16 @@ export const donate = {
 }
 
 /**
- * 友情链接配置
+ * 友情链接配置 friendLinks
  */
 export const friendlyLinks =
   [
-    {
-      name: "Cirry's Blog",
-      url: 'https://cirry.cn',
-      avatar: "https://cirry.cn/avatar.png",
-      description: '前端开发的日常'
-    },
+    // {
+    //   name: "Cirry's Blog",
+    //   url: 'https://cirry.cn',
+    //   avatar: "https://cirry.cn/avatar.png",
+    //   description: '前端开发的日常'
+    // },
   ]
 
 /**
