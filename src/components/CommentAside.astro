@@ -20,13 +20,13 @@ import {comment} from '../consts'
 
   let commentDiv = document.getElementById("waline-comment");
   if (comment.enable && commentDiv) {
-    let recentCommentUrl = comment.serverUrl + "/comment?type=recent&count=" + comment.count;
+    let recentCommentUrl = comment.serverUrl + "/api/comment?type=recent&count=" + comment.count;
     fetch(recentCommentUrl).then((comment) => {
       return comment.json()
     }).then((recentComments) => {
       let comments = "<ul>";
-      recentComments.forEach((comment, index) => {
-        comments += `<li>${index + 1}、${formatDate(comment.insertedAt)}`
+      recentComments.data.forEach((comment, index) => {
+        comments += `<li>${index + 1}、${formatDate(comment.time)}`
         if (comment.pid) {
           let {href, author, str} = dealComment(comment.comment);
           comments += `<div class="waline-comment-content"><a class="block" href="${window.location.origin + comment.url}">${str}</a></div>`
