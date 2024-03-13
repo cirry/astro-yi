@@ -149,6 +149,7 @@ export const friendlyLinks =
  * 评论功能
  * enable 是否开启评论功能
  * serverUrl 评论服务器地址
+ * lang i18n
  * pageSize 每页评论数量
  * wordLimit 评论内容字数限制，默认为空不限制
  * count 最近评论侧边栏评论数量
@@ -158,11 +159,13 @@ export const friendlyLinks =
  */
 export const comment = {
   enable: false,
-  serverUrl: "https://xxxxxxx.com",
+  serverUrl: "https://xxxxx.xxxxx.app",
+  lang: 'en', // https://waline.js.org/guide/features/i18n.html
   pageSize: 20,
   wordLimit: '',
   count: 5,
   pageview: true,
-  reaction: false,
+  reaction: true,
   requiredMeta: ["nick", "mail"],
+  whiteList: ['/message', '/friends', '/donate'], // 开启留言也不显示reaction的页面
 }

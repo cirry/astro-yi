@@ -1,4 +1,5 @@
 ---
+import {comment} from "../consts";
 ---
 
 <div id="waline"/>
@@ -15,9 +16,10 @@
       comment: true,
       path: window.location.pathname.replace(/\/$/, ""),
       serverURL: comment.serverUrl,
+      lang: comment.lang,
       pageSize: comment.pageSize,
       pageview: comment.pageview, // 浏览量统计
-      reaction: comment.reaction, // 开启反应
+      reaction: comment.whiteList.includes(location.pathname) ? false : comment.reaction, // 开启反应
       requiredMeta: comment.requiredMeta,
       dark: 'html[data-theme="dark"]',
     });

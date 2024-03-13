@@ -49,9 +49,8 @@ const {frontmatter = {comment: false, donate: false, toc: false, mathjax: false}
 <script>
   import ClipboardJS from "clipboard";
 
-  import Zooming from "zooming";
-
-  const zooming = new Zooming();
+  import Viewer from 'viewerjs';
+  import "viewerjs/dist/viewer.css"
 
   // 给所有的a标签添加target属性和不追踪
   const markdownBody = document.querySelector(".markdown-body");
@@ -103,10 +102,6 @@ const {frontmatter = {comment: false, donate: false, toc: false, mathjax: false}
     const observer = new IntersectionObserver(callback);
     images.forEach((image) => {
       observer.observe(image);
-
-      // 图片添加点击放大功能
-      image.classList.add("zooming-image");
-      zooming.listen(".zooming-image");
     });
 
     var links = markdownBody.querySelectorAll("a");
@@ -116,5 +111,6 @@ const {frontmatter = {comment: false, donate: false, toc: false, mathjax: false}
       links[i].setAttribute("target", "_blank");
       links[i].setAttribute("rel", "nofollow");
     }
+    new Viewer(markdownBody)
   }
 </script>

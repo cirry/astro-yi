@@ -40,15 +40,3 @@ const {frontmatter = {comment: false, donate: false}} = Astro.props
 </main>
 </body>
 </html>
-
-<script>
-  import Zooming from "zooming";
-
-  const zooming = new Zooming();
-  let images = document.body.querySelectorAll("img");
-  images.forEach((image) => {
-    // 图片添加点击放大功能
-    image.classList.add("zooming-image");
-    zooming.listen(".zooming-image");
-  });
-</script>
