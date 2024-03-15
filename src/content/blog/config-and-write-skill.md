@@ -25,14 +25,16 @@ export default defineConfig({
 })
 ```
 
-在Astro-Yi主题的配置文件`src/config.ts`，其中有一些配置是很重要的：
-
 ### 博客信息配置
+
+在Astro-Yi主题的配置文件`src/config.ts`，其中有一些配置是很重要的：
 
 ```ts
 export const site = {
   title: "Cirry's Blog",  // required
+  favicon: '/favicon.svg', // required
   author: "Cirry", // required
+  avatar: '/avatar.png', // required
   description: '', 
   motto: '', 
   url: 'https://cirry.cn', // required
@@ -43,6 +45,10 @@ export const site = {
   beian: '', 
 }
 ```
+
+`favicon`是网站图标存放位置。文件位置在`/public/favicon.svg`，请替换为自己的网站图标。
+
+`avatar`是网站头像存放位置。文件位置在：`/public/avatar.png`，请替换为自己的网站头像。
 
 ### 评论系统配置
 
@@ -56,19 +62,23 @@ export const site = {
  * count: 侧边栏查询最近评论数
  * pageview: 文章浏览量统计
  * reaction: 文章增加表情互动功能
+ * whiteList: 文章反应白名单
  */
 export const comment = {
-  enable: true, // 必填，设置为开启评论系统
-  serverUrl: "https://xxx.xx.app", // 必填，修改为您的Waline服务端地址
-  pageSize: 20, //
-  wordLimit: '', 
-  requiredMeta: ["nick", "mail"], // 必填
-  count: 5,
-  pageview: true,
-  reaction: false,
+    enable: true, // 必填，设置为开启评论系统
+    serverUrl: "https://xxx.xx.app", // 必填，修改为您的Waline服务端地址
+    pageSize: 20, //
+    wordLimit: '', 
+    requiredMeta: ["nick", "mail"], // 必填
+    count: 5,
+    pageview: true,
+    reaction: false, 
+    whiteList: ['/message/', '/friends/', '/donate/'],
 }
 
 ```
+
+`reaction`并不是只能设置`true/false`，你也可以传入一个数组里面是图片的地址来实现自定义表情，具体详情可以参考这里[文章反应](https://waline.js.org/guide/features/reaction.html)。
 
 ### 赞助系统配置
 

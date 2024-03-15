@@ -4,8 +4,10 @@
 /**
  * 站点信息
  * title：网站标题
+ * favicon: 网站图标
  * description：网站描述
  * author：作者
+ * avatar：网站头像
  * motto：格言
  * url：网站地址
  * recentBlogSize：最近文章数量
@@ -17,8 +19,10 @@
  */
 export const site = {
   title: 'Astro Theme Yi',
+  favicon: '/favicon.svg',
   description: 'You only live once,so what are you waiting for?',
   author: "Cirry",
+  avatar: '/avatar.png',
   motto: '最重要的事情只有一件',
   url: 'https://astro-yi.cn',
   recentBlogSize: 5,
@@ -167,5 +171,5 @@ export const comment = {
   pageview: true,
   reaction: true,
   requiredMeta: ["nick", "mail"],
-  whiteList: ['/message', '/friends', '/donate'], // 开启留言也不显示reaction的页面
+  whiteList: ['/message/', '/friends/', '/donate/'], // 开启留言也不显示reaction的页面
 }
