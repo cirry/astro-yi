@@ -1,6 +1,8 @@
-## Astro Theme YI
+# Astro Theme YI
 
-Demo：[Astro-Theme-Yi](https://astro-yi.cirry.cn)
+[[English]](./README.md) | [[简体中文]](./README-ZH-CN.md)
+
+Demo：[Astro-Theme-Yi](https://astro-yi-nu.vercel.app/)
 
 A content-focused Astro blog theme, YI, meaning simplicity and ease.
 
@@ -26,8 +28,6 @@ A content-focused Astro blog theme, YI, meaning simplicity and ease.
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https%3A%2F%2Fgithub.com%2Fcirry%2Fastro-yi)
 
-试试吧，点击上面的按钮，就可以一键部署了。
-
 Give it a try! Click the button above, and you can deploy with just one click.
 
 ### 👨🏻‍💻 Manual Installation
@@ -37,11 +37,12 @@ Recommended for use `nodejs >= 18`，`pnpm >= 8`。
 ```bash
 git clone https://github.com/cirry/astro-yi.git
 cd astro-yi
+npm install -g pnpm
 pnpm i 
 npm run dev # preview
 ```
 
-Write your favorite articles in the `src/content/blog` folder, and write the dynamic content you want to post in the `src/content/feed` folder.
+Write your articles in the `src/content/blog` folder, and write the dynamic content you want to post in the `src/content/feed` folder.
 
 For more writing tips, please refer to the article： [Astro-YI Write Skill](https://cirry.cn/blog/frontend/astro/config-and-write-skill)
 
@@ -56,88 +57,90 @@ After the packaging is completed, a `dist` folder will be generated in the root 
 In the `src/const.ts` file, you can make some modifications according to your needs.
 
 ```ts
-// Place any global data in this file.
-// You can import this data from anywhere in your site by using the `import` keyword.
-
 /**
- * Site information
- * title：网站标题
- * description：网站描述
- * author：作者
- * motto：格言
- * url：网站地址
- * recentBlogSize：最近文章数量
- * archivePageSize：归档页面每页显示的数量
- * postPageSize：文章页面每页显示的数量
- * indexPageSize：首页每页显示的数量
- * beian：备案号
+ * title {string} website title
+ * favicon {string} website favicon url
+ * description {string} website description
+ * author {string} author
+ * avatar {string} Avatar used in the profile
+ * motto {string} used in the profile
+ * url {string} Website link
+ * recentBlogSize {number} Number of recent articles displayed in the sidebar
+ * archivePageSize {number} Number of articles on archive pages
+ * postPageSize {number} Number of articles on blog pages
+ * feedPageSize {number} Number of articles on feed pages
+ * indexPageSize {number} Number of articles on the homepage
+ * beian {string} Chinese policy
  */
 export const site = {
   title: 'Astro Theme Yi',
-  description: 'You only live once,so what are you waiting for?',
-  author: "Cirry",
-  motto: '最重要的事情只有一件',
-  url: 'https://astro-yi.cn',
+  favicon: '/favicon.svg',
+  description: 'Welcome to my independent blog website! ',
+  author: "xxxxx",
+  avatar: '/avatar.png',
+  motto: 'Keep moving.',
+  url: 'https://astro-yi-nu.vercel.app',
   recentBlogSize: 5,
   archivePageSize: 25,
   postPageSize: 10,
+  feedPageSize: 20,
   indexPageSize: 10,
   beian: ''
 }
 
 /**
- * busuanzi：是否开启不蒜子统计功能
+ * busuanzi {boolean} Enable Busuanzi Statistics Functionality
  */
 export const config = {
   busuanzi: false,
 }
 
 /**
- * 导航栏
+ * Navigator
  */
 export const categories = [
   {
-    name: "首页",
+    name: "Homepage",
     iconClass: "ri-home-4-line",
     href: "/",
   },
   {
-    name: "博客",
+    name: "Blog",
     iconClass: "ri-draft-line",
     href: "/blog/1",
   },
   {
-    name: "动态",
+    name: "Feed",
     iconClass: "ri-lightbulb-flash-line",
     href: "/feed/1",
   },
   {
-    name: "归档",
+    name: "Archive",
     iconClass: "ri-archive-line",
     href: "/archive/1",
   },
   {
-    name: "留言",
+    name: "Message",
     iconClass: "ri-chat-1-line",
-    href: "/message",
+    href: "/message/",
   },
   {
-    name: "搜索",
+    name: "Search",
     iconClass: "ri-search-line",
     href: "/search",
   },
   {
-    name: "更多",
+    name: "More",
     iconClass: "ri-more-fill",
     href: "javascript:void(0);",
     children: [
       {
-        name: '关于本站',
+        name: 'About',
         iconClass: 'ri-information-line',
         href: '/about',
       },
       {
-        name: '友情链接',
+        name: 'Friends',
         iconClass: 'ri-user-5-line',
         href: '/friends',
       },
@@ -146,23 +149,33 @@ export const categories = [
 ]
 
 /**
- * 个人链接地址
+ * Personal link address
  */
 export const infoLinks = [
   {
-    icon: "ri-bilibili-fill",
-    name: "bilibili",
-    outlink: "https://space.bilibili.com/xxxxxxxx",
+    icon: 'ri-telegram-fill',
+    name: 'telegram',
+    outlink: 'xxxxxxx',
   },
   {
-    icon: 'ri-mail-fill',
-    name: 'xxxxxxx@gmail.com',
-    outlink: 'mailto:xxxxxxx@gmail.com',
+    icon: 'ri-twitter-fill',
+    name: 'twitter',
+    outlink: 'xxxxxxx',
+  },
+  {
+    icon: 'ri-instagram-fill',
+    name: 'instagram',
+    outlink: 'xxxxxxx',
   },
   {
     icon: 'ri-github-fill',
     name: 'github',
     outlink: 'https://github.com/cirry',
+  },
+  {
+    icon: 'ri-mail-fill',
+    name: 'xxxxxxx@gmail.com',
+    outlink: 'mailto:xxxxxxx@gmail.com',
   },
   {
     icon: 'ri-rss-fill',
@@ -172,19 +185,25 @@ export const infoLinks = [
 ]
 
 /**
- * 赞赏功能
- * enable 是否开启功能
+ * Donation feature
+ * Please replace the image and paypal link before use.
+ * enable {boolean}
+ * tip {string}
  */
 export const donate = {
   enable: false,
-  tip: "感谢大佬送来的咖啡☕",
+  tip: "Thanks for the coffee !!!☕",
   wechatQRCode: "/WeChatQR.png",
   alipayQRCode: "/AliPayQR.png",
-  paypalUrl: "https://paypal.me/cirry0?country.x=C2&locale.x=zh_XC",
+  paypalUrl: "https://paypal.me/xxxxxxxx",
 }
 
 /**
- * 友情链接配置
+ * Friends Links Page
+ * name {string}
+ * url {string}
+ * avatar {string}
+ * description {string}
  */
 export const friendlyLinks =
   [
@@ -197,15 +216,15 @@ export const friendlyLinks =
   ]
 
 /**
- * 评论功能
- * enable 是否开启评论功能
- * serverUrl 评论服务器地址
- * pageSize 每页评论数量
- * wordLimit 评论内容字数限制，默认为空不限制
- * count 最近评论侧边栏评论数量
- * pageview 是否开启阅读数统计
- * reaction 是否开启表情
- * requiredMeta 必填字段
+ * Comment Feature
+ * enable {boolean}
+ * serverUrl {string} server link
+ * pageSize {number} number of comments per page. default 10
+ * wordLimit {number} Comment word s limit. When a single number is filled in, it 's the maximum number of comment words. No limit when set to 0
+ * count {number} recent comment numbers
+ * pageview {boolean} display the number of page views and comments of the article
+ * reaction {string | string[]} Add emoji interaction function to the article
+ * requiredMeta {string[]}  Set required fields, default anonymous
  */
 export const comment = {
   enable: false,
@@ -216,6 +235,7 @@ export const comment = {
   pageview: true,
   reaction: false,
   requiredMeta: ["nick", "mail"],
+  whiteList: ['/message/', '/friends/'],
 }
 ```
 
@@ -228,7 +248,7 @@ In the `astro.config.mjs` file in the root directory, it is recommended to modif
 
 ```js
 export default defineConfig({
-  site: 'https://astro-yi.cirry.cn',// 修改为您自己的网站地址
+  site: 'https://astro-yi.cirry.cn',// Modify to your own website address
    // ...
 })
 ```

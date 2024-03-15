@@ -10,7 +10,7 @@ import {site, categories} from '../consts';
     <a class="text-2xl p-4" href="/">{site.title}</a>
     <div class="flex items-center">
       <div class="hidden xl:block">
-        <div class="flex items-center space-x-6 pr-4">
+        <div class="flex items-center space-x-5 pr-4">
           {
             categories.map(category => (
               <HeaderLink href={category.href} icon={category.iconClass} target={category.target? category.target: '_self'} children={category.children ? category.children : []}>{category.name}</HeaderLink>

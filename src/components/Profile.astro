@@ -5,7 +5,7 @@ import {site, infoLinks} from "../consts";
 <div class="shadow-lg rounded-lg h-64 w-auto flex flex-col items-center justify-center bg-skin-card">
   <img class="avatar mb-4" src={site.avatar} alt=""/>
   <div class="mb-2 text-center">{site.motto}</div>
-  <div class="flex items-center justify-center">
+  <div class="flex items-center justify-center flex-wrap">
     {
       infoLinks.map((infoItem) => (
         <a title={infoItem.name} href={infoItem.outlink} target="_blank">

@@ -20,11 +20,11 @@
 export const site = {
   title: 'Astro Theme Yi',
   favicon: '/favicon.svg',
-  description: 'You only live once,so what are you waiting for?',
+  description: 'Welcome to my independent blog website! ',
   author: "Cirry",
   avatar: '/avatar.png',
-  motto: '最重要的事情只有一件',
-  url: 'https://astro-yi.cn',
+  motto: 'Actions speak louder than words.',
+  url: 'https://astro-yi-nu.vercel.app',
   recentBlogSize: 5,
   archivePageSize: 25,
   postPageSize: 10,
@@ -49,47 +49,47 @@ export const config = {
  */
 export const categories = [
   {
-    name: "首页",
+    name: "Homepage",
     iconClass: "ri-home-4-line",
     href: "/",
   },
   {
-    name: "博客",
+    name: "Blog",
     iconClass: "ri-draft-line",
     href: "/blog/1",
   },
   {
-    name: "动态",
+    name: "Feed",
     iconClass: "ri-lightbulb-flash-line",
     href: "/feed/1",
   },
   {
-    name: "归档",
+    name: "Archive",
     iconClass: "ri-archive-line",
     href: "/archive/1",
   },
   {
-    name: "留言",
+    name: "Message",
     iconClass: "ri-chat-1-line",
     href: "/message",
   },
   {
-    name: "搜索",
+    name: "Search",
     iconClass: "ri-search-line",
     href: "/search",
   },
   {
-    name: "更多",
+    name: "More",
     iconClass: "ri-more-fill",
     href: "javascript:void(0);",
     children: [
       {
-        name: '关于本站',
+        name: 'About',
         iconClass: 'ri-information-line',
         href: '/about',
       },
       {
-        name: '友情链接',
+        name: 'Friends',
         iconClass: 'ri-user-5-line',
         href: '/friends',
         target: '_self',
@@ -99,18 +99,23 @@ export const categories = [
 ]
 
 /**
- * 个人链接地址
+ * Personal link address
  */
 export const infoLinks = [
   {
-    icon: "ri-bilibili-fill",
-    name: "bilibili",
-    outlink: "https://space.bilibili.com/xxxxxxxx",
+    icon: 'ri-telegram-fill',
+    name: 'telegram',
+    outlink: 'xxxxxxx',
   },
   {
-    icon: 'ri-mail-fill',
-    name: 'xxxxxxx@gmail.com',
-    outlink: 'mailto:xxxxxxx@gmail.com',
+    icon: 'ri-twitter-fill',
+    name: 'twitter',
+    outlink: 'xxxxxxx',
+  },
+  {
+    icon: 'ri-instagram-fill',
+    name: 'instagram',
+    outlink: 'xxxxxxx',
   },
   {
     icon: 'ri-github-fill',
@@ -130,7 +135,7 @@ export const infoLinks = [
  */
 export const donate = {
   enable: false,
-  tip: "感谢大佬送来的咖啡☕",
+  tip: "Thanks for the coffee !!!☕",
   wechatQRCode: "/WeChatQR.png",
   alipayQRCode: "/AliPayQR.png",
   paypalUrl: "https://paypal.me/cirry0?country.x=C2&locale.x=zh_XC",
@@ -171,5 +176,5 @@ export const comment = {
   pageview: true,
   reaction: true,
   requiredMeta: ["nick", "mail"],
-  whiteList: ['/message/', '/friends/', '/donate/'], // 开启留言也不显示reaction的页面
+  whiteList: ['/message/', '/friends/'], // 开启留言也不显示reaction的页面
 }

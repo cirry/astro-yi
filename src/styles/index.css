@@ -1,4 +1,3 @@
-@import url('./preflight.css');
 @import url('./github-markdown.css');
 @import url('./copy-button.css');
 
@@ -14,6 +13,26 @@
   src: url('./JetBrainsMono-Regular.ttf');
 }
 
+/**
+覆写tailwindcss 默认样式
+ */
+
+html {
+  height: 100%;
+  scroll-padding-top: 72px;
+}
+
+body {
+  height: 100%;
+}
+
+ol,
+ul,
+menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
 @layer base {
   :root,
@@ -66,7 +85,7 @@
   }
 
   /*侧边栏每个栏目共有样式*/
-  .aside-widget{
+  .aside-widget {
     @apply flex items-center w-full border-b mb-2;
   }
 
@@ -74,7 +93,8 @@
   .waline-comment-content {
     @apply p-1 overflow-auto max-h-72 break-words hover:text-skin-active;
   }
-  .waline-comment-author{
+
+  .waline-comment-author {
     @apply text-end mb-1 break-words hover:text-skin-active;
   }
 
@@ -121,18 +141,10 @@ ul,
 ol,
 div,
 a {
-  line-height: 28px;
+  line-height: 26px;
 }
 
-.avatar {
-  border-radius: 50%;
-  padding: 4px;
-  width: 96px;
-  height: 96px;
-  background-color: transparent;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
+/* 修改waline评论侧边栏样式 */
 .waline-comment-content-author {
   text-align: end;
   margin-bottom: 6px;
@@ -204,11 +216,21 @@ menu {
   color: rgb(var(--color-text-active)) !important;
 }
 
-#toc a:hover{
+#toc a:hover {
   color: rgb(var(--color-text-active));
 }
 
 /* tocbot自带的border样式会穿透有问题，以被覆写 */
 .toc-link::before {
   display: none !important;
+}
+
+
+.avatar {
+  border-radius: 50%;
+  padding: 4px;
+  width: 96px;
+  height: 96px;
+  background-color: transparent;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
