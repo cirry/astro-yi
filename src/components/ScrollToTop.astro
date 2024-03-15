@@ -2,23 +2,26 @@
 
 ---
 
-<button type="button" id="scrollToTopBtn" class="header-btn fixed bottom-4 right-4" title="scroll to top">
-  <i class="ri-align-top"></i>
+<button type="button" id="scrollToTopBtn" class="header-btn fixed bottom-4 right-2 hidden" title="scroll to top">
+  <i class="ri-arrow-up-line"></i>
 </button>
 
 <script>
+  let scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
   // 监听窗口滚动事件
-  window.onscroll = function() {
+  window.onscroll = function () {
     // 显示/隐藏按钮根据滚动位置
     if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-      scrollToTopBtn.style.display = "block";
+      scrollToTopBtn.classList.add('block')
+      scrollToTopBtn.classList.remove('hidden')
     } else {
-      scrollToTopBtn.style.display = "none";
+      scrollToTopBtn.classList.add('hidden')
+      scrollToTopBtn.classList.remove('block')
     }
   };
   // 获取按钮的引用
-  var scrollToTopBtn = document.getElementById("scrollToTopBtn");
-  scrollToTopBtn.addEventListener("click",()=> {
+  scrollToTopBtn.addEventListener("click", () => {
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
   })

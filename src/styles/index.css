@@ -62,7 +62,7 @@
   }
 
   .header-btn {
-    @apply cursor-pointer border rounded py-1 px-2 bg-skin-fill hover:text-skin-active mr-4
+    @apply cursor-pointer border rounded py-1 px-2 bg-skin-fill hover:text-skin-active mr-4 z-10
   }
 
   /*侧边栏每个栏目共有样式*/
