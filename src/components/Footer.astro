@@ -1,5 +1,6 @@
 ---
 import {site, config} from "../consts";
+import {t} from '../i18n/utils'
 ---
 
 <div class="footer container p-4">
@@ -7,11 +8,11 @@ import {site, config} from "../consts";
     config.busuanzi && (
       <div class="flex items-center justify-center text-skin-base">
     <span id="busuanzi_container_site_pv">
-      总访问量<span id="busuanzi_value_site_pv"></span>次
+      {t('footer.busuanziSitePV')}<span id="busuanzi_value_site_pv"></span>{t('footer.busuanziSitePVUnit')}
     </span>
         <div class="divider-vertical"></div>
         <span id="busuanzi_container_site_uv">
-      总访客数<span id="busuanzi_value_site_uv"></span>人次
+      {t('footer.busuanziSiteUV')}<span id="busuanzi_value_site_uv"></span>{t('footer.busuanziSiteUVUnit')}
     </span>
       </div>
     )
@@ -32,7 +33,7 @@ import {site, config} from "../consts";
     }
     <div class="divider-vertical"></div>
 
-    <a href="/sitemap-0.xml">站点地图</a>
+    <a href="/sitemap-0.xml">{t('footer.sitemap')}</a>
   </div>
 </div>
 

@@ -34,10 +34,12 @@ export const site = {
 }
 
 /**
- * busuanzi：是否开启不蒜子统计功能
+ * busuanzi {boolean} 是否开启不蒜子统计功能
+ * lang {string} 默认网站语言 defaultLang: en
  */
 export const config = {
   busuanzi: false,
+  lang: 'en', //
 }
 
 /**
@@ -125,7 +127,7 @@ export const infoLinks = [
   {
     icon: 'ri-rss-fill',
     name: 'rss',
-    outlink: 'https://astro-yi.cn/rss.xml',
+    outlink: 'https://astro-yi-nu.vercel.app/rss.xml',
   }
 ]
 

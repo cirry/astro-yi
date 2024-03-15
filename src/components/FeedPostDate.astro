@@ -10,6 +10,8 @@ const { date, index } = Astro.props;
   import dayjs from "dayjs";
   import relativeTime from "dayjs/plugin/relativeTime";
   import "dayjs/locale/zh-cn";
+  import {t} from '../i18n/utils'
+
   dayjs.extend(relativeTime);
   dayjs.locale("zh-cn");
   class FeedPostDate extends HTMLElement {
@@ -21,7 +23,7 @@ const { date, index } = Astro.props;
 
       let timeSpan = document.getElementsByClassName("postTimeEle");
       let postDateFromNow = date ? dayjs(date).fromNow() : dayjs().format("YYYY-MM-DD");
-      timeSpan[index].innerHTML = `发表于：${postDateFromNow}`;
+      timeSpan[index].innerHTML = `${t('feed.publishedIn')}：${postDateFromNow}`;
     }
   }
   customElements.define("feed-post-date", FeedPostDate);

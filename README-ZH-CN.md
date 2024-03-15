@@ -169,7 +169,7 @@ export const infoLinks = [
   {
     icon: 'ri-rss-fill',
     name: 'rss',
-    outlink: 'https://astro-yi.cn/rss.xml',
+    outlink: 'https://xxxxx.com/rss.xml',
   }
 ]
 
@@ -233,7 +233,7 @@ export const comment = {
 
 ```js
 export default defineConfig({
-  site: 'https://astro-yi.cirry.cn',// 修改为您自己的网站地址
+  site: 'https://xxxx.com',// 修改为您自己的网站地址
    // ...
 })
 ```

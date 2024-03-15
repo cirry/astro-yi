@@ -1,6 +1,6 @@
 ---
 import PostViewTitle from '../components/PostViewTitle.astro'
-
+import {t} from '../i18n/utils'
 const {blog} = Astro.props;
 const {data, slug} = blog
 ---
@@ -21,6 +21,6 @@ const {data, slug} = blog
     }
   </p>
   <div class="text-right">
-    <a class="hover:text-skin-active text-sm border rounded py-1 px-2" href={`/blog/${slug}`}>阅读全文</a>
+    <a class="hover:text-skin-active text-sm border rounded py-1 px-2" href={`/blog/${slug}`}>{t('home.readMore')}</a>
   </div>
 </div>

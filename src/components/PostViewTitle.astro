@@ -1,7 +1,7 @@
 ---
 import {formatDate} from "../utils/formatDate";
 import {dealLabel} from "../utils/dealLabel";
-
+import {t} from '../i18n/utils'
 const {title, date, slug, category, tags, sticky = false} = Astro.props
 ---
 
@@ -9,7 +9,7 @@ const {title, date, slug, category, tags, sticky = false} = Astro.props
   <!-- title -->
   <div class="flex items-center">
     {sticky > 0 &&
-      <div class="post-sticky select-none">置顶</div>}
+      <div class="post-sticky select-none">{t('home.sticky')}</div>}
     <a class="flex text-xl underline-offset-4 cursor-pointer decoration-skin-base decoration-wavy hover:underline hover:decoration-sky-500 font-bold" href={slug}>
       {title}
     </a>

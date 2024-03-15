@@ -1,5 +1,6 @@
 ---
 import {comment} from '../consts'
+import {t} from '../i18n/utils'
 ---
 
 {
@@ -7,7 +8,7 @@ import {comment} from '../consts'
   <div>
     <div class="aside-widget">
       <i class="ri-chat-1-line text-2xl mr-2"/>
-      最近评论
+      {t('sidebar.recentComments')}
     </div>
     <div id="waline-comment"/>
   </div>

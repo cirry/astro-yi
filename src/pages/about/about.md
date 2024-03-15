@@ -3,8 +3,8 @@ donate: false
 comment: false
 ---
 
-## 关于本站
+## About Website
 Demo
 
-## 关于我
+## About Me
 Demo

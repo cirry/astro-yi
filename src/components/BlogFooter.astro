@@ -1,18 +1,18 @@
 ---
 import {site} from "../consts";
 const {title, date, url} = Astro.props;
-
+import {t} from '../i18n/utils'
 import {formatDate} from "../utils/formatDate.js";
 ---
 
 <div class="border-l-4 my-4 p-4 border-l-skin-base bg-skin-card">
-  <div>本文标题：{title}</div>
-  <div>文章作者：{site.author}</div>
-  <div>发布时间：{formatDate(date)}</div>
+  <div>{t('footer.articleTitle')}：{title}</div>
+  <div>{t('footer.articleAuthor')}：{site.author}</div>
+  <div>{t('footer.releaseTime')}：{formatDate(date)}</div>
   <div>
-    原始链接：<a href={site.url + '/' + url} class="hover:text-skin-active">{site.url + '/' + url}</a>
+    {t('footer.originalLink')}：<a href={site.url + '/' + url} class="hover:text-skin-active">{site.url + '/' + url}</a>
   </div>
   <div>
-    版权声明：本作品采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="hover:text-skin-active">「署名-非商业性使用-相同方式共享 4.0 国际」</a>许可协议进行许可。
+    {t('footer.copyrightOne')}<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="hover:text-skin-active">{t('footer.copyrightTwo')}</a>{t('footer.copyrightThree')}。
   </div>
 </div>

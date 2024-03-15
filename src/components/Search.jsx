@@ -2,6 +2,7 @@ import {createSignal} from "solid-js";
 import _ from 'lodash'
 import {dealLabel} from "../utils/dealLabel.ts"
 import {formatDate} from "../utils/formatDate.ts";
+import {t} from '../i18n/utils.ts'
 
 export function Search(props) {
   const [inputVal, setInputVal] = createSignal('')
@@ -50,7 +51,7 @@ export function Search(props) {
         />
       </label>
 
-      {resultPosts().length > 0 && <div class="my-2">共找到<span class="px-2 font-bold text-skin-active">{resultPosts().length}</span>篇文章</div>}
+      {resultPosts().length > 0 && <div class="my-2">{t('search.searchLabelOne')}<span class="px-2 font-bold text-skin-active">{resultPosts().length}</span>{t('search.searchLabelTwo')}</div>}
 
       <div class="my-4">
         {resultPosts().map(post =>

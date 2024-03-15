@@ -5,6 +5,7 @@ import getUniqueTags from "../utils/getUniqueTags";
 import getCountByCategory from "../utils/getCountByCategory";
 import {sortPostsByDate} from "../utils/sortPostsByDate";
 import {site} from '../consts'
+import {t} from '../i18n/utils'
 const blogs = await getCollectionByName('blog')
 let tagArr = getUniqueTags(blogs);
 let categoryCount = getCountByCategory(blogs);
@@ -16,7 +17,7 @@ let resultPosts = sortPosts.splice(0, site.recentBlogSize);
   {
     Object.keys(categoryCount).length > 0 && (
       <div class="aside-widget">
-        <i class="ri-folder-line text-2xl mr-2"/>分类
+        <i class="ri-folder-line text-2xl mr-2"/>{t('sidebar.categories')}
       </div>)
   }
   {
@@ -32,7 +33,7 @@ let resultPosts = sortPosts.splice(0, site.recentBlogSize);
     tagArr.length > 0 && (
       <div class="aside-widget">
         <i class="ri-price-tag-3-line text-2xl mr-2"/>
-        标签
+        {t('sidebar.tags')}
       </div>
     )
   }
@@ -48,7 +49,7 @@ let resultPosts = sortPosts.splice(0, site.recentBlogSize);
 
 <div>
   <div class="aside-widget">
-    <i class="ri-file-line text-2xl mr-2"></i>最近文章
+    <i class="ri-file-line text-2xl mr-2"></i> {t('sidebar.recentArticle')}
   </div>
   <div class="flex flex-col">
     {

@@ -1,7 +1,7 @@
 ---
 import {formatDate} from "../utils/formatDate";
 import {dealLabel} from "../utils/dealLabel";
-
+import {t} from '../i18n/utils'
 const {title, date, category, tags, lastModified = '', readingTime = {}} = Astro.props
 ---
 
@@ -45,7 +45,7 @@ const {title, date, category, tags, lastModified = '', readingTime = {}} = Astro
       lastModified && (
         <div class="divider-vertical"/>
         <i class="ri-calendar-check-fill"></i>
-        <div class="tag">最后更新：{lastModified}</div>
+        <div class="tag">{t('post.lastUpdated')}：{lastModified}</div>
       )
     }
 
@@ -54,9 +54,9 @@ const {title, date, category, tags, lastModified = '', readingTime = {}} = Astro
       readingTime.minutes && (
         <div class="divider-vertical"/>
         <i class="ri-hourglass-fill"/>
-        <div class="tag">{Math.ceil(readingTime.minutes)}分钟</div>
+        <div class="tag">{Math.ceil(readingTime.minutes)}{t('title.minutes')}</div>
         <div class="divider-vertical"/>
-        <div class="tag">{readingTime.words}字</div>
+        <div class="tag">{readingTime.words}{t('title.words')}</div>
       )
     }
   </div>

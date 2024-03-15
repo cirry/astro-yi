@@ -180,7 +180,7 @@ export const infoLinks = [
   {
     icon: 'ri-rss-fill',
     name: 'rss',
-    outlink: 'https://astro-yi.cn/rss.xml',
+    outlink: 'https://xxxxx.com/rss.xml',
   }
 ]
 
@@ -211,7 +211,7 @@ export const friendlyLinks =
       name: "Cirry's Blog",
       url: 'https://cirry.cn',
       avatar: "https://cirry.cn/avatar.png",
-      description: '前端开发的日常'
+      description: 'frontend development'
     },
   ]
 
@@ -248,7 +248,7 @@ In the `astro.config.mjs` file in the root directory, it is recommended to modif
 
 ```js
 export default defineConfig({
-  site: 'https://astro-yi.cirry.cn',// Modify to your own website address
+  site: 'https://xxxx.com',// Modify to your own website address
    // ...
 })
 ```
