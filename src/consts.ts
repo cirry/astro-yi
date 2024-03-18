@@ -35,11 +35,11 @@ export const site = {
 
 /**
  * busuanzi {boolean} 是否开启不蒜子统计功能
- * lang {string} 默认网站语言 defaultLang: en
+ * lang {string} Default website language: en
  */
 export const config = {
   busuanzi: false,
-  lang: 'en', //
+  lang: 'en',
 }
 
 /**

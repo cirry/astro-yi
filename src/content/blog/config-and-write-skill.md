@@ -1,7 +1,7 @@
 ---
 title: Astro-Yi主题配置和写作技巧
 date: 2023-03-24 17:21:27
-tags: 
+tags:
   - astro
 category: 
   - astro
