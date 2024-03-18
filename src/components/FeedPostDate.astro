@@ -11,9 +11,11 @@ const { date, index } = Astro.props;
   import relativeTime from "dayjs/plugin/relativeTime";
   import "dayjs/locale/zh-cn";
   import {t} from '../i18n/utils'
+  import {config} from "../consts";
+  console.log(config.lang)
 
   dayjs.extend(relativeTime);
-  dayjs.locale("zh-cn");
+  dayjs.locale(config.lang || 'en');
   class FeedPostDate extends HTMLElement {
     constructor() {
       super();

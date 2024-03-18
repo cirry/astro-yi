@@ -1,9 +1,9 @@
 import {en} from './en'
-import {zh} from './zh'
+import {zhCn} from './zhCn'
 import {config} from "../consts";
 
 const ui = {
-  en, zh
+  en, 'zh-cn':zhCn
 }
 
 export function useTranslations(lang: keyof typeof ui) {

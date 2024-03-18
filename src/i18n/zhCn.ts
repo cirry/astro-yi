@@ -1,4 +1,4 @@
-export  const zh = {
+export  const zhCn = {
   'home.sticky': '置顶',
   'home.moreArticles': '更多文章',
   'home.readMore': '阅读全文',
