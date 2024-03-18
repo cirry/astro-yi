@@ -47,8 +47,6 @@ const {frontmatter = {comment: false, donate: false, toc: false, mathjax: false}
 
 
 <script>
-  import ClipboardJS from "clipboard";
-
   import Viewer from 'viewerjs';
   import "viewerjs/dist/viewer.css"
 
@@ -56,37 +54,6 @@ const {frontmatter = {comment: false, donate: false, toc: false, mathjax: false}
   const markdownBody = document.querySelector(".markdown-body");
   // 如果没有markdownBody则直接返回
   if (markdownBody) {
-    const clipboard = new ClipboardJS(".copy-button");
-    clipboard.on("success", function (e) {
-      e.clearSelection();
-    });
-    clipboard.on("error", function (e) {
-    });
-    // 给所有的代码块添加复制功能
-    let codePre = markdownBody.querySelectorAll("pre");
-    codePre.forEach((codeBlock, i) => {
-      // 给pre外层外层添加div
-      let codeWrapper = document.createElement("div");
-      codeWrapper.classList.add("code-wrapper");
-      codeBlock.parentNode.insertBefore(codeWrapper, codeBlock);
-      codeWrapper.appendChild(codeBlock);
-
-      // 给div里添加button按钮，与pre平级
-      const id = `code-block-${i + 1}`;
-      codeBlock.setAttribute("id", id);
-      const button = document.createElement("button");
-      button.innerHTML = "Copy";
-      button.setAttribute("class", "copy-button");
-      button.setAttribute("data-clipboard-target", `#${id}`);
-      codeBlock.parentNode.insertBefore(button, codeBlock.nextSibling);
-      button.addEventListener("click", () => {
-        button.innerHTML = "Code copied to clipboard";
-        setTimeout(() => {
-          button.innerHTML = "Copy";
-        }, 2000);
-      });
-    });
-
     let images = markdownBody.querySelectorAll("img");
     const callback = (entries) => {
       entries.forEach((entry) => {

@@ -7,7 +7,7 @@ const ui = {
 }
 
 export function useTranslations(lang: keyof typeof ui) {
-  return function t(key: keyof typeof ui[typeof config.lang]) {
+  return function t(key: string) {
     return ui[lang][key] || ui[config.lang][key];
   }
 }

@@ -1,5 +1,4 @@
 @import url('./github-markdown.css');
-@import url('./copy-button.css');
 
 @import "remixicon/fonts/remixicon.css";
 @import "tocbot/dist/tocbot.css";
@@ -171,11 +170,6 @@ menu {
   list-style: decimal;
 }
 
-.markdown-body code,
-.markdown-body pre {
-  font-family: jetbrains-mono, serif;
-}
-
 .markdown-body img {
   /* 修改图片居中 */
   /* margin: 0 auto; */
@@ -185,7 +179,7 @@ menu {
 
 ::-webkit-scrollbar {
   width: 10px;
-  height: 8px;
+  height: 16px;
   background-color: #edede9;
 }
 
@@ -233,4 +227,8 @@ menu {
   height: 96px;
   background-color: transparent;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.expressive-code{
+  margin: 1rem 0 ;
 }
