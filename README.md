@@ -1,10 +1,10 @@
-# Astro Theme YI
+# Astro Theme Yi
 
 [[English]](./README.md) | [[简体中文]](./README-ZH-CN.md)
 
 Demo：[Astro-Theme-Yi](https://astro-yi-nu.vercel.app/)
 
-A content-focused Astro blog theme, YI, meaning simplicity and ease.
+A content-focused Astro blog theme, Yi, in Chinese, it means fast and concise.
 
 ![](https://pic-19d9.obs.cn-east-3.myhuaweicloud.com/astroyi/home.png)
 
@@ -14,11 +14,12 @@ A content-focused Astro blog theme, YI, meaning simplicity and ease.
 
 - [x] Supports multi-platform display.
 - [x] Supports dark mode.
+- [x] support i18n
 - [x] Supports search functionality.
 - [x] SEO-friendly
 - [x] Supports sitemap and RSS.
-- [x] Supports article drafts and pagination.
-- [x] Supports Waline.
+- [x] Supports article drafts.
+- [x] Supports Waline Comment.
 - [x] Image lazy loading and scaling support.
 - [x] Supports fixed permalinks for articles.
 
@@ -205,7 +206,7 @@ export const donate = {
  * avatar {string}
  * description {string}
  */
-export const friendlyLinks =
+export const friendshipLinks =
   [
     {
       name: "Cirry's Blog",

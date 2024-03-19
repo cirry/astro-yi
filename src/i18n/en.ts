@@ -1,5 +1,6 @@
 export  const en = {
   'home.sticky': 'Sticky',
+  'home.goBack': 'Go back',
   'home.moreArticles': 'More articles',
   'home.readMore': 'Read More',
   'message.welcome': 'Welcome',
@@ -13,7 +14,7 @@ export  const en = {
   'footer.articleAuthor':'Article author',
   'footer.releaseTime':'Release time',
   'footer.originalLink':'Original link',
-  'footer.copyrightOne': 'Copyright notice: This work is licensed under the',
+  'footer.copyrightOne': 'Copyright notice: This article is licensed under the',
   'footer.copyrightTwo': '「Attribution-NonCommercial-ShareAlike 4.0 International」',
   'footer.copyrightThree': '',
   'footer.sitemap':'Sitemap',

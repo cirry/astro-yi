@@ -7,6 +7,7 @@ import Comment from '../components/Comment.astro'
 import Toc from '../components/Toc.astro'
 import {comment} from "../consts";
 import ScrollToTop from '../components/ScrollToTop.astro'
+import {t}from '../i18n/utils'
 
 const {frontmatter = {comment: false, donate: false, toc: false, mathjax: false}} = Astro.props
 ---
@@ -18,10 +19,10 @@ const {frontmatter = {comment: false, donate: false, toc: false, mathjax: false}
 <Header/>
 <main class="container p-4  pt-20 cursor-default text-skin-base min-h-full pb-32 relative" id="app">
   <div class="grid grid-cols-4 gap-8">
-    <div class="col-span-4 xl:col-span-3 space-y-6">
+    <div class="col-span-4 xl:col-span-3 space-y-4">
       <button class="flex items-center text-md cursor-pointer hover:text-skin-active outline-none" style="background-color: inherit;" onclick="history.back()">
         <i class="ri-arrow-left-line mr-2"/>
-        <span style="word-spacing: 4em;">返回</span>
+        <span>{t('home.goBack')}</span>
       </button>
       <slot/>
       {

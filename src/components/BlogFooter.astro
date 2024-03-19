@@ -6,13 +6,20 @@ import {formatDate} from "../utils/formatDate.js";
 ---
 
 <div class="border-l-4 my-4 p-4 border-l-skin-base bg-skin-card">
-  <div>{t('footer.articleTitle')}：{title}</div>
-  <div>{t('footer.articleAuthor')}：{site.author}</div>
-  <div>{t('footer.releaseTime')}：{formatDate(date)}</div>
-  <div>
-    {t('footer.originalLink')}：<a href={site.url + '/' + url} class="hover:text-skin-active">{site.url + '/' + url}</a>
-  </div>
-  <div>
-    {t('footer.copyrightOne')}<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="hover:text-skin-active">{t('footer.copyrightTwo')}</a>{t('footer.copyrightThree')}。
-  </div>
+  {title ?
+    <div>{t('footer.articleTitle')}：{title}</div> : ''}
+  {
+    site.author ?
+      <div>{t('footer.articleAuthor')}：{site.author}</div> : ''
+  }
+
+  {
+    date ?
+      <div>{t('footer.releaseTime')}：{formatDate(date)}</div> : ''
+  }
+  {
+    site.url?   <div>
+      {t('footer.originalLink')}：<a href={site.url + '/' + url} class="hover:text-skin-active">{site.url + '/' + url}</a>
+    </div>: ''
+  }
 </div>

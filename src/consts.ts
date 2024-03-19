@@ -2,27 +2,26 @@
 // You can import this data from anywhere in your site by using the `import` keyword.
 
 /**
- * 站点信息
- * title：网站标题
- * favicon: 网站图标
- * description：网站描述
- * author：作者
- * avatar：网站头像
- * motto：格言
- * url：网站地址
- * recentBlogSize：最近文章数量
- * archivePageSize：归档页面每页显示的数量
- * postPageSize：文章页面每页显示的数量
- * indexPageSize：首页每页显示的数量
- * feedPageSize：动态分页设置每页显示数量
- * beian：备案号
+ * title {string} website title
+ * favicon {string} website favicon url
+ * description {string} website description
+ * author {string} author
+ * avatar {string} Avatar used in the profile
+ * motto {string} used in the profile
+ * url {string} Website link
+ * recentBlogSize {number} Number of recent articles displayed in the sidebar
+ * archivePageSize {number} Number of articles on archive pages
+ * postPageSize {number} Number of articles on blog pages
+ * feedPageSize {number} Number of articles on feed pages
+ * indexPageSize {number} Number of articles on the homepage
+ * beian {string} Chinese policy
  */
 export const site = {
-  title: 'Astro Theme Yi',
-  favicon: '/favicon.svg',
+  title: 'Astro Theme Yi', // required
+  favicon: '/favicon.svg', // required
   description: 'Welcome to my independent blog website! ',
-  author: "Cirry",
-  avatar: '/avatar.png',
+  author: "Astro-Yi", // required
+  avatar: '/avatar.png', // required
   motto: 'Actions speak louder than words.',
   url: 'https://astro-yi-nu.vercel.app',
   recentBlogSize: 5,
@@ -30,11 +29,11 @@ export const site = {
   postPageSize: 10,
   feedPageSize: 20,
   indexPageSize: 10,
-  beian: ''
+  beian: '',
 }
 
 /**
- * busuanzi {boolean} 是否开启不蒜子统计功能
+ * busuanzi {boolean} link: https://busuanzi.ibruce.info/
  * lang {string} Default website language: en | zh-cn
  */
 export const config = {
@@ -43,11 +42,11 @@ export const config = {
 }
 
 /**
- * 导航栏 nav
+ * Navigator
  * name {string}
  * iconClass {string} icon style
  * href {string}  link url
- * target {string} "_self|_blank" open in current window / open in new window
+ * target {string} optional "_self|_blank" open in current window / open in new window
  */
 export const categories = [
   {
@@ -132,8 +131,12 @@ export const infoLinks = [
 ]
 
 /**
- * 赞赏功能
- * enable 是否开启功能
+ * donate
+ * enable {boolean}
+ * tip {string}
+ * wechatQRCode: Image addresses should be placed in the public directory.
+ * alipayQRCode: Image addresses should be placed in the public directory.
+ * paypalUrl {string}
  */
 export const donate = {
   enable: false,
@@ -144,9 +147,13 @@ export const donate = {
 }
 
 /**
- * 友情链接配置 friendLinks
+ * Friendship Links Page
+ * name {string}
+ * url {string}
+ * avatar {string}
+ * description {string}
  */
-export const friendlyLinks =
+export const friendshipLinks =
   [
     // {
     //   name: "Cirry's Blog",
@@ -157,21 +164,21 @@ export const friendlyLinks =
   ]
 
 /**
- * 评论功能
- * enable 是否开启评论功能
- * serverUrl 评论服务器地址
- * lang i18n
- * pageSize 每页评论数量
- * wordLimit 评论内容字数限制，默认为空不限制
- * count 最近评论侧边栏评论数量
- * pageview 是否开启阅读数统计
- * reaction 是否开启表情
- * requiredMeta 必填字段
+ * Comment Feature
+ * enable {boolean}
+ * serverUrl {string} server link
+ * lang {string} link: https://waline.js.org/guide/features/i18n.html
+ * pageSize {number} number of comments per page. default 10
+ * wordLimit {number} Comment word s limit. When a single number is filled in, it 's the maximum number of comment words. No limit when set to 0
+ * count {number} recent comment numbers
+ * pageview {boolean} display the number of page views and comments of the article
+ * reaction {string | string[]} Add emoji interaction function to the article
+ * requiredMeta {string[]}  Set required fields, default anonymous
  */
 export const comment = {
   enable: false,
   serverUrl: "https://xxxxx.xxxxx.app",
-  lang: 'en', // https://waline.js.org/guide/features/i18n.html
+  lang: 'en',
   pageSize: 20,
   wordLimit: '',
   count: 5,

@@ -4,7 +4,9 @@
 
 预览地址：[Astro-Theme-Yi](https://astro-yi-nu.vercel.app/)
 
-一款以内容为主的天文博客主题————Yi，快速和简洁。
+更多配置内容，请参阅文章： [Astro-YI Write Skill](https://cirry.cn/blog/frontend/astro/config-and-write-skill)
+
+一款以内容为主的Astro博客主题————Yi，快速和简洁。
 
 ![](https://pic-19d9.obs.cn-east-3.myhuaweicloud.com/astroyi/home.png)
 
@@ -14,6 +16,7 @@
 
 - [x] 支持多端显示
 - [x] 支持暗黑显示
+- [x] 支持国际化
 - [x] 支持搜索功能
 - [x] 友好的SEO
 - [x] 支持站点地图和rss
@@ -43,8 +46,6 @@ npm run dev # preview
 ```
 
 将您最喜欢的文章写在 `src/content/blog` 文件夹中，在 `src/content/feed` 文件夹中编写您想发布的动态内容。
-
-更多写作技巧，请参阅文章： [Astro-YI Write Skill](https://cirry.cn/blog/frontend/astro/config-and-write-skill)
 
 ```bash
 npm run build # build
@@ -190,7 +191,7 @@ export const donate = {
 /**
  * 友情链接配置
  */
-export const friendlyLinks =
+export const friendshipLinks =
   [
     {
       name: "Cirry's Blog",

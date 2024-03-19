@@ -1,5 +1,6 @@
 export  const zhCn = {
   'home.sticky': '置顶',
+  'home.goBack': '返回',
   'home.moreArticles': '更多文章',
   'home.readMore': '阅读全文',
   'message.welcome': '欢迎留言',
