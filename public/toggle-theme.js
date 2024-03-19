@@ -58,10 +58,3 @@ window.matchMedia("(prefers-color-scheme: dark)")
     themeValue = isDark ? "dark" : "light";
     setPreference();
   });
-
-
-document.addEventListener('astro:after-swap',
-  () => {
-    init()
-  })
-
