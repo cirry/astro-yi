@@ -140,7 +140,7 @@ export const donate = {
   tip: "Thanks for the coffee !!!☕",
   wechatQRCode: "/WeChatQR.png",
   alipayQRCode: "/AliPayQR.png",
-  paypalUrl: "https://paypal.me/cirry0?country.x=C2&locale.x=zh_XC",
+  paypalUrl: "https://paypal.me/xxxxxxxxxx",
 }
 
 /**
