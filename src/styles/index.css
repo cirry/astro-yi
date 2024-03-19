@@ -198,8 +198,8 @@ menu {
   font-size: 16px;
   white-space: nowrap;
   vertical-align: 2px;
-  color: #edeff1;
-  background-color: #223449;
+  color: rgb(var(--color-fill));
+  background-color:  rgb(var(--color-text));
   opacity: 0.8;
   border-radius: 2px 6px;
 }
