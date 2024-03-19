@@ -32,5 +32,6 @@ export  const zhCn = {
   'search.labelTwo':'下的文章',
   'search.search': '搜索',
   'search.searchLabelOne':'共找到 ',
-  'search.searchLabelTwo': ' 篇文章'
+  'search.searchLabelTwo': ' 篇文章',
+  'search.placeholder': '输入标题或摘要关键字',
 }

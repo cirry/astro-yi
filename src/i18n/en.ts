@@ -32,5 +32,6 @@ export  const en = {
   'search.labelTwo':'',
   'search.search': 'Search',
   'search.searchLabelOne':'Found ',
-  'search.searchLabelTwo': ' article(s) in total'
+  'search.searchLabelTwo': ' article(s) in total',
+  'search.placeholder': 'Enter title or abstract keywords',
 }

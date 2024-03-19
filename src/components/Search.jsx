@@ -42,7 +42,7 @@ export function Search(props) {
         <input
           id="search-input"
           class="block w-full rounded border border-opacity-40 bg-skin-fill text-skin-base py-3 pl-10 pr-3 placeholder:italic placeholder:text-opacity-75 focus:border-skin-accent focus:outline-none"
-          placeholder="输入标题或摘要关键字"
+          placeholder={t('search.placeholder')}
           type="text"
           name="search"
           value={inputVal()}
