@@ -13,7 +13,6 @@
  * archivePageSize {number} Number of articles on archive pages
  * postPageSize {number} Number of articles on blog pages
  * feedPageSize {number} Number of articles on feed pages
- * indexPageSize {number} Number of articles on the homepage
  * beian {string} Chinese policy
  */
 export const site = {
@@ -28,7 +27,6 @@ export const site = {
   archivePageSize: 25,
   postPageSize: 10,
   feedPageSize: 20,
-  indexPageSize: 10,
   beian: '',
 }
 
@@ -49,11 +47,6 @@ export const config = {
  * target {string} optional "_self|_blank" open in current window / open in new window
  */
 export const categories = [
-  {
-    name: "Homepage",
-    iconClass: "ri-home-4-line",
-    href: "/",
-  },
   {
     name: "Blog",
     iconClass: "ri-draft-line",

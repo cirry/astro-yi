@@ -69,7 +69,6 @@ npm run build # build
  * archivePageSize：归档页面每页显示的数量
  * postPageSize：文章页面每页显示的数量
  * feedPageSize：动态页面每页显示数量
- * indexPageSize：首页每页显示的数量
  * beian：备案号
  */
 export const site = {
@@ -84,7 +83,6 @@ export const site = {
     archivePageSize: 25,
     postPageSize: 10,
     feedPageSize: 20,
-    indexPageSize: 10,
     beian: ''
   }
 

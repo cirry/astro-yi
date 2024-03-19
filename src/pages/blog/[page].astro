@@ -4,11 +4,11 @@ import PostView from '../../components/PostView.astro'
 import IndexPage from '../../layouts/IndexPage.astro'
 import Pagination from '../../components/Pagination.astro';
 import {getCollectionByName} from "../../utils/getCollectionByName";
-import {sortPostsByDate} from "../../utils/sortPostsByDate";
+import {orderBySticky} from "../../utils/orderBySticky";
 
 export async function getStaticPaths({paginate}) {
   let posts = await getCollectionByName("blog");
-  let sortedPosts = await sortPostsByDate(posts);
+  let sortedPosts = await orderBySticky(posts);
   return paginate(sortedPosts, {pageSize: site.postPageSize});
 }
 // 所有分页数据都将传递给 "page" 参数

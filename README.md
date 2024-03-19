@@ -70,7 +70,6 @@ In the `src/const.ts` file, you can make some modifications according to your ne
  * archivePageSize {number} Number of articles on archive pages
  * postPageSize {number} Number of articles on blog pages
  * feedPageSize {number} Number of articles on feed pages
- * indexPageSize {number} Number of articles on the homepage
  * beian {string} Chinese policy
  */
 export const site = {
@@ -85,7 +84,6 @@ export const site = {
   archivePageSize: 25,
   postPageSize: 10,
   feedPageSize: 20,
-  indexPageSize: 10,
   beian: ''
 }
 

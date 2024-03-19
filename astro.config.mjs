@@ -14,7 +14,7 @@ export default defineConfig({
   site: 'https://astro-yi-nu.vercel.app',
   integrations: [sitemap(), tailwind(), solid(), expressiveCode({
     plugins: [pluginLineNumbers()],
-    themes: ["dracula-soft", "github-light"],
+    themes: ["github-dark", "github-light"],
     styleOverrides: {
       codeFontFamily: "jetbrains-mono",
       uiFontFamily: "jetbrains-mono",

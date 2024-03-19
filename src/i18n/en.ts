@@ -2,7 +2,7 @@ export  const en = {
   'home.sticky': 'Sticky',
   'home.goBack': 'Go back',
   'home.moreArticles': 'More articles',
-  'home.readMore': 'Read More',
+  'home.readMore': 'Read more',
   'message.welcome': 'Welcome',
   'message.welcomeTips': 'Leave a footprint!',
   'post.lastUpdated': 'Last updated',
