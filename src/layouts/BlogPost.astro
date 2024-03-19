@@ -76,8 +76,7 @@ const {frontmatter = {comment: false, donate: false, toc: false, mathjax: false}
     for (var i = 0; i < links.length; i++) {
       // 给每个链接标签添加 target 属性
       links[i].setAttribute("target", "_blank");
-      links[i].setAttribute("rel", "nofollow");
-      links[i].setAttribute("rel", "noreferrer");
+      links[i].setAttribute("rel", "nofollow noreferrer");
     }
     new Viewer(markdownBody)
   }

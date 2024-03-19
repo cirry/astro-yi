@@ -41,8 +41,7 @@ const {frontmatter = {comment: false, donate: false}} = Astro.props
 </body>
 <script>
   document.body.querySelectorAll("a").forEach(item => {
-    item.setAttribute("rel", "nofollow");
-    item.setAttribute("rel", "noreferrer");
+    item.setAttribute("rel", "nofollow noreferrer");
   });
 </script>
 </html>
