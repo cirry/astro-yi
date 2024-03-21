@@ -23,21 +23,6 @@ export function remarkModifiedTime() {
     const textOnPage = toString(tree);
     // readingTime.text 会以友好的字符串形式给出阅读时间，例如 "3 min read"。
     file.data.astro.frontmatter.readingTime = getReadingTime(textOnPage,);
-    // 图片懒加载
-    addAltAttribute(tree.children)
   };
-}
-
-// 递归函数，为指定type的对象添加alt属性
-function addAltAttribute(obj, targetType) {
-  obj.forEach(item => {
-    if (item.type === 'image') {
-      item.alt = item.url
-      item.url = '/placeholder.png'
-    }
-    if(item.children && item.children.length>0){
-      addAltAttribute(item.children)
-    }
-  })
 }
 

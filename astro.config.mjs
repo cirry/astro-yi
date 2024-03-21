@@ -7,8 +7,18 @@ import {remarkModifiedTime} from "./src/remarkPlugin/remark-modified-time.mjs";
 
 import expressiveCode from "astro-expressive-code";
 import {pluginLineNumbers} from '@expressive-code/plugin-line-numbers'
+import {visit} from 'unist-util-visit'
 
-// https://astro.build/config
+function customRehypeLazyLoadImage() {
+  return function (tree) {
+    visit(tree, function (node) {
+      if (node.tagName === 'img') {
+        node.properties['data-src'] = node.properties.src
+        node.properties.src = '/spinner.gif'
+      }
+    })
+  }
+}
 
 export default defineConfig({
   site: 'https://astro-yi-nu.vercel.app',
@@ -23,5 +33,6 @@ export default defineConfig({
   }), mdx()],
   markdown: {
     remarkPlugins: [remarkModifiedTime],
+    rehypePlugins: [customRehypeLazyLoadImage],
   }
 });

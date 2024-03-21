@@ -60,8 +60,10 @@ const {frontmatter = {comment: false, donate: false, toc: false, mathjax: false}
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const image = entry.target;
-          const data_src = image.getAttribute("alt");
-          image.setAttribute("src", data_src);
+          const data_src = image.getAttribute("data-src");
+          if(data_src){
+            image.setAttribute("src", data_src);
+          }
           observer.unobserve(image);
         }
       });

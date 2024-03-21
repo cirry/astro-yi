@@ -62,6 +62,9 @@ dependencies:
   typescript:
     specifier: ^5.4.2
     version: 5.4.2
+  unist-util-visit:
+    specifier: ^5.0.0
+    version: 5.0.0
   viewerjs:
     specifier: ^1.11.6
     version: 1.11.6

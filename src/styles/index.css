@@ -100,6 +100,17 @@ menu {
   a {
     @apply cursor-pointer;
   }
+
+  /* markdown内容图片样式 */
+  .image-cols-2{
+    @apply grid gap-4 grid-cols-2 my-2
+  }
+  .image-cols-3{
+    @apply grid gap-4 grid-cols-3 my-2
+  }
+  .image-cols-4{
+    @apply grid gap-4 grid-cols-4 my-2
+  }
 }
 
 * {
