@@ -48,8 +48,9 @@ const {frontmatter = {comment: false, donate: false, toc: false, mathjax: false}
 
 
 <script>
-  import Viewer from 'viewerjs';
-  import "viewerjs/dist/viewer.css"
+  import { Fancybox } from "@fancyapps/ui";
+  import "@fancyapps/ui/dist/fancybox/fancybox.css";
+  Fancybox.bind("[data-fancybox]");
 
   // 给所有的a标签添加target属性和不追踪
   const markdownBody = document.querySelector(".markdown-body");
@@ -61,6 +62,7 @@ const {frontmatter = {comment: false, donate: false, toc: false, mathjax: false}
         if (entry.isIntersecting) {
           const image = entry.target;
           const data_src = image.getAttribute("data-src");
+          image.setAttribute("data-fancybox", "gallery")
           if(data_src){
             image.setAttribute("src", data_src);
           }
