@@ -3,7 +3,7 @@ import '../styles/index.css'
 import {site, config} from "../consts";
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const {mathjax = false} = Astro.props
+const {mathjax = false, mermaid = false} = Astro.props
 ---
 <head>
   <!-- Global Metadata -->
@@ -50,6 +50,11 @@ const {mathjax = false} = Astro.props
   {
     mathjax &&
     <script async type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js"></script>
+  }
+  {
+    mermaid &&
+    <script async type="text/javascript" src="/js/mermaid.min.js"></script>
+
   }
   {
     config.busuanzi && <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
