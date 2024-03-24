@@ -32,11 +32,13 @@ export const site = {
 
 /**
  * busuanzi {boolean} link: https://busuanzi.ibruce.info/
- * lang {string} Default website language: en | zh-cn
+ * lang {string} Default website language
+ * codeFoldingStartLines {number}
  */
 export const config = {
   busuanzi: false,
-  lang: 'en',
+  lang: 'en', // en | zh-cn
+  codeFoldingStartLines: 16 , // Need to re-run the project to take effect
 }
 
 /**
