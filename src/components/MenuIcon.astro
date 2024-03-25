@@ -12,18 +12,23 @@
   let menuIcon = document.getElementById("menu-icon");
   let menuCloseIcon = document.getElementById("menu-icon-close");
   let menu = document.getElementById("mobile-menu");
+  let showAsideBtn = document.getElementById("aside-btn");
+  let closeAsideBtn = document.getElementById("aside-close-btn");
+  let personalInfo = document.getElementById("personal-info");
   menuIcon.addEventListener("click", () => {
+    if(showAsideBtn && showAsideBtn.classList.contains('hidden')){
+      showAsideBtn.classList.toggle("hidden");
+      closeAsideBtn.classList.toggle("hidden");
+      personalInfo.classList.toggle("hidden");
+    }
     menuIcon.classList.toggle("hidden");
     menuCloseIcon.classList.toggle("hidden");
     menu.classList.toggle("hidden");
-    menu.classList.add("fadeIn");
     // 给背景添加蒙版
-    document.getElementById('app').classList.toggle("opacity-50");
   });
   menuCloseIcon.addEventListener("click", () => {
     menuCloseIcon.classList.toggle("hidden");
     menu.classList.toggle("hidden");
     menuIcon.classList.toggle("hidden");
-    document.getElementById('app').classList.toggle("opacity-50");
   });
 </script>

@@ -80,7 +80,7 @@ menu {
   }
 
   .header-btn {
-    @apply cursor-pointer border rounded py-1 px-2 bg-skin-fill hover:text-skin-active mr-4 z-10
+    @apply cursor-pointer border rounded py-1 px-2 bg-skin-fill hover:text-skin-active mx-2 z-10
   }
 
   /*侧边栏每个栏目共有样式*/
@@ -137,6 +137,16 @@ menu {
   height: 1px;
   min-width: 100%;
   margin: 16px 0;
+  background-color: rgba(var(--color-text), .3);
+}
+
+.divider-horizontal-mini {
+  display: flex;
+  clear: both;
+  width: 100%;
+  height: 1px;
+  min-width: 100%;
+  margin: 8px 0;
   background-color: rgba(var(--color-text), .3);
 }
 

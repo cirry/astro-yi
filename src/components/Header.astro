@@ -1,58 +1,120 @@
 ---
+import {getCollectionByName} from "../utils/getCollectionByName";
+import getUniqueTags from "../utils/getUniqueTags";
+import getCountByCategory from "../utils/getCountByCategory";
 import HeaderLink from './HeaderLink.astro';
 import ThemeIcon from './ThemeIcon.astro'
 import MenuIcon from './MenuIcon.astro'
-import {site, categories} from '../consts';
+import {site, categories, infoLinks} from '../consts';
+import AsideIcon from "./SideIcon.astro";
+import {t} from "../i18n/utils";
+import getCountByTagName from "../utils/getCountByTagName";
+import {appendDivSvgG} from "mermaid/dist/mermaidAPI";
+const blogs = await getCollectionByName('blog')
+let tagArr = getUniqueTags(blogs);
+let categoryCount = getCountByCategory(blogs);
+let tagCount = getCountByTagName(blogs);
 ---
 
 <header class="fixed top-0 w-full bg-skin-fill text-skin-base z-10">
   <div class="flex items-center justify-between container">
+    <div class="block xl:hidden">
+      <MenuIcon></MenuIcon>
+    </div>
     <a class="text-2xl p-4" href="/">{site.title}</a>
     <div class="flex items-center">
       <div class="hidden xl:block">
         <div class="flex items-center space-x-5 pr-4">
           {
             categories.map(category => (
-              <HeaderLink href={category.href} icon={category.iconClass} target={category.target? category.target: '_self'} children={category.children ? category.children : []}>{category.name}</HeaderLink>
+              <HeaderLink href={category.href} icon={category.iconClass} target={category.target ? category.target : '_self'} children={category.children ? category.children : []}>{category.name}</HeaderLink>
             ))
           }
         </div>
       </div>
-
       <ThemeIcon></ThemeIcon>
       <div class="block xl:hidden">
-        <MenuIcon></MenuIcon>
+        <AsideIcon></AsideIcon>
       </div>
     </div>
   </div>
-  <div id="mobile-menu" class="mb-2 hidden">
+  <div id="mobile-menu" class="hidden text-center overflow-y-auto pb-8" style="height: calc(100vh - 64px)">
     {
       categories.map((category) => (
-        <div class="flex flex-col space-y-4">
-          <div class="py-2">
-            <a class="flex w-screen items-center justify-center space-x-4 hover:text-skin-active" href={category.href}>
-              <i class={category.iconClass}/>
-              <span>{category.name}</span>
-            </a>
+        <div class="py-2">
+          <a class=" hover:text-skin-active" href={category.href}>
+            <i class={category.iconClass}/>
+            <span>{category.name}</span>
+          </a>
+          {
+            category.children && category.children.length > 0 &&
+            <div class="divider-horizontal"></div>
+          }
+          <div class="space-y-4 text-sm">
             {
-              category.children && category.children.length > 0 &&
-              <div class="divider-horizontal"></div>
-            }
-            <div class="flex flex-col space-y-4 text-sm">
-              {
-                category.children && category.children.map(sub =>
-                  (
-                    <a class="flex w-screen items-center justify-center space-x-4 hover:text-skin-active" href={sub.href}>
-                      <i class={sub.iconClass}/>
-                      <span>{sub.name}</span>
-                    </a>
-                  )
+              category.children && category.children.map(sub =>
+                (
+                  <a class="block hover:text-skin-active" href={sub.href}>
+                    <i class={sub.iconClass}/>
+                    <span>{sub.name}</span>
+                  </a>
                 )
-              }
-            </div>
+              )
+            }
           </div>
         </div>
       ))
     }
+  </div>
+  <div id="personal-info" class="hidden break-all overflow-y-auto pb-8" style="height: calc(100vh - 64px)">
+    <img class="avatar my-4 mx-auto" src={site.avatar} alt=""/>
+    <div class="mb-2 text-center">{site.motto}</div>
+    <div class="flex items-center justify-center flex-wrap">
+      {
+        infoLinks.map((infoItem) => (
+          <a title={infoItem.name} href={infoItem.outlink} target="_blank">
+            <i class={infoItem.icon + " text-2xl mr-2 cursor-pointer"}/>
+          </a>
+        ))
+      }
+    </div>
+    <div class="divider-horizontal-mini"></div>
+    <div class="text-center">
+      {
+        Object.keys(categoryCount).length > 0 && (
+          <div>
+            <i class="ri-folder-line text-2xl mr-2"/>{t('sidebar.categories')}
+          </div>
+        )
+      }
+      {
+        Object.keys(categoryCount).map((category) => (
+          <div class="my-2 break-all truncate">
+            <a class="hover:text-skin-active" title={category + " (" + categoryCount[category] + ")"} href={"/category/" + category}>
+              {category + " (" + categoryCount[category] + ")"}
+            </a>
+          </div>
+
+        ))
+      }
+      {
+        tagArr.length > 0 && (
+          <div class="divider-horizontal-mini"></div>
+          <div class="text-center">
+            <i class="ri-price-tag-3-line text-2xl mr-2"/>
+            {t('sidebar.tags')}
+          </div>
+        )
+      }
+      {
+        tagArr &&
+        tagArr.map((tag) => (
+          <div class="my-2 break-all truncate">
+            <a class="hover:text-skin-active my-2" title={tag} href={"/tags/" + tag}>{tag + " (" + tagCount[tag] + ")"}</a>
+          </div>
+        ))
+      }
+    </div>
+
   </div>
 </header>
