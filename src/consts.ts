@@ -34,11 +34,13 @@ export const site = {
  * busuanzi {boolean} link: https://busuanzi.ibruce.info/
  * lang {string} Default website language
  * codeFoldingStartLines {number}
+ * ga {string|false}
  */
 export const config = {
   busuanzi: false,
   lang: 'en', // en | zh-cn
   codeFoldingStartLines: 16 , // Need to re-run the project to take effect
+  ga: false // If you want to integrate with Google Analytics, just enter your GA-ID here.
 }
 
 /**
