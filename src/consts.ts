@@ -169,6 +169,7 @@ export const friendshipLinks =
  * pageview {boolean} display the number of page views and comments of the article
  * reaction {string | string[]} Add emoji interaction function to the article
  * requiredMeta {string[]}  Set required fields, default anonymous
+ * whiteList {string[]} set some pages not to display reaction
  */
 export const comment = {
   enable: false,
@@ -180,5 +181,5 @@ export const comment = {
   pageview: true,
   reaction: true,
   requiredMeta: ["nick", "mail"],
-  whiteList: ['/message/', '/friends/'], // 开启留言也不显示reaction的页面
+  whiteList: ['/message/', '/friends/'],
 }
