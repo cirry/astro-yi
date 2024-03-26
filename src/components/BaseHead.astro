@@ -59,5 +59,17 @@ const {mathjax = false, mermaid = false} = Astro.props
   {
     config.busuanzi && <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
   }
+  <!-- Google tag (gtag.js) -->
+  {
+    config.ga && <>
+    <script src={"https://www.googletagmanager.com/gtag/js?id=" +　config.ga}></script>
+    <script define:vars={{ga: config.ga}} >
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
+      gtag('config', ga);
+    </script>
+    </>
+  }
 </head>
