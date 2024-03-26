@@ -47,16 +47,8 @@ if (totalPage === 1) {
 <div class="flex items-center justify-center my-16 text-skin-base">
   {
     pager.length > 4 && (
-      <a href={prefixUrl + "1"} style="font-size:24px;line-height:32px;">
-        <i class="ri-arrow-left-s-fill" />
-      </a>
-    )
-  }
-  <!-- 上一批分页数据 -->
-  {
-    url.prev && (
-      <a href={url.prev}>
-        <i class="ri-arrow-left-s-line" style="line-height:32px;" />
+      <a href={prefixUrl + "1"} style="font-size:18px;line-height:32px;">
+        <i class="ri-skip-left-line"></i>
       </a>
     )
   }
@@ -78,21 +70,13 @@ if (totalPage === 1) {
       )
     )
   }
-  <!-- 下一批分页数据 -->
-  {
-    url.next && (
-      <a href={url.next}>
-        <i class="ri-arrow-right-s-line" style="line-height:32px;" />
-      </a>
-    )
-  }
   {
     pager.length > 4 && (
       <a
         href={prefixUrl + totalPage}
-        style="font-size:24px;line-height:32px;"
+        style="font-size:18px;line-height:32px;"
       >
-        <i class="ri-arrow-right-s-fill" />
+        <i class="ri-skip-right-line"></i>
       </a>
     )
   }
