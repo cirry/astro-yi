@@ -297,7 +297,9 @@ With the Yi theme, all you need to do is create a new md document in `src/conten
 feed frontmatter needs to set an important property **date**, the rest of the attributes are optional.
 
 ```yaml
+---
 date: 2024-03-20
+---
 ```
 
 ### Modify icons
