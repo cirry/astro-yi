@@ -6,10 +6,9 @@ import HeaderLink from './HeaderLink.astro';
 import ThemeIcon from './ThemeIcon.astro'
 import MenuIcon from './MenuIcon.astro'
 import {site, categories, infoLinks} from '../consts';
-import AsideIcon from "./SideIcon.astro";
+import AsideIcon from "./SidebarIcon.astro";
 import {t} from "../i18n/utils";
 import getCountByTagName from "../utils/getCountByTagName";
-import {appendDivSvgG} from "mermaid/dist/mermaidAPI";
 const blogs = await getCollectionByName('blog')
 let tagArr = getUniqueTags(blogs);
 let categoryCount = getCountByCategory(blogs);
