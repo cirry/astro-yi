@@ -23,6 +23,8 @@ const {mathjax = false, mermaid = false} = Astro.props
   <meta property="og:url" content={Astro.url}/>
   <meta property="og:title" content={site.title}/>
   <meta property="og:description" content={site.description}/>
+  <meta property="og:image" content={new URL(site.avatar, Astro.site?.href).href}/>
+  <meta property="og:image:alt" content={site.description}/>
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image"/>
