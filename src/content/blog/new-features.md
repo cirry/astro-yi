@@ -14,7 +14,7 @@ Use:
 
 Mermaid Code:
 
-```code title="mermaid.md"
+```html title="mermaid.md"
 classDiagram
     note "From Duck till Zebra"
     Animal <|-- Duck
