@@ -59,9 +59,13 @@ const {frontmatter = {comment: false, donate: false, toc: false, mathjax: false,
         if (entry.isIntersecting) {
           const image = entry.target;
           const data_src = image.getAttribute("data-src");
+          const data_alt = image.getAttribute("data-alt");
           image.setAttribute("data-fancybox", "gallery")
           if(data_src){
             image.setAttribute("src", data_src);
+          }
+          if(data_alt){
+            image.setAttribute("alt", data_alt);
           }
           observer.unobserve(image);
         }
