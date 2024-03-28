@@ -18,6 +18,8 @@ function customRehypeLazyLoadImage() {
       if (node.tagName === 'img') {
         node.properties['data-src'] = node.properties.src
         node.properties.src = '/spinner.gif'
+        node.properties['data-alt'] = node.properties.alt
+        node.properties.alt = 'default'
       }
     })
   }
