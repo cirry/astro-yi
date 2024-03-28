@@ -27,6 +27,8 @@ export function Search(props) {
           blog.data.description = blog.data.description.replace(reg, (match) => {
             return `<span class="text-skin-active font-bold">${match}</span>`
           })
+        }else {
+          blog.data.description = blog.body.substring(0, 140) || ''
         }
       })
       setResultPosts(cloneBlogs)

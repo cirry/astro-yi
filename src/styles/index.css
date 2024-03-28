@@ -101,6 +101,10 @@ menu {
     @apply cursor-pointer;
   }
 
+  .menu-icon {
+    @apply text-xl mr-2
+  }
+
   /* markdown内容图片样式 */
   .image-cols-2{
     @apply grid gap-4 grid-cols-2 my-2

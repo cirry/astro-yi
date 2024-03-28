@@ -7,13 +7,7 @@ const {title, date, category, tags, lastModified = '', readingTime = {}} = Astro
 
 <div class="border-b-1">
   <!-- title -->
-  <div class="flex items-center">
-    <div class="flex text-xl font-bold">
-      <h1>
-        {title}
-      </h1>
-    </div>
-  </div>
+  <h1 class="break-all text-xl font-bold">{title}</h1>
 
   <div class="flex flex-wrap items-center my-2 space-x-2">
     <!-- date -->

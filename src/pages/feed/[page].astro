@@ -5,8 +5,6 @@ import Pagination from "src/components/Pagination.astro";
 import { sortPostsByDate } from "src/utils/sortPostsByDate";
 import { getCollectionByName } from "../../utils/getCollectionByName";
 import FeedPreview from "../../components/FeedPreview.astro";
-import FeedPreview from "../../components/FeedPreview.astro";
-import FeedPreview from "../../components/FeedPreview.astro";
 export async function getStaticPaths({ paginate }) {
   let posts = await getCollectionByName("feed");
   posts = sortPostsByDate(posts);

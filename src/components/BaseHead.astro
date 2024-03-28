@@ -31,6 +31,7 @@ const {mathjax = false, mermaid = false} = Astro.props
   <meta property="twitter:url" content={Astro.url}/>
   <meta property="twitter:title" content={site.title}/>
   <meta property="twitter:description" content={site.description}/>
+  <meta property="twitter:image" content={new URL(site.avatar, Astro.site?.href).href}/>
 
   <meta httpEquiv="X-UA-Compatible" content="IE=edge"/>
   <meta name="msapplication-TileColor" content="#da532c"/>

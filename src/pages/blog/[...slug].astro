@@ -28,11 +28,11 @@ const currentPostIndex = sortPosts.findIndex(
   (postItem) => postItem.data.title === entry.data.title
 );
 let prevPost, nextPost
-if (sortPosts[currentPostIndex + 1]) {
-  prevPost = sortPosts[currentPostIndex + 1];
-}
 if (sortPosts[currentPostIndex - 1]) {
-  nextPost = sortPosts[currentPostIndex - 1];
+  prevPost = sortPosts[currentPostIndex - 1];
+}
+if (sortPosts[currentPostIndex + 1]) {
+  nextPost = sortPosts[currentPostIndex + 1];
 }
 ---
 <BlogPost frontmatter={entry.data}>

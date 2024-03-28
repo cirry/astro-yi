@@ -34,4 +34,6 @@ export  const en = {
   'search.searchLabelOne':'Found ',
   'search.searchLabelTwo': ' article(s) in total',
   'search.placeholder': 'Enter title or abstract keywords',
+  'feed.previous': 'Previous',
+  'feed.next': 'Next',
 }

@@ -4,6 +4,7 @@ import {getCollectionByName} from "../../utils/getCollectionByName";
 import BlogPost from '../../layouts/BlogPost.astro'
 import {comment} from "../../consts";
 import {formatDate} from '../../utils/formatDate'
+import {t} from '../../i18n/utils'
 
 export async function getStaticPaths() {
   const posts = await getCollectionByName("feed");
@@ -23,11 +24,11 @@ const currentPostIndex = sortPosts.findIndex(
   (postItem) => postItem.data.date === post.data.date
 );
 let prevPost: any, nextPost: any;
-if (sortPosts[currentPostIndex + 1]) {
-  prevPost = sortPosts[currentPostIndex + 1];
-}
 if (sortPosts[currentPostIndex - 1]) {
-  nextPost = sortPosts[currentPostIndex - 1];
+  prevPost = sortPosts[currentPostIndex - 1];
+}
+if (sortPosts[currentPostIndex + 1]) {
+  nextPost = sortPosts[currentPostIndex + 1];
 }
 ---
 
@@ -63,26 +64,26 @@ if (sortPosts[currentPostIndex - 1]) {
   {
     (
       <div>
-        {nextPost ? (
+        {prevPost ? (
           <a
             class="truncate  w-auto max-w-[40%] float-left"
-            href={'/' + nextPost.collection + '/' + nextPost.slug}
-            title={nextPost.data.title}
+            href={'/' + prevPost.collection + '/' + prevPost.slug}
+            title={prevPost.data.title}
           >
             <i class="ri-arrow-left-s-fill"/>
-            上一条动态
+            {t('feed.previous')}
           </a>
         ) : (
           <div/>
         )}
-        {prevPost ? (
+        {nextPost ? (
           <div class="flex item-center float-right w-auto max-w-[40%] text-right">
             <a
               class="truncate "
-              href={'/' + prevPost.collection + '/' + prevPost.slug}
-              title={prevPost.data.title}
+              href={'/' + nextPost.collection + '/' + nextPost.slug}
+              title={nextPost.data.title}
             >
-              下一条动态
+              {t('feed.next')}
             </a>
             <i class="ri-arrow-right-s-fill float-right"/>
           </div>
