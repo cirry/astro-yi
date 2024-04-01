@@ -2,7 +2,7 @@
 import {formatDate} from "../utils/formatDate";
 import {dealLabel} from "../utils/dealLabel";
 import {t} from '../i18n/utils'
-const {title, date, slug, category, tags, sticky = false} = Astro.props
+const {title, date, slug, category, tags, sticky = false, draft = false} = Astro.props
 ---
 
 <div class="text-skin-base">
@@ -22,6 +22,16 @@ const {title, date, slug, category, tags, sticky = false} = Astro.props
         <i class="ri-calendar-2-fill"/>
         <div>{formatDate(date)}</div>
       )
+    }
+
+    <!-- draft -->
+    {
+      draft && 
+        <>
+          <div class="divider-vertical" />
+          <i class="ri-git-pr-draft-line" />
+          <div>draft</div>
+        </>
     }
 
     <!-- category -->

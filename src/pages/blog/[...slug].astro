@@ -9,7 +9,9 @@ import Donate from '../../components/Donate.astro'
 import {donate} from "../../consts";
 
 export async function getStaticPaths() {
-  const blogEntries = await getCollection('blog');
+  const blogEntries = (await getCollection('blog')).filter(({data}) => {
+    return import.meta.env.PROD ? !data.draft : true
+  });
   return blogEntries.map(entry => ({
     params: {slug: entry.slug}, props: {entry,},
   }));
