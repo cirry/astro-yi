@@ -20,7 +20,7 @@ const {title, date, category, tags, lastModified = '', readingTime = {}} = Astro
 
     <!-- category -->
     {
-      category && dealLabel(category).map((categoryName) => (
+      category && dealLabel(category).filter(item => item !== 'uncategorized').map((categoryName) => (
         <div class="divider-vertical"/>
         <i class="ri-folder-3-line"/>
         <a href={"/category/" + categoryName} class="text-wrap break-all  hover:text-skin-active cursor-pointer">{categoryName}</a>

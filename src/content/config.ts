@@ -7,7 +7,7 @@ const blog = defineCollection({
     description: z.string().optional().nullable(),
     date: z.date(),
     tags: z.array(z.string()).or(z.string()).optional().nullable(),
-    category: z.array(z.string()).or(z.string()).optional().nullable(),
+    category: z.array(z.string()).or(z.string()).default('uncategorized').nullable(),
     sticky: z.number().default(0).nullable(),
     mathjax: z.boolean().default(false).nullable(),
     mermaid: z.boolean().default(false).nullable(),

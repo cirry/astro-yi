@@ -3,4 +3,4 @@ const { label } = Astro.props;
 import {t}from '../i18n/utils'
 ---
 
-<div class="my-2 text-wrap break-all">{t('search.labelOne')} <span class="text-skin-active mx-1">{label}</span> {t('search.labelTwo')}</div>
+<div class="my-2 text-wrap break-all">{t('search.labelOne')} <span class="text-skin-active mx-1">{label ==='uncategorized' ? t('sidebar.uncategorized') : label}</span> {t('search.labelTwo')}</div>
