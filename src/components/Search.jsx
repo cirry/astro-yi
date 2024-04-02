@@ -69,23 +69,19 @@ export function Search(props) {
                   <div class="tag">{formatDate(post.data.date)}</div>
                 </div> : ''}
 
+              {dealLabel(post.data.category).filter(item => item !== 'uncategorized').map((categoryName, categoryNameIndex) => (
+                <div class="flex  items-center  cursor-pointer">
+                  <div class="divider-vertical"/>
+                  <i class="ri-folder-2-fill mr-1"/>
+                  <a href={"/category/" + categoryName}>{categoryName}</a>
+                </div>
+              ))}
+
               {dealLabel(post.data.tags).map((tagName, tagIndex) => (
                 <div class="flex  items-center  cursor-pointer">
                   <div class="divider-vertical"/>
                   <i class="ri-price-tag-3-fill mr-1"/>
                   <a href={"/tags/" + tagName}>{tagName}</a>
-                  {tagIndex !== dealLabel(post.data.tags).length - 1 && <div class="divider-vertical"/>}
-                </div>
-              ))}
-
-              {dealLabel(post.data.category).map((categoryName, categoryNameIndex) => (
-                <div class="flex  items-center  cursor-pointer">
-                  <div class="divider-vertical"/>
-                  <i class="ri-folder-2-fill mr-1"/>
-                  <a href={"/category/" + categoryName}>{categoryName}</a>
-                  {categoryNameIndex !== dealLabel(post.data.category).length - 1 && (
-                    <div class="divider-vertical"/>
-                  )}
                 </div>
               ))}
             </div>
