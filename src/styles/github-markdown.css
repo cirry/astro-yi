@@ -33,7 +33,7 @@
    --color-fg-default: #c9d1d9;
    --color-fg-muted: #8b949e;
    --color-fg-subtle: #484f58;
-   --color-canvas-default: #0d1117;
+   --color-canvas-default: #343A40;
    --color-canvas-subtle: #161b22;
    --color-border-default: #30363d;
    --color-border-muted: #21262d;
@@ -154,9 +154,16 @@
    text-decoration: underline dotted;
  }
 
- .markdown-body b,
- .markdown-body strong {
+ html[data-theme="light"] .markdown-body b,
+ html[data-theme="light"] .markdown-body strong {
    font-weight: 600;
+ }
+
+ html[data-theme="dark"] .markdown-body b,
+ html[data-theme="dark"] .markdown-body strong {
+   font-weight: 600;
+   color: rgb(255, 255, 255);
+   text-shadow: 2px 2px 2px rgba(255, 255, 255, 0.2);
  }
 
  .markdown-body dfn {
