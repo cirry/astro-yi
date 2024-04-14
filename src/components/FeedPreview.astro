@@ -11,8 +11,11 @@ import {t} from '../i18n/utils'
   >
     {
       body.length > 140
-        ? body.substring(0, 140).replace(/#/gi, "") + "..."
-        : body
+        ? body.replace(/^#+/gm, "")
+              .replace(/!?\[.*?\]\(.*?\)/g, "")
+              .substring(0, 140) + "..."
+        : body.replace(/^#+/gm, "")
+              .replace(/!?\[.*?\]\(.*?\)/g, "")
     }
   </p>
   <div class="flex items-center justify-between mt-2 text-sm">
