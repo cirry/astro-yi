@@ -1,4 +1,4 @@
-@import url('./github-markdown.css');
+@import url("./github-markdown.css");
 
 @import "remixicon/fonts/remixicon.css";
 @import "tocbot/dist/tocbot.css";
@@ -9,7 +9,7 @@
 
 @font-face {
   font-family: "jetbrains-mono";
-  src: url('./JetBrainsMono-Regular.ttf');
+  src: url("./JetBrainsMono-Regular.ttf");
 }
 
 /**
@@ -66,7 +66,6 @@ menu {
   html[data-theme="dark"] #sun-icon {
     display: block;
   }
-
 }
 
 @layer components {
@@ -80,7 +79,7 @@ menu {
   }
 
   .header-btn {
-    @apply cursor-pointer border rounded py-1 px-2 bg-skin-fill hover:text-skin-active mx-2 z-10
+    @apply cursor-pointer border rounded py-1 px-2 bg-skin-fill hover:text-skin-active mx-2 z-10;
   }
 
   /*侧边栏每个栏目共有样式*/
@@ -102,18 +101,18 @@ menu {
   }
 
   .menu-icon {
-    @apply text-xl mr-2
+    @apply text-xl mr-2;
   }
 
   /* markdown内容图片样式 */
-  .image-cols-2{
-    @apply grid gap-4 grid-cols-2 my-2
+  .image-cols-2 {
+    @apply grid gap-4 grid-cols-2 my-2;
   }
-  .image-cols-3{
-    @apply grid gap-4 grid-cols-3 my-2
+  .image-cols-3 {
+    @apply grid gap-4 grid-cols-3 my-2;
   }
-  .image-cols-4{
-    @apply grid gap-4 grid-cols-4 my-2
+  .image-cols-4 {
+    @apply grid gap-4 grid-cols-4 my-2;
   }
 }
 
@@ -124,14 +123,14 @@ menu {
 /* 分割线 */
 .divider-vertical {
   position: relative;
-  top: -.06em;
+  top: -0.06em;
   display: inline-block;
-  height: .9em;
+  height: 0.9em;
   margin: 0 8px;
   vertical-align: middle;
   border-top: 0;
-  border-left: 1px solid rgba(0, 0, 0, .06);
-  background-color: rgba(var(--color-text), .3);
+  border-left: 1px solid rgba(0, 0, 0, 0.06);
+  background-color: rgba(var(--color-text), 0.3);
 }
 
 .divider-horizontal {
@@ -141,7 +140,7 @@ menu {
   height: 1px;
   min-width: 100%;
   margin: 16px 0;
-  background-color: rgba(var(--color-text), .3);
+  background-color: rgba(var(--color-text), 0.3);
 }
 
 .divider-horizontal-mini {
@@ -151,7 +150,7 @@ menu {
   height: 1px;
   min-width: 100%;
   margin: 8px 0;
-  background-color: rgba(var(--color-text), .3);
+  background-color: rgba(var(--color-text), 0.3);
 }
 
 /* 重写markdown样式 */
@@ -224,7 +223,7 @@ menu {
   white-space: nowrap;
   vertical-align: 2px;
   color: rgb(var(--color-fill));
-  background-color:  rgb(var(--color-text));
+  background-color: rgb(var(--color-text));
   opacity: 0.8;
   border-radius: 2px 6px;
 }
@@ -244,16 +243,16 @@ menu {
   display: none !important;
 }
 
-
 .avatar {
   border-radius: 50%;
   padding: 4px;
   width: 96px;
   height: 96px;
+  object-fit: cover;
   background-color: transparent;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.expressive-code{
-  margin: 1rem 0 ;
+.expressive-code {
+  margin: 1rem 0;
 }
