@@ -217,6 +217,7 @@ export const friendshipLinks =
 /**
  * Comment Feature
  * enable {boolean}
+ * type {string} giscus and waline are currently supported.
  * serverUrl {string} server link
  * pageSize {number} number of comments per page. default 10
  * wordLimit {number} Comment word s limit. When a single number is filled in, it 's the maximum number of comment words. No limit when set to 0
@@ -227,6 +228,7 @@ export const friendshipLinks =
  */
 export const comment = {
   enable: false,
+  type: 'giscus',
   serverUrl: "https://xxxxxxx.com",
   pageSize: 20,
   wordLimit: '',
@@ -235,6 +237,7 @@ export const comment = {
   reaction: false,
   requiredMeta: ["nick", "mail"],
   whiteList: ['/message/', '/friends/'],
+  giscusConfig: {}
 }
 ```
 

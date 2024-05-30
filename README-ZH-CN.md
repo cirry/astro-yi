@@ -202,6 +202,7 @@ export const friendshipLinks =
 /**
  * 评论功能
  * enable 是否开启评论功能
+ * type 目前支持waline和giscus评论系统
  * serverUrl 评论服务器地址
  * pageSize 每页评论数量
  * wordLimit 评论内容字数限制，默认为空不限制
@@ -212,6 +213,7 @@ export const friendshipLinks =
  */
 export const comment = {
   enable: false,
+  type: 'giscus',
   serverUrl: "https://xxxxxxx.com",
   pageSize: 20,
   wordLimit: '',
@@ -220,6 +222,7 @@ export const comment = {
   reaction: false,
   requiredMeta: ["nick", "mail"],
   whiteList: ['/message/', '/friends/'],
+  giscusConfig: {}
 }
 ```
 

@@ -7,7 +7,8 @@ mathjax: true
 
 ### support mermaid
 
-Use: 
+Use:
+
 + start with **```mermaid**
 + end with **```**
 + set markdown frontmatter `mermaid: true`.
@@ -40,7 +41,7 @@ classDiagram
     }
 ```
 
-Result: 
+Result:
 
 ```mermaid
 classDiagram
@@ -80,6 +81,20 @@ $$ \displaystyle\sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t $$
 ```
 
 $$ \displaystyle\sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t $$
+
+### Integration with Expressive Code
+
+For more usage, please refer to the official website [expressive-code](https://expressive-code.com/).
+
+```js title="line-markers.js" del={2} ins={3-4} {6}
+function demo() {
+  console.log('this line is marked as deleted')
+  // This line and the next one are marked as inserted
+  console.log('this is the second inserted line')
+
+  return 'this line uses the neutral default marker type'
+}
+```
 
 ### Code folding is supported by default
 

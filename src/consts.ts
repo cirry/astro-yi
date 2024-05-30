@@ -39,7 +39,7 @@ export const site = {
 export const config = {
   busuanzi: false,
   lang: 'en', // en | zh-cn
-  codeFoldingStartLines: 16 , // Need to re-run the project to take effect
+  codeFoldingStartLines: 16, // Need to re-run the project to take effect
   ga: false // If you want to integrate with Google Analytics, just enter your GA-ID here.
 }
 
@@ -163,6 +163,7 @@ export const friendshipLinks =
 /**
  * Comment Feature
  * enable {boolean}
+ * type {string} required waline | giscus
  * serverUrl {string} server link
  * lang {string} link: https://waline.js.org/guide/features/i18n.html
  * pageSize {number} number of comments per page. default 10
@@ -174,8 +175,11 @@ export const friendshipLinks =
  * whiteList {string[]} set some pages not to display reaction
  */
 export const comment = {
-  enable: false,
+  enable: true,
+  type: 'giscus', // waline | giscus,
+  //waline config
   serverUrl: "https://xxxxx.xxxxx.app",
+  // waline config
   lang: 'en',
   pageSize: 20,
   wordLimit: '',
@@ -184,4 +188,21 @@ export const comment = {
   reaction: true,
   requiredMeta: ["nick", "mail"],
   whiteList: ['/message/', '/friends/'],
+
+  // giscus config
+  giscusConfig: {
+    'data-repo': "cirry/astro-yi",
+    'data-repo-id': "R_kgDOJNr3Jw",
+    'data-category': "Announcements",
+    'data-category-id': "DIC_kwDOJNr3J84CftB-",
+    'data-mapping': "pathname",
+    'data-strict': "0",
+    'data-reactions-enabled': "1",
+    'data-emit-metadata': "0",
+    'data-input-position': "bottom",
+    'data-theme': "light",
+    'data-lang': "zh-CN",
+    'crossorigin': "anonymous",
+  }
+
 }

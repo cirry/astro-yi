@@ -1,5 +1,6 @@
 ---
-import Comment from './CommentAside.astro'
+import CommentAside from "./CommentAside.astro";
+import {comment} from "../consts";
 import {getCollectionByName} from "../utils/getCollectionByName";
 import getUniqueTags from "../utils/getUniqueTags";
 import getCountByCategory from "../utils/getCountByCategory";
@@ -18,11 +19,16 @@ let resultPosts = sortPosts.splice(0, site.recentBlogSize);
     Object.keys(categoryCount).length > 0 && (
       <div class="aside-widget">
         <i class="ri-folder-line menu-icon"/>{t('sidebar.categories')}
-      </div>)
+      </div>
+    )
   }
   {
     Object.keys(categoryCount).map((category) => (
-      <a class="my-1 truncate block hover:text-skin-active" title={category + " (" + categoryCount[category] + ")"} href={"/category/" + category}>
+      <a
+        class="my-1 truncate block hover:text-skin-active"
+        title={category + " (" + categoryCount[category] + ")"}
+        href={"/category/" + category}
+      >
         {(category === 'uncategorized' ? t('sidebar.uncategorized') : category) + " (" + categoryCount[category] + ")"}
       </a>
     ))
@@ -66,4 +72,4 @@ let resultPosts = sortPosts.splice(0, site.recentBlogSize);
   </div>
 </div>
 
-<Comment></Comment>
+{comment.enable && comment.type === "waline" && <CommentAside/>}

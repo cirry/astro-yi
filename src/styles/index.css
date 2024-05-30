@@ -263,3 +263,8 @@ menu {
 .expressive-code {
   margin: 1rem 0;
 }
+
+/* fix mathjax style */
+.MathJax {
+  text-align: left !important;
+}
