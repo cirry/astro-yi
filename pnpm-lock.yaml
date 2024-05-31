@@ -44,6 +44,9 @@ dependencies:
   dayjs:
     specifier: ^1.11.10
     version: 1.11.10
+  hastscript:
+    specifier: ^9.0.0
+    version: 9.0.0
   lodash:
     specifier: ^4.17.21
     version: 4.17.21
@@ -53,6 +56,9 @@ dependencies:
   reading-time:
     specifier: ^1.5.0
     version: 1.5.0
+  remark-directive:
+    specifier: ^3.0.0
+    version: 3.0.0
   remixicon:
     specifier: ^4.2.0
     version: 4.2.0
@@ -68,6 +74,9 @@ dependencies:
   typescript:
     specifier: ^5.4.2
     version: 5.4.2
+  unist-util-remove:
+    specifier: ^4.0.0
+    version: 4.0.0
   unist-util-visit:
     specifier: ^5.0.0
     version: 5.0.0
@@ -2418,6 +2427,16 @@ packages:
       space-separated-tokens: 2.0.2
     dev: false
 
+  /hastscript@9.0.0:
+    resolution: {integrity: sha512-jzaLBGavEDKHrc5EfFImKN7nZKKBdSLIdGvCwDZ9TfzbF2ffXiov8CKE445L2Z1Ek2t/m4SKQ2j6Ipv7NyUolw==}
+    dependencies:
+      '@types/hast': 3.0.4
+      comma-separated-tokens: 2.0.3
+      hast-util-parse-selector: 4.0.0
+      property-information: 6.4.1
+      space-separated-tokens: 2.0.2
+    dev: false
+
   /html-entities@2.3.3:
     resolution: {integrity: sha512-DV5Ln36z34NNTDgnz0EWGBLZENelNAtkiFA4kyNOG2tDI6Mz1uSWiq1wAKdyjnJwyDiDO7Fa2SO1CTxPXL8VxA==}
     dev: false
@@ -2764,6 +2783,21 @@ packages:
       unist-util-visit: 5.0.0
     dev: false
 
+  /mdast-util-directive@3.0.0:
+    resolution: {integrity: sha512-JUpYOqKI4mM3sZcNxmF/ox04XYFFkNwr0CFlrQIkCwbvH0xzMCqkMqAde9wRd80VAhaUrwFwKm2nxretdT1h7Q==}
+    dependencies:
+      '@types/mdast': 4.0.3
+      '@types/unist': 3.0.2
+      devlop: 1.1.0
+      mdast-util-from-markdown: 2.0.0
+      mdast-util-to-markdown: 2.1.0
+      parse-entities: 4.0.1
+      stringify-entities: 4.0.3
+      unist-util-visit-parents: 6.0.1
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
   /mdast-util-find-and-replace@3.0.1:
     resolution: {integrity: sha512-SG21kZHGC3XRTSUhtofZkBzZTJNM5ecCi0SK2IMKmSXR8vO3peL+kb1O0z7Zl83jKtutG4k5Wv/W7V3/YHvzPA==}
     dependencies:
@@ -2994,6 +3028,18 @@ packages:
       micromark-util-subtokenize: 2.0.0
       micromark-util-symbol: 2.0.0
       micromark-util-types: 2.0.0
+    dev: false
+
+  /micromark-extension-directive@3.0.0:
+    resolution: {integrity: sha512-61OI07qpQrERc+0wEysLHMvoiO3s2R56x5u7glHq2Yqq6EHbH4dW25G9GfDdGCDYqA21KE6DWgNSzxSwHc2hSg==}
+    dependencies:
+      devlop: 1.1.0
+      micromark-factory-space: 2.0.0
+      micromark-factory-whitespace: 2.0.0
+      micromark-util-character: 2.1.0
+      micromark-util-symbol: 2.0.0
+      micromark-util-types: 2.0.0
+      parse-entities: 4.0.1
     dev: false
 
   /micromark-extension-gfm-autolink-literal@2.0.0:
@@ -3850,6 +3896,17 @@ packages:
       unified: 11.0.4
     dev: false
 
+  /remark-directive@3.0.0:
+    resolution: {integrity: sha512-l1UyWJ6Eg1VPU7Hm/9tt0zKtReJQNOA4+iDMAxTyZNWnJnFlbS/7zhiel/rogTLQ2vMYwDzSJa4BiVNqGlqIMA==}
+    dependencies:
+      '@types/mdast': 4.0.3
+      mdast-util-directive: 3.0.0
+      micromark-extension-directive: 3.0.0
+      unified: 11.0.4
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
   /remark-expressive-code@0.33.5:
     resolution: {integrity: sha512-E4CZq3AuUXLu6or0AaDKkgsHYqmnm4ZL8/+1/8YgwtKcogHwTMRJfQtxkZpth90QQoNUpsapvm5x5n3Np2OC9w==}
     dependencies:
@@ -4549,6 +4606,14 @@ packages:
     dependencies:
       '@types/unist': 3.0.2
       unist-util-visit: 5.0.0
+    dev: false
+
+  /unist-util-remove@4.0.0:
+    resolution: {integrity: sha512-b4gokeGId57UVRX/eVKej5gXqGlc9+trkORhFJpu9raqZkZhU0zm8Doi05+HaiBsMEIJowL+2WtQ5ItjsngPXg==}
+    dependencies:
+      '@types/unist': 3.0.2
+      unist-util-is: 6.0.0
+      unist-util-visit-parents: 6.0.1
     dev: false
 
   /unist-util-stringify-position@3.0.3:

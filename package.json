@@ -23,14 +23,17 @@
     "astro-expressive-code": "^0.33.5",
     "child_process": "^1.0.2",
     "dayjs": "^1.11.10",
+    "hastscript": "^9.0.0",
     "lodash": "^4.17.21",
     "mdast-util-to-string": "^4.0.0",
     "reading-time": "^1.5.0",
+    "remark-directive": "^3.0.0",
     "remixicon": "^4.2.0",
     "solid-js": "^1.8.15",
     "tailwindcss": "^3.4.1",
     "tocbot": "^4.25.0",
     "typescript": "^5.4.2",
+    "unist-util-remove": "^4.0.0",
     "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {

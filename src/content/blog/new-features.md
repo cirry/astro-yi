@@ -5,7 +5,51 @@ mermaid: true
 mathjax: true
 ---
 
-### support mermaid
+
+### Support admonitions
+
+```markdown
+:::tip[Customized Title]
+hello world
+:::
+
+:::note
+note
+:::
+
+:::caution
+caution
+:::
+
+:::danger
+danger
+:::
+
+```
+
+:::tip[Customized Title]
+hello world
+:::
+
+:::note
+note
+
+```js
+console.log(hello world)
+```
+
+:::
+
+:::caution
+caution
+:::
+
+:::danger
+danger
+:::
+
+
+### Support mermaid
 
 Use:
 

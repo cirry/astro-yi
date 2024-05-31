@@ -1,4 +1,8 @@
 export  const en = {
+  'aside.caution': 'Caution',
+  'aside.danger':'Danger',
+  'aside.note': 'Note',
+  'aside.tip':'Tip',
   'blog.tableOfContent':'Table of Contents',
   'feed.next': 'Next',
   'feed.previous': 'Previous',

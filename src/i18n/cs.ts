@@ -1,6 +1,10 @@
 import 'dayjs/locale/cs';
 
 export  let cs = {
+  'aside.caution': 'varování',
+  'aside.danger':'nouze',
+  'aside.note': 'vzít na vědomí',
+  'aside.tip':'upozornit na něco',
   'blog.tableOfContent':'Obsah',
   'feed.next': 'Další',
   'feed.previous': 'Předchozí',
