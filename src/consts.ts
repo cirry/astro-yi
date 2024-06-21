@@ -164,45 +164,44 @@ export const friendshipLinks =
  * Comment Feature
  * enable {boolean}
  * type {string} required waline | giscus
- * serverUrl {string} server link
- * lang {string} link: https://waline.js.org/guide/features/i18n.html
- * pageSize {number} number of comments per page. default 10
- * wordLimit {number} Comment word s limit. When a single number is filled in, it 's the maximum number of comment words. No limit when set to 0
- * count {number} recent comment numbers
- * pageview {boolean} display the number of page views and comments of the article
- * reaction {string | string[]} Add emoji interaction function to the article
- * requiredMeta {string[]}  Set required fields, default anonymous
- * whiteList {string[]} set some pages not to display reaction
+ * walineConfig.serverUrl {string} server link
+ * walineConfig.lang {string} link: https://waline.js.org/guide/features/i18n.html
+ * walineConfig.pageSize {number} number of comments per page. default 10
+ * walineConfig.wordLimit {number} Comment word s limit. When a single number is filled in, it 's the maximum number of comment words. No limit when set to 0
+ * walineConfig.count {number} recent comment numbers
+ * walineConfig.pageview {boolean} display the number of page views and comments of the article
+ * walineConfig.reaction {string | string[]} Add emoji interaction function to the article
+ * walineConfig.requiredMeta {string[]}  Set required fields, default anonymous
+ * walineConfig.whiteList {string[]} set some pages not to display reaction
  */
 export const comment = {
-  enable: true,
+  enable: false,
   type: 'giscus', // waline | giscus,
-  //waline config
-  serverUrl: "https://xxxxx.xxxxx.app",
-  // waline config
-  lang: 'en',
-  pageSize: 20,
-  wordLimit: '',
-  count: 5,
-  pageview: true,
-  reaction: true,
-  requiredMeta: ["nick", "mail"],
-  whiteList: ['/message/', '/friends/'],
+  walineConfig:{
+    serverUrl: "https://xxxxx.xxxxx.app",
+    lang: 'en',
+    pageSize: 20,
+    wordLimit: '',
+    count: 5,
+    pageview: true,
+    reaction: true,
+    requiredMeta: ["nick", "mail"],
+    whiteList: ['/message/', '/friends/'],
+  },
 
   // giscus config
   giscusConfig: {
-    'data-repo': "cirry/astro-yi",
-    'data-repo-id': "R_kgDOJNr3Jw",
+    'data-repo': "xxxxxxx",
+    'data-repo-id': "xxxxxx",
     'data-category': "Announcements",
-    'data-category-id': "DIC_kwDOJNr3J84CftB-",
+    'data-category-id': "xxxxxxxxx",
     'data-mapping': "pathname",
     'data-strict': "0",
     'data-reactions-enabled': "1",
     'data-emit-metadata': "0",
     'data-input-position': "bottom",
     'data-theme': "light",
-    'data-lang': "zh-CN",
+    'data-lang': "xxxxxxxxxxx",
     'crossorigin': "anonymous",
   }
-
 }

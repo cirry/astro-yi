@@ -21,7 +21,7 @@ import {t} from '../i18n/utils'
 
   let commentDiv = document.getElementById("waline-comment");
   if (comment.enable && comment.type === "waline" && commentDiv) {
-    let recentCommentUrl = comment.serverUrl + "/api/comment?type=recent&count=" + comment.count;
+    let recentCommentUrl = comment.walineConfig.serverUrl + "/api/comment?type=recent&count=" + comment.walineConfig.count;
     fetch(recentCommentUrl).then((comment) => {
       return comment.json()
     }).then((recentComments) => {

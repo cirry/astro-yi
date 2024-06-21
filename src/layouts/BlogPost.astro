@@ -81,8 +81,11 @@ const {frontmatter = {comment: false, donate: false, toc: false, mathjax: false,
     // 循环遍历链接标签
     for (var i = 0; i < links.length; i++) {
       // 给每个链接标签添加 target 属性
-      links[i].setAttribute("target", "_blank");
-      links[i].setAttribute("rel", "nofollow noreferrer");
+      let names = links[i].getAttributeNames()
+      if (!names.includes('data-footnote-backref') && !names.includes('data-footnote-ref')) {
+        links[i].setAttribute("target", "_blank");
+        links[i].setAttribute("rel", "nofollow noreferrer");
+      }
     }
   }
 </script>

@@ -15,14 +15,14 @@
       el: "#waline",
       comment: true,
       path: window.location.pathname.replace(/\/$/, ""),
-      serverURL: comment.serverUrl,
-      lang: comment.lang,
-      pageSize: comment.pageSize,
-      pageview: comment.pageview, // 浏览量统计
-      reaction: comment.whiteList.includes(location.pathname)
+      serverURL: comment.walineConfig.serverUrl,
+      lang: comment.walineConfig.lang,
+      pageSize: comment.walineConfig.pageSize,
+      pageview: comment.walineConfig.pageview, // 浏览量统计
+      reaction: comment.walineConfig.whiteList.includes(location.pathname)
         ? false
-        : comment.reaction, // 开启反应
-      requiredMeta: comment.requiredMeta,
+        : comment.walineConfig.reaction, // 开启反应
+      requiredMeta: comment.walineConfig.requiredMeta,
       dark: 'html[data-theme="dark"]',
     });
   }
