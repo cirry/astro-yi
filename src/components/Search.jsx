@@ -1,8 +1,8 @@
-import { createSignal } from "solid-js";
+import {createSignal} from "solid-js";
 import _ from 'lodash'
-import { dealLabel } from "../utils/dealLabel.ts"
-import { formatDate } from "../utils/formatDate.ts";
-import { t } from '../i18n/utils.ts'
+import {dealLabel} from "../utils/dealLabel.ts"
+import {formatDate} from "../utils/formatDate.ts";
+import {t} from '../i18n/utils.ts'
 
 export function Search(props) {
   const [inputVal, setInputVal] = createSignal('')
@@ -28,7 +28,7 @@ export function Search(props) {
             return `<span class="text-skin-active font-bold">${match}</span>`
           })
         } else {
-          blog.data.description = blog.body.substring(0, 140) || ''
+          blog.data.description = ''
         }
       })
       setResultPosts(cloneBlogs)
@@ -65,22 +65,22 @@ export function Search(props) {
             <div class="flex items-center">
               {post.data.date ?
                 <div class="flex items-center cursor-pointer">
-                  <i class="ri-calendar-2-fill mr-1" />
+                  <i class="ri-calendar-2-fill mr-1"/>
                   <div class="tag">{formatDate(post.data.date)}</div>
                 </div> : ''}
 
               {dealLabel(post.data.category).filter(item => item !== 'uncategorized').map((categoryName, categoryNameIndex) => (
                 <div class="flex  items-center  cursor-pointer">
-                  <div class="divider-vertical" />
-                  <i class="ri-folder-2-fill mr-1" />
+                  <div class="divider-vertical"/>
+                  <i class="ri-folder-2-fill mr-1"/>
                   <a href={"/category/" + categoryName}>{categoryName}</a>
                 </div>
               ))}
 
               {dealLabel(post.data.tags).map((tagName, tagIndex) => (
                 <div class="flex  items-center  cursor-pointer">
-                  <div class="divider-vertical" />
-                  <i class="ri-price-tag-3-fill mr-1" />
+                  <div class="divider-vertical"/>
+                  <i class="ri-price-tag-3-fill mr-1"/>
                   <a href={"/tags/" + tagName}>{tagName}</a>
                 </div>
               ))}
