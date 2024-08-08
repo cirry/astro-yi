@@ -1,15 +1,30 @@
-:root {
-  --ra-color-note: #428bca;
-  --ra-color-tip: #5cb85c;
-  --ra-color-caution: #f0ad4e;
-  --ra-color-danger: #d9534f;
+html[data-theme="light"]{
+  --ra-color-note: #3d50f5;
+  --ra-color-note-bg: #cfd4fc;
+  --ra-color-tip: #bb3df5;
+  --ra-color-tip-bg: #edd1fa;
+
+  --ra-color-caution: #f5bb3d;
+  --ra-color-caution-bg: #fceac5;
+  --ra-color-danger: #f53d7d;
+  --ra-color-danger-bg: #fad1df;
+}
+html[data-theme="dark"]{
+  --ra-color-note: #3347ff;
+  --ra-color-note-bg: #171d4f;
+  --ra-color-tip: #bd53ee;
+  --ra-color-tip-bg: #40224e;
+
+  --ra-color-caution: #eebd53;
+  --ra-color-caution-bg: #4e4022;
+  --ra-color-danger: #ee5389;
+  --ra-color-danger-bg: #4e2232;
 }
 
 .remark-aside {
   padding: 1rem;
   margin-bottom: 20px;
   border-inline-start: 0.25rem solid;
-  border: 1px solid #eee;
   border-radius: 0;
   border-left-width: 5px;
 }
@@ -22,40 +37,52 @@
 
 .remark-aside--note {
   border-left-color: var(--ra-color-note);
+  background: var(--ra-color-note-bg);
 }
+
 .remark-aside--note svg {
   fill: var(--ra-color-note);
 }
+
 .remark-aside--note .remark-aside__title {
   color: var(--ra-color-note) !important;
 }
 
 .remark-aside--tip {
   border-left-color: var(--ra-color-tip);
+  background: var(--ra-color-tip-bg);
 }
+
 .remark-aside--tip svg {
   fill: var(--ra-color-tip);
 }
+
 .remark-aside--tip .remark-aside__title {
   color: var(--ra-color-tip) !important;
 }
 
 .remark-aside--caution {
   border-left-color: var(--ra-color-caution);
+  background: var(--ra-color-caution-bg);
 }
+
 .remark-aside--caution svg {
   fill: var(--ra-color-caution);
 }
+
 .remark-aside--caution .remark-aside__title {
   color: var(--ra-color-caution) !important;
 }
 
 .remark-aside--danger {
   border-left-color: var(--ra-color-danger);
+  background: var(--ra-color-danger-bg);
 }
+
 .remark-aside--danger svg {
   fill: var(--ra-color-danger);
 }
+
 .remark-aside--danger .remark-aside__title {
   color: var(--ra-color-danger) !important;
 }
