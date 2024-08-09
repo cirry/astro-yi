@@ -1,3 +1,2 @@
 User-agent: *
 Allow: /
-Sitemap: https://astro-yi-nu.vercel.app/sitemap-0.xml

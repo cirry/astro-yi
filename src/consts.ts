@@ -22,7 +22,7 @@ export const site = {
   author: "Astro-Yi", // required
   avatar: '/avatar.png', // required
   motto: 'Actions speak louder than words.',
-  url: 'https://astro-yi-nu.vercel.app',
+  url: '',
   recentBlogSize: 5,
   archivePageSize: 25,
   postPageSize: 10,
@@ -38,7 +38,7 @@ export const site = {
  */
 export const config = {
   busuanzi: false,
-  lang: 'en', // en | zh-cn
+  lang: 'en', // en | zh-cn | cs
   codeFoldingStartLines: 16, // Need to re-run the project to take effect
   ga: false // If you want to integrate with Google Analytics, just enter your GA-ID here.
 }
@@ -118,12 +118,12 @@ export const infoLinks = [
   {
     icon: 'ri-github-fill',
     name: 'github',
-    outlink: 'https://github.com/cirry',
+    outlink: 'xxxxxxx',
   },
   {
     icon: 'ri-rss-fill',
     name: 'rss',
-    outlink: 'https://astro-yi-nu.vercel.app/rss.xml',
+    outlink: 'xxxxxxx',
   }
 ]
 
@@ -178,7 +178,7 @@ export const comment = {
   enable: false,
   type: 'giscus', // waline | giscus,
   walineConfig:{
-    serverUrl: "https://xxxxx.xxxxx.app",
+    serverUrl: "",
     lang: 'en',
     pageSize: 20,
     wordLimit: '',
@@ -191,17 +191,17 @@ export const comment = {
 
   // giscus config
   giscusConfig: {
-    'data-repo': "xxxxxxx",
-    'data-repo-id': "xxxxxx",
-    'data-category': "Announcements",
-    'data-category-id': "xxxxxxxxx",
-    'data-mapping': "pathname",
-    'data-strict': "0",
-    'data-reactions-enabled': "1",
-    'data-emit-metadata': "0",
-    'data-input-position': "bottom",
-    'data-theme': "light",
-    'data-lang': "xxxxxxxxxxx",
-    'crossorigin': "anonymous",
+    'data-repo': "",
+    'data-repo-id': "",
+    'data-category': "",
+    'data-category-id': "",
+    'data-mapping': "",
+    'data-strict': "",
+    'data-reactions-enabled': "",
+    'data-emit-metadata': "",
+    'data-input-position': "",
+    'data-theme': "",
+    'data-lang': "",
+    'crossorigin': "",
   }
 }
