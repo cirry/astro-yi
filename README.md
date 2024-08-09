@@ -261,17 +261,6 @@ export const comment = {
 
 Please modify your website configuration, comment system configuration, appreciation function image, personal information links, and of course, you can also modify other configuration content.
 
-### Note
-
-In the `astro.config.mjs` file in the root directory, it is recommended to modify the `site` property to correctly generate the site map.
-
-```js
-export default defineConfig({
-  site: 'https://xxxx.com',// Modify to your own website address
-  // ...
-})
-```
-
 ### Write a blog 
 
 With the Yi theme, all you need to do is create a new md document in `src/content/blog` and you're ready to start writing your blog.
@@ -282,7 +271,7 @@ According to Astro's Markdown document standard, each document should have its o
 
 2. For example, to avoid using Chinese as the blog path and file name, we can set `title` as the title of the md document in Chinese, and the file name in English with `-` as the word connecting symbol.
 
-In Astro-Yi, You need to set two important properties: **title** and **date**, the following is the simplest frontmatter setup for an Md document:
+In Astro-Yi, You need to set two important properties: **title** and **date**, the following is the simplest frontmatter setup for a Md document:
 
 ```yaml
 ---
@@ -326,3 +315,22 @@ date: 2024-03-20
 ### Modify icons
 
 All the icons in the blog are using the open source icon library [remixicon](https://remixicon.cn/), you can replace your favorite icons by yourself.
+
+### Note
+
+In the `astro.config.mjs` file in the root directory, it is recommended to modify the `site` property to correctly generate the site map.
+
+```js
+export default defineConfig({
+  site: 'https://xxxx.com',// Modify to your own website address
+  // ...
+})
+```
+
+Add a line to the path of your sitemap file at the end of the robots.txt file in the public directory.
+
+
+```text
+Sitemap: [blog-url]/sitemap-0.xml
+// ps：Sitemap: https://astro-yi-nu.vercel.app/sitemap-0.xml
+```
