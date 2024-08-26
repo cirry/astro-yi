@@ -124,7 +124,9 @@ classDiagram
 ---
 mathjax: true
 ---
-hello! $$ \displaystyle\sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t $$ hello!
+hello!
+$$ \displaystyle\sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t $$
+hello!
 ```
 
 hello!  $$ \displaystyle\sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t $$ hello!
