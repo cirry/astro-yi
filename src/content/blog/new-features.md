@@ -118,14 +118,27 @@ classDiagram
 
 + set markdown frontmatter `mathjax: true`.
 
+#### Block Mode
+
 ```yaml title="Mathjax.md"
 ---
 mathjax: true
 ---
-$$ \displaystyle\sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t $$
+hello! $ \displaystyle\sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t $ hello!
 ```
 
-$$ \displaystyle\sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t $$
+hello!  $$ \displaystyle\sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t $$ hello!
+
+#### Inline Mode
+
+```yaml title="Mathjax.md"
+---
+mathjax: true
+---
+hello! $ \displaystyle\sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t $ hello!
+```
+
+hello! $ \displaystyle\sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t $ hello!
 
 ### Integration with Expressive Code
 

@@ -257,3 +257,10 @@ export default defineConfig({
    // ...
 })
 ```
+
+在public目录中的robots.txt文件最后添加一行您的sitemap文件路径。
+
+```text
+Sitemap: [博客地址]/sitemap-0.xml
+// 类似：Sitemap: https://astro-yi-nu.vercel.app/sitemap-0.xml
+```
