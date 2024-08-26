@@ -268,3 +268,7 @@ menu {
 .MathJax {
   text-align: left !important;
 }
+
+.MathJax svg {
+  display: inline;
+}
