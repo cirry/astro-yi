@@ -125,12 +125,12 @@ classDiagram
 mathjax: true
 ---
 hello!
-$$ \displaystyle\sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t $$
+$$ \sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t $$
 hello!
 ```
 
 hello! 
-$$ \displaystyle\sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t $$
+$$ \sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t $$
 hello!
 
 #### Inline Mode
@@ -139,10 +139,10 @@ hello!
 ---
 mathjax: true
 ---
-hello! $ \displaystyle\sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t $ hello!
+hello! $ \sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t $ hello!
 ```
 
-hello! $ \displaystyle\sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t $ hello!
+hello! $ \sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t $ hello!
 
 ### Integration with Expressive Code
 
