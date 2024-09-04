@@ -6,6 +6,18 @@ mermaid: true
 mathjax: true
 ---
 
+### Support collapse
+
+```bash
+:::collapse
+Hello World!
+:::
+```
+
+
+:::collapse
+Hello World!
+:::
 
 ### Support admonitions
 
@@ -36,7 +48,7 @@ hello world
 note
 
 ```js
-console.log(hello world)
+console.log('hello world')
 ```
 
 :::
@@ -114,7 +126,7 @@ classDiagram
     }
 ```
 
-### Support Mathjax
+### Support mathjax
 
 + set markdown frontmatter `mathjax: true`.
 
