@@ -29,6 +29,7 @@ export  const en = {
   'pagination.unit': 'Pages',
   'post.dateFormat': 'Do MMMM YYYY',
   'post.lastUpdated': 'Last updated',
+  'remark.open': 'Open',
   'search.labelOne':'Viewing articles under the ',
   'search.labelTwo':'',
   'search.placeholder': 'Enter title or abstract keywords',
