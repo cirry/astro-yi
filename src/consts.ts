@@ -21,8 +21,8 @@ export const site = {
   description: 'Welcome to my independent blog website! ',
   author: "Astro-Yi", // required
   avatar: '/avatar.png', // required
+  url: 'https://xxxxxx.com', // required
   motto: 'Actions speak louder than words.',
-  url: '',
   recentBlogSize: 5,
   archivePageSize: 25,
   postPageSize: 10,
