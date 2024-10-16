@@ -913,9 +913,10 @@
    border: 0;
  }
 
- .markdown-body .highlight {
-   margin-bottom: 16px;
- }
+ /* Resolving style conflicts between expensive code and github-markdown */
+ /*.markdown-body .highlight {*/
+ /*  margin-bottom: 16px;*/
+ /*}*/
 
  .markdown-body .highlight pre {
    margin-bottom: 0;
