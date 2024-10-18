@@ -38,7 +38,7 @@ export const site = {
  */
 export const config = {
   busuanzi: false,
-  lang: 'en', // en | zh-cn
+  lang: 'en', // en | zh-cn | zh-Hant
   codeFoldingStartLines: 16 , // Need to re-run the project to take effect
   ga: false // If you want to integrate with Google Analytics, just enter your GA-ID here.
 }
