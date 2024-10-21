@@ -13,11 +13,7 @@ const {data, slug} = blog
   </PostViewTitle>
   <p class="break-all text-skin-base mb-2">
     {
-      data.description
-        ? data.description
-        : blog.body.length > 140
-          ? blog.body.substring(0, 140).replace(/#/gi, "") + "..."
-          : blog.body
+      data.description ? data.description : ''
     }
   </p>
   <div class="text-right">

@@ -202,24 +202,45 @@ export const friendshipLinks =
 /**
  * 评论功能
  * enable 是否开启评论功能
- * serverUrl 评论服务器地址
- * pageSize 每页评论数量
- * wordLimit 评论内容字数限制，默认为空不限制
- * count 最近评论侧边栏评论数量
- * pageview 是否开启阅读数统计
- * reaction 是否开启表情
- * requiredMeta 必填字段
+ * type 目前支持waline和giscus评论系统
+ * walineConfig.serverUrl 评论服务器地址
+ * walineConfig.pageSize 每页评论数量
+ * walineConfig.wordLimit 评论内容字数限制，默认为空不限制
+ * walineConfig.count 最近评论侧边栏评论数量
+ * walineConfig.pageview 是否开启阅读数统计
+ * walineConfig.reaction 是否开启表情
+ * walineConfig.requiredMeta 必填字段
  */
 export const comment = {
   enable: false,
-  serverUrl: "https://xxxxxxx.com",
-  pageSize: 20,
-  wordLimit: '',
-  count: 5,
-  pageview: true,
-  reaction: false,
-  requiredMeta: ["nick", "mail"],
-  whiteList: ['/message/', '/friends/'],
+  type: 'giscus', // waline | giscus,
+  walineConfig:{
+    serverUrl: "https://xxxxx.xxxxx.app",
+    lang: 'en',
+    pageSize: 20,
+    wordLimit: '',
+    count: 5,
+    pageview: true,
+    reaction: true,
+    requiredMeta: ["nick", "mail"],
+    whiteList: ['/message/', '/friends/'],
+  },
+
+  // giscus config
+  giscusConfig: {
+    'data-repo': "xxxxxxx",
+    'data-repo-id': "xxxxxx",
+    'data-category': "Announcements",
+    'data-category-id': "xxxxxxxxx",
+    'data-mapping': "pathname",
+    'data-strict': "0",
+    'data-reactions-enabled': "1",
+    'data-emit-metadata': "0",
+    'data-input-position': "bottom",
+    'data-theme': "light",
+    'data-lang': "xxxxxxxxxxx",
+    'crossorigin': "anonymous",
+  }
 }
 ```
 
@@ -235,4 +256,11 @@ export default defineConfig({
   site: 'https://xxxx.com',// 修改为您自己的网站地址
    // ...
 })
+```
+
+在public目录中的robots.txt文件最后添加一行您的sitemap文件路径。
+
+```text
+Sitemap: [博客地址]/sitemap-0.xml
+// 类似：Sitemap: https://astro-yi-nu.vercel.app/sitemap-0.xml
 ```

@@ -217,39 +217,49 @@ export const friendshipLinks =
 /**
  * Comment Feature
  * enable {boolean}
- * serverUrl {string} server link
- * pageSize {number} number of comments per page. default 10
- * wordLimit {number} Comment word s limit. When a single number is filled in, it 's the maximum number of comment words. No limit when set to 0
- * count {number} recent comment numbers
- * pageview {boolean} display the number of page views and comments of the article
- * reaction {string | string[]} Add emoji interaction function to the article
- * requiredMeta {string[]}  Set required fields, default anonymous
+ * type {string} giscus and waline are currently supported.
+ * walineConfig.serverUrl {string} server link
+ * walineConfig.pageSize {number} number of comments per page. default 10
+ * walineConfig.wordLimit {number} Comment word s limit. When a single number is filled in, it 's the maximum number of comment words. No limit when set to 0
+ * walineConfig.count {number} recent comment numbers
+ * walineConfig.pageview {boolean} display the number of page views and comments of the article
+ * walineConfig.reaction {string | string[]} Add emoji interaction function to the article
+ * walineConfig.requiredMeta {string[]}  Set required fields, default anonymous
  */
 export const comment = {
   enable: false,
-  serverUrl: "https://xxxxxxx.com",
-  pageSize: 20,
-  wordLimit: '',
-  count: 5,
-  pageview: true,
-  reaction: false,
-  requiredMeta: ["nick", "mail"],
-  whiteList: ['/message/', '/friends/'],
+  type: 'giscus', // waline | giscus,
+  walineConfig:{
+    serverUrl: "https://xxxxx.xxxxx.app",
+    lang: 'en',
+    pageSize: 20,
+    wordLimit: '',
+    count: 5,
+    pageview: true,
+    reaction: true,
+    requiredMeta: ["nick", "mail"],
+    whiteList: ['/message/', '/friends/'],
+  },
+
+  // giscus config
+  giscusConfig: {
+    'data-repo': "xxxxxxx",
+    'data-repo-id': "xxxxxx",
+    'data-category': "Announcements",
+    'data-category-id': "xxxxxxxxx",
+    'data-mapping': "pathname",
+    'data-strict': "0",
+    'data-reactions-enabled': "1",
+    'data-emit-metadata': "0",
+    'data-input-position': "bottom",
+    'data-theme': "light",
+    'data-lang': "xxxxxxxxxxx",
+    'crossorigin': "anonymous",
+  }
 }
 ```
 
 Please modify your website configuration, comment system configuration, appreciation function image, personal information links, and of course, you can also modify other configuration content.
-
-### Note
-
-In the `astro.config.mjs` file in the root directory, it is recommended to modify the `site` property to correctly generate the site map.
-
-```js
-export default defineConfig({
-  site: 'https://xxxx.com',// Modify to your own website address
-  // ...
-})
-```
 
 ### Write a blog 
 
@@ -261,7 +271,7 @@ According to Astro's Markdown document standard, each document should have its o
 
 2. For example, to avoid using Chinese as the blog path and file name, we can set `title` as the title of the md document in Chinese, and the file name in English with `-` as the word connecting symbol.
 
-In Astro-Yi, You need to set two important properties: **title** and **date**, the following is the simplest frontmatter setup for an Md document:
+In Astro-Yi, You need to set two important properties: **title** and **date**, the following is the simplest frontmatter setup for a Md document:
 
 ```yaml
 ---
@@ -305,3 +315,22 @@ date: 2024-03-20
 ### Modify icons
 
 All the icons in the blog are using the open source icon library [remixicon](https://remixicon.cn/), you can replace your favorite icons by yourself.
+
+### Note
+
+In the `astro.config.mjs` file in the root directory, it is recommended to modify the `site` property to correctly generate the site map.
+
+```js
+export default defineConfig({
+  site: 'https://xxxx.com',// Modify to your own website address
+  // ...
+})
+```
+
+Add a line to the path of your sitemap file at the end of the robots.txt file in the public directory.
+
+
+```text
+Sitemap: [blog-url]/sitemap-0.xml
+// ps：Sitemap: https://astro-yi-nu.vercel.app/sitemap-0.xml
+```

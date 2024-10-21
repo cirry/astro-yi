@@ -41,19 +41,10 @@ const {mathjax = false, mermaid = false} = Astro.props
   <link rel="sitemap" href="/sitemap-0.xml"/>
   <title>{site.title}</title>
   <script is:inline src="/toggle-theme.js"></script>
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        inlineMath: [
-          ["\\(", "\\)"],
-        ],
-      },
-    });
-  </script>
   {
-    mathjax &&
-    <script async type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js"></script>
+    mathjax && <script async type="text/javascript" src="/load-mathjax.js"></script>
   }
+
   {
     mermaid &&
     <script async type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/mermaid/10.9.0/mermaid.min.js"></script>
@@ -64,15 +55,20 @@ const {mathjax = false, mermaid = false} = Astro.props
   }
   <!-- Google tag (gtag.js) -->
   {
-    config.ga && <>
-    <script src={"https://www.googletagmanager.com/gtag/js?id=" +　config.ga}></script>
-    <script define:vars={{ga: config.ga}} >
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+    config.ga &&
+    <>
+      <script src={"https://www.googletagmanager.com/gtag/js?id=" +　config.ga}></script>
+      <script define:vars={{ga: config.ga}}>
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', ga);
-    </script>
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', ga);
+      </script>
     </>
   }
 </head>

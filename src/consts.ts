@@ -21,8 +21,8 @@ export const site = {
   description: 'Welcome to my independent blog website! ',
   author: "Astro-Yi", // required
   avatar: '/avatar.png', // required
+  url: 'https://xxxxxx.com', // required
   motto: 'Actions speak louder than words.',
-  url: 'https://astro-yi-nu.vercel.app',
   recentBlogSize: 5,
   archivePageSize: 25,
   postPageSize: 10,
@@ -38,7 +38,7 @@ export const site = {
  */
 export const config = {
   busuanzi: false,
-  lang: 'en', // en | zh-cn | zh-Hant
+  lang: 'en', // en | zh-cn | zh-Hant | cs
   codeFoldingStartLines: 16 , // Need to re-run the project to take effect
   ga: false // If you want to integrate with Google Analytics, just enter your GA-ID here.
 }
@@ -118,12 +118,12 @@ export const infoLinks = [
   {
     icon: 'ri-github-fill',
     name: 'github',
-    outlink: 'https://github.com/cirry',
+    outlink: 'xxxxxxx',
   },
   {
     icon: 'ri-rss-fill',
     name: 'rss',
-    outlink: 'https://astro-yi-nu.vercel.app/rss.xml',
+    outlink: 'xxxxxxx',
   }
 ]
 
@@ -163,25 +163,45 @@ export const friendshipLinks =
 /**
  * Comment Feature
  * enable {boolean}
- * serverUrl {string} server link
- * lang {string} link: https://waline.js.org/guide/features/i18n.html
- * pageSize {number} number of comments per page. default 10
- * wordLimit {number} Comment word s limit. When a single number is filled in, it 's the maximum number of comment words. No limit when set to 0
- * count {number} recent comment numbers
- * pageview {boolean} display the number of page views and comments of the article
- * reaction {string | string[]} Add emoji interaction function to the article
- * requiredMeta {string[]}  Set required fields, default anonymous
- * whiteList {string[]} set some pages not to display reaction
+ * type {string} required waline | giscus
+ * walineConfig.serverUrl {string} server link
+ * walineConfig.lang {string} link: https://waline.js.org/guide/features/i18n.html
+ * walineConfig.pageSize {number} number of comments per page. default 10
+ * walineConfig.wordLimit {number} Comment word s limit. When a single number is filled in, it 's the maximum number of comment words. No limit when set to 0
+ * walineConfig.count {number} recent comment numbers
+ * walineConfig.pageview {boolean} display the number of page views and comments of the article
+ * walineConfig.reaction {string | string[]} Add emoji interaction function to the article
+ * walineConfig.requiredMeta {string[]}  Set required fields, default anonymous
+ * walineConfig.whiteList {string[]} set some pages not to display reaction
  */
 export const comment = {
   enable: false,
-  serverUrl: "https://xxxxx.xxxxx.app",
-  lang: 'en',
-  pageSize: 20,
-  wordLimit: '',
-  count: 5,
-  pageview: true,
-  reaction: true,
-  requiredMeta: ["nick", "mail"],
-  whiteList: ['/message/', '/friends/'],
+  type: 'giscus', // waline | giscus,
+  walineConfig:{
+    serverUrl: "",
+    lang: 'en',
+    pageSize: 20,
+    wordLimit: '',
+    count: 5,
+    pageview: true,
+    reaction: true,
+    requiredMeta: ["nick", "mail"],
+    whiteList: ['/message/', '/friends/'],
+  },
+
+  // giscus config
+  giscusConfig: {
+    'data-repo': "",
+    'data-repo-id': "",
+    'data-category': "",
+    'data-category-id': "",
+    'data-mapping': "",
+    'data-strict': "",
+    'data-reactions-enabled': "",
+    'data-emit-metadata': "",
+    'data-input-position': "",
+    'data-theme': "",
+    'data-lang': "",
+    'crossorigin': "",
+  }
 }

@@ -5,6 +5,9 @@ import tailwind from '@astrojs/tailwind';
 import solid from '@astrojs/solid-js';
 import {remarkModifiedTime} from "./src/remarkPlugin/remark-modified-time.mjs";
 import {resetRemark} from "./src/remarkPlugin/reset-remark.js";
+import remarkDirective from "remark-directive";
+import {remarkAsides} from  './src/remarkPlugin/remark-asides.js'
+import {remarkCollapse} from "./src/remarkPlugin/remark-collapse.js";
 
 import expressiveCode from "astro-expressive-code";
 import {pluginLineNumbers} from '@expressive-code/plugin-line-numbers'
@@ -37,7 +40,7 @@ export default defineConfig({
     themeCssSelector: (theme) => `[data-theme="${theme.type}"]`
   }), mdx()],
   markdown: {
-    remarkPlugins: [remarkModifiedTime, resetRemark],
+    remarkPlugins: [remarkModifiedTime, resetRemark, remarkDirective, remarkAsides({}),remarkCollapse({})],
     rehypePlugins: [customRehypeLazyLoadImage],
   }
 });

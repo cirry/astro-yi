@@ -27,8 +27,8 @@ export function Search(props) {
           blog.data.description = blog.data.description.replace(reg, (match) => {
             return `<span class="text-skin-active font-bold">${match}</span>`
           })
-        }else {
-          blog.data.description = blog.body.substring(0, 140) || ''
+        } else {
+          blog.data.description = ''
         }
       })
       setResultPosts(cloneBlogs)
@@ -59,7 +59,7 @@ export function Search(props) {
         {resultPosts().map(post =>
           <>
             <a
-              class="flex text-xl underline-offset-4 decoration-skin-base decoration-wavy hover:underline hover:decoration-sky-500 font-bold"
+              class="text-xl underline-offset-4 decoration-skin-base decoration-wavy hover:underline hover:decoration-sky-500 font-bold"
               href={'/' + post.collection + '/' + post.slug} innerHTML={post.data.title}>
             </a>
             <div class="flex items-center">
