@@ -5,14 +5,14 @@ import Footer from '../components/Footer.astro';
 import Profile from '../components/Profile.astro'
 import Comment from '../components/Comment.astro'
 import Toc from '../components/Toc.astro'
-import {comment} from "../consts";
+import {comment, config} from "../consts";
 import ScrollToTop from '../components/ScrollToTop.astro'
 import {t}from '../i18n/utils'
 
 const {frontmatter = {comment: false, donate: false, toc: false, mathjax: false, mermaid: false}} = Astro.props
 ---
 
-<html lang="en">
+<html lang={config.lang}>
 <BaseHead mathjax={frontmatter.mathjax} mermaid={frontmatter.mermaid} />
 
 <body class="bg-skin-secondary">
