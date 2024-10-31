@@ -38,8 +38,8 @@ export const site = {
  */
 export const config = {
   busuanzi: false,
-  lang: 'en', // en | zh-cn | cs
-  codeFoldingStartLines: 16, // Need to re-run the project to take effect
+  lang: 'en', // en | zh-cn | zh-Hant | cs
+  codeFoldingStartLines: 16 , // Need to re-run the project to take effect
   ga: false // If you want to integrate with Google Analytics, just enter your GA-ID here.
 }
 
@@ -178,7 +178,7 @@ export const comment = {
   enable: false,
   type: 'giscus', // waline | giscus,
   walineConfig:{
-    serverUrl: "",
+    serverUrl: "https://xxxxx.xxxxx.app",
     lang: 'en',
     pageSize: 20,
     wordLimit: '',

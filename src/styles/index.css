@@ -1,5 +1,4 @@
 @import url('./github-markdown.css');
-
 @import "remixicon/fonts/remixicon.css";
 @import "tocbot/dist/tocbot.css";
 @import "remark-aside.css";
@@ -249,6 +248,13 @@ menu {
   display: none !important;
 }
 
+.github-avatar{
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
 
 .avatar {
   border-radius: 50%;

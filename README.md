@@ -89,7 +89,7 @@ export const site = {
  */
 export const config = {
   busuanzi: false,
-  lang: 'en', // English: en | 简体中文: zh-cn
+  lang: 'en', // English: en | 简体中文: zh-cn | 繁體中文: zh-Hant
   codeFoldingStartLines: 16, // Need to re-run the project to take effect
 }
 

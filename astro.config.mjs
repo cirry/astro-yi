@@ -8,6 +8,7 @@ import {resetRemark} from "./src/remarkPlugin/reset-remark.js";
 import remarkDirective from "remark-directive";
 import {remarkAsides} from  './src/remarkPlugin/remark-asides.js'
 import {remarkCollapse} from "./src/remarkPlugin/remark-collapse.js";
+import {remarkGithubCard} from './src/remarkPlugin/remark-github-card.js'
 
 import expressiveCode from "astro-expressive-code";
 import {pluginLineNumbers} from '@expressive-code/plugin-line-numbers'
@@ -40,7 +41,7 @@ export default defineConfig({
     themeCssSelector: (theme) => `[data-theme="${theme.type}"]`
   }), mdx()],
   markdown: {
-    remarkPlugins: [remarkModifiedTime, resetRemark, remarkDirective, remarkAsides({}),remarkCollapse({})],
+    remarkPlugins: [remarkModifiedTime, resetRemark, remarkDirective, remarkAsides({}),remarkCollapse({}),remarkGithubCard()],
     rehypePlugins: [customRehypeLazyLoadImage],
   }
 });

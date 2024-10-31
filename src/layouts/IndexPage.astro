@@ -6,12 +6,12 @@ import Profile from '../components/Profile.astro'
 import BlogAside from '../components/BlogAside.astro'
 import Comment from '../components/Comment.astro'
 import Donate from '../components/Donate.astro'
-import {donate, comment} from "../consts";
+import {donate, comment, config} from "../consts";
 
 const {frontmatter = {comment: false, donate: false}} = Astro.props
 ---
 
-<html lang="en">
+<html lang={config.lang}>
 <BaseHead/>
 
 <body class="bg-skin-secondary relative">

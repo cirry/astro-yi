@@ -6,6 +6,10 @@ mermaid: true
 mathjax: true
 ---
 
+### Support Github Card
+
+::github{repo="cirry/astro-yi"}
+
 ### Support collapse
 
 ```bash
@@ -141,7 +145,9 @@ $$ \sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t $$
 hello!
 ```
 
-hello!  $$ \sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t $$ hello!
+hello! 
+$$ \sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t $$
+hello!
 
 #### Inline Mode
 
