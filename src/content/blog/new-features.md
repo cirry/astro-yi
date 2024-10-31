@@ -6,6 +6,10 @@ mermaid: true
 mathjax: true
 ---
 
+### Support Github Card
+
+::github{repo="cirry/astro-yi"}
+
 ### Support collapse
 
 ```bash
