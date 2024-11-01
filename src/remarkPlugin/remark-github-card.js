@@ -53,12 +53,12 @@ export function remarkGithubCard() {
       const nAvatar = h(`img#${cardUuid}-avatar`, {class: 'github-avatar mr-4',})
 
 
-      const nTitle = h('div', {class: 'flex items-center justify-between h-8'}, [
+      const nTitle = h('div', {class: 'flex items-center justify-between'}, [
         h('a', {class: 'flex items-center text-inherit text-xl', href: `https://github.com/${repo}`, target: '_blank',}, [
           nAvatar,
           h('div', {class: ''}, [{type: "text", value: author}]),
           h('div', {class: 'mx-1'}, [{type: "text", value: '/'}]),
-          h('div', {class: 'font-bold',}, [{type: "text", value: repoName}]),
+          h('div', {class: 'font-bold break-all truncate',}, [{type: "text", value: repoName}]),
         ]),
       ])
 
@@ -126,7 +126,7 @@ export function remarkGithubCard() {
       parent.children[index] = h(
         `div#${cardUuid}-card`,
         {
-          class: 'shadow-lg w-auto flex flex-col bg-skin-card p-4',
+          class: 'shadow w-auto flex flex-col bg-skin-card p-4 my-4 rounded-lg',
           href: `https://github.com/${repo}`,
           target: '_blank',
           repo,
