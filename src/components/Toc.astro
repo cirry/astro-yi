@@ -54,6 +54,9 @@ import {t} from '../i18n/utils'
     scrollSmoothOffset: -80,
     scrollSmoothDuration: 200,
     collapseDepth: 3,
+    onClick: function (){
+      return false
+    },
   });
   let toc = document.getElementById("toc");
   if (toc) {

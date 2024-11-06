@@ -24,6 +24,9 @@
 - [x] 支持waline评论系统
 - [x] 支持图片懒加载和预览
 - [x] 支持文章永久固定链接
+- [x] 支持meriand
+- [x] 支持mathjax
+- [x] 支持expressive-code
 
 ......等等
 
