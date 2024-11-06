@@ -19,9 +19,12 @@ A content-focused Astro blog theme, Yi, in Chinese, it means fast and concise.
 - [x] SEO-friendly
 - [x] Supports sitemap and RSS.
 - [x] Supports article drafts.
-- [x] Supports Waline Comment.
+- [x] Supports Waline/Giscus Comment.
 - [x] Image lazy loading and scaling support.
 - [x] Supports fixed permalinks for articles.
+- [x] Supports meriand
+- [x] Supports mathjax
+- [x] Supports expressive code
 
 ......
 
