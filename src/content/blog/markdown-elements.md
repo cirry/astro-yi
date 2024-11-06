@@ -3,6 +3,7 @@ title: "A post of Markdown elements"
 description: "This post is for testing and listing a number of different markdown elements"
 date: 2024-03-19
 tags: ["test", "markdown"]
+category: astro
 ---
 
 ## This is a H2 Heading
