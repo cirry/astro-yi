@@ -6,9 +6,9 @@ Demo：[Astro-Theme-Yi](https://astro-yi-nu.vercel.app/)
 
 A content-focused Astro blog theme, Yi, in Chinese, it means fast and concise.
 
-![](https://pic-19d9.obs.cn-east-3.myhuaweicloud.com/astroyi/home.png)
+![](https://astro-yi.obs.cn-east-3.myhuaweicloud.com/7.png)
 
-![](https://pic-19d9.obs.cn-east-3.myhuaweicloud.com/astroyi/post-white.png)
+![](https://astro-yi.obs.cn-east-3.myhuaweicloud.com/1.png)
 
 ### 🔥 Features
 
