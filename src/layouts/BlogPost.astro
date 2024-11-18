@@ -9,39 +9,52 @@ import {comment, config} from "../consts";
 import ScrollToTop from '../components/ScrollToTop.astro'
 import {t}from '../i18n/utils'
 
-const {frontmatter = {comment: false, donate: false, toc: false, mathjax: false, mermaid: false}} = Astro.props
+const {
+  frontmatter = {
+    comment: false,
+    donate: false,
+    toc: false,
+    mathjax: false,
+    mermaid: false,
+  },
+} = Astro.props;
 ---
 
 <html lang={config.lang}>
-<BaseHead mathjax={frontmatter.mathjax} mermaid={frontmatter.mermaid} />
+<BaseHead
+  title={frontmatter.title}
+  description={frontmatter.description}
+  mathjax={frontmatter.mathjax}
+  mermaid={frontmatter.mermaid}
+/>
 
 <body class="bg-skin-secondary">
 <Header/>
 <main class="container p-4  pt-20 text-skin-base min-h-full pb-32 relative" id="app">
-  <div class="grid grid-cols-4 gap-8">
-    <div class="col-span-4 xl:col-span-3 space-y-4">
+      <div class="grid grid-cols-4 gap-8">
+        <div class="col-span-4 xl:col-span-3 space-y-4">
       <button class="flex items-center text-md cursor-pointer hover:text-skin-active outline-none" style="background-color: inherit;" onclick="history.back()">
         <i class="ri-arrow-left-line mr-2"/>
         <span>{t('home.goBack')}</span>
-      </button>
+          </button>
       <slot/>
       {
         frontmatter.comment && comment.enable &&
         <Comment></Comment>
       }
-    </div>
-    <div class="hidden xl:block col-span-1 relative">
+        </div>
+        <div class="hidden xl:block col-span-1 relative">
       <Profile></Profile>
       {
         frontmatter.toc &&
         <Toc></Toc>
       }
-    </div>
+        </div>
     <ScrollToTop></ScrollToTop>
-  </div>
+      </div>
   <Footer/>
-</main>
-</body>
+    </main>
+  </body>
 </html>
 
 
