@@ -9,6 +9,7 @@ export const zhCn = {
   'home.readMore': '阅读全文',
   'message.welcome': '欢迎留言',
   'message.welcomeTips': '既然来了就留个脚印吧！',
+  'memos.loadMore': '加载更多',
   'post.lastUpdated': '最后更新',
   'remark.open': '展开',
   'sidebar.categories': '分类',

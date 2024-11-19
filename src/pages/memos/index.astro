@@ -1,0 +1,75 @@
+---
+import IndexPage from "src/layouts/IndexPage.astro";
+import {t} from 'src/i18n/utils'
+---
+
+<IndexPage frontmatter={{comment: false, donate: false,}}>
+  <div class="memos-wrapper" id="memos"></div>
+  <button class="rounded bg-skin-card p-1 border text-sm hover:text-skin-active hidden" id="more-btn">{t('memos.loadMore')}</button>
+</IndexPage>
+
+<script>
+  import dayjs from "dayjs";
+  import {config} from '../../consts'
+  import relativeTime from "dayjs/plugin/relativeTime";
+  import "dayjs/locale/zh-cn";
+
+  dayjs.extend(relativeTime);
+  dayjs.locale(config.lang || 'en');
+
+  let moreBtn = document.getElementById('more-btn')
+  moreBtn.addEventListener('click', function () {
+    getMemos()
+  })
+
+  let avatar_url = ''
+  let name = ''
+  let nextPageToken = ''
+  await getAvatar()
+  await getMemos()
+
+  // 获取头像
+  async function getAvatar() {
+    let res = await fetch(`${config.memosUrl}/api/v1/users:search?filter=username=='${config.memosUsername}'`)
+    let json = await res.json()
+    avatar_url = json.users[0].avatarUrl ? json.users[0].avatarUrl : 'https://memos.cirry.cn/full-logo.webp'
+    name = json.users[0].name
+  }
+
+  async function getMemos() {
+    let res = await fetch(`${config.memosUrl}/api/v1/memos?filter=creator=='${name}'&&visibilities==['PUBLIC']&pageSize=${config.memosPageSize}&pageToken=${nextPageToken}`)
+    let json = await res.json()
+
+    let divs = ''
+
+    json.memos.forEach(memo => {
+      let imagesStr = ''
+      if (memo.resources.length > 0) {
+        let images = memo.resources.filter(source => ["image/jpeg", "image/png", "image/jpg", "image/webp"].includes(source.type))
+        images.forEach(image => {
+          imagesStr += `<img src="${config.memosUrl + '/file/' + image.name + '/' +image.filename}" alt="${image.filename}" />`
+        })
+      }
+      divs += `
+          <div class="flex flex-col  shadow flex flex-col bg-skin-card p-4 mb-4 rounded-lg">
+            <div class="flex w-full memos-center">
+              <img src="${avatar_url}" class="github-avatar mr-4" alt="avatar" />
+              <div>@${config.memosUsername}</div>
+            </div>
+            <p class="memo-content-wrapper my-4"> ${memo.snippet}</p>
+            <div>${imagesStr}</div>
+
+            <p>${dayjs(memo.updateTime).fromNow()} • ${dayjs(memo.updateTime).format("YYYY-MM-DD HH:mm")}</p>
+          </div>
+          `
+    })
+    document.getElementById('memos').innerHTML += divs.toString();
+    nextPageToken = json['nextPageToken']
+
+    if (nextPageToken === '') {
+      moreBtn.classList.add('hidden');
+    }else {
+      moreBtn.classList.remove('hidden');
+    }
+  }
+</script>

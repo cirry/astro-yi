@@ -21,8 +21,8 @@ export const site = {
   description: 'Welcome to my independent blog website! ',
   author: "Astro-Yi", // required
   avatar: '/avatar.png', // required
+  url: 'https://astro-yi-nu.vercel.app', // required
   motto: 'Actions speak louder than words.',
-  url: 'https://astro-yi-nu.vercel.app',
   recentBlogSize: 5,
   archivePageSize: 25,
   postPageSize: 10,
@@ -35,12 +35,20 @@ export const site = {
  * lang {string} Default website language
  * codeFoldingStartLines {number}
  * ga {string|false}
+ * memosUrl {string} memos server url
+ * memosUsername {string} memos login name
+ * memosPageSize {number} 10
  */
 export const config = {
   busuanzi: false,
   lang: 'en', // en | zh-cn | zh-Hant | cs
-  codeFoldingStartLines: 16 , // Need to re-run the project to take effect
-  ga: false // If you want to integrate with Google Analytics, just enter your GA-ID here.
+  codeFoldingStartLines: 16, // Need to re-run the project to take effect
+  ga: false, // If you want to integrate with Google Analytics, just enter your GA-ID here.
+
+  // memos config
+  memosUrl: 'https://memos.cirry.cn', // https://xxxx.xxx.xx
+  memosUsername: 'cxr', // login name
+  memosPageSize: 10, // number
 }
 
 /**
@@ -60,6 +68,11 @@ export const categories = [
     name: "Feed",
     iconClass: "ri-lightbulb-flash-line",
     href: "/feed/1",
+  },
+  {
+    name: "Memos",
+    iconClass: "ri-quill-pen-line",
+    href: "/memos",
   },
   {
     name: "Archive",
@@ -103,17 +116,17 @@ export const infoLinks = [
   {
     icon: 'ri-telegram-fill',
     name: 'telegram',
-    outlink: 'xxxxxxx',
+    outlink: 'javascript:;',
   },
   {
     icon: 'ri-twitter-fill',
     name: 'twitter',
-    outlink: 'xxxxxxx',
+    outlink: 'javascript:;',
   },
   {
     icon: 'ri-instagram-fill',
     name: 'instagram',
-    outlink: 'xxxxxxx',
+    outlink: 'javascript:;',
   },
   {
     icon: 'ri-github-fill',

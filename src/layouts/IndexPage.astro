@@ -18,7 +18,7 @@ const {frontmatter = {comment: false, donate: false}} = Astro.props
 <Header/>
 <main class="container p-4 pt-20 text-skin-base pb-32 min-h-full relative" id="app">
   <div class="grid grid-cols-4 gap-8">
-    <div class="col-span-4 xl:col-span-3 space-y-6">
+    <div class="col-span-4 xl:col-span-3">
       <slot></slot>
       {
         donate.enable && frontmatter.donate &&
