@@ -25,6 +25,7 @@ export  const en = {
   'home.sticky': 'Sticky',
   'message.welcome': 'Welcome',
   'message.welcomeTips': 'Leave a footprint!',
+  'memos.loadMore': 'Load more',
   'pagination.total':'Total',
   'pagination.unit': 'Pages',
   'post.dateFormat': 'Do MMMM YYYY',

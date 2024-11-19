@@ -8,14 +8,17 @@
 
 一款以内容为主的Astro博客主题————Yi，快速和简洁。
 
-![](https://pic-19d9.obs.cn-east-3.myhuaweicloud.com/astroyi/home.png)
+![](https://astro-yi.obs.cn-east-3.myhuaweicloud.com/7.png)
 
-![](https://pic-19d9.obs.cn-east-3.myhuaweicloud.com/astroyi/post-white.png)
+![](https://astro-yi.obs.cn-east-3.myhuaweicloud.com/1.png)
+
+![](https://astro-yi.obs.cn-east-3.myhuaweicloud.com/8.png)
 
 ### 🔥 特色功能
 
 - [x] 支持多端显示
 - [x] 支持暗黑显示
+- [x] 集成Memos
 - [x] 支持国际化
 - [x] 支持搜索功能
 - [x] 友好的SEO
@@ -91,9 +94,23 @@ export const site = {
 
 /**
  * busuanzi：是否开启不蒜子统计功能
+ * lang {string} Default website language: English
+ * codeFoldingStartLines {number} default 16
+ * ga {string} google analytics code
+ * memosUrl {string} memos server url
+ * memosUsername {string} memos login name
+ * memosPageSize {number} 10
  */
 export const config = {
   busuanzi: false,
+  lang: 'en', // English: en | 简体中文: zh-cn | 繁體中文: zh-Hant | cs
+  codeFoldingStartLines: 16, // Need to re-run the project to take effect
+  ga: false, // If you want to integrate with Google Analytics, just enter your GA-ID here.
+  
+  // memos config
+  memosUrl: '', // https://xxxx.xxx.xx
+  memosUsername: '', // login name
+  memosPageSize: 10, // number
 }
 
 /**

@@ -10,11 +10,14 @@ A content-focused Astro blog theme, Yi, in Chinese, it means fast and concise.
 
 ![](https://astro-yi.obs.cn-east-3.myhuaweicloud.com/1.png)
 
+![](https://astro-yi.obs.cn-east-3.myhuaweicloud.com/8.png)
+
 ### 🔥 Features
 
 - [x] Supports multi-platform display.
 - [x] Supports dark mode.
-- [x] support i18n
+- [x] Supports Memos.
+- [x] supports i18n.
 - [x] Supports search functionality.
 - [x] SEO-friendly
 - [x] Supports sitemap and RSS.
@@ -88,12 +91,22 @@ export const site = {
 /**
  * busuanzi {boolean} Enable Busuanzi Statistics Functionality
  * lang {string} Default website language: English
- * codeFoldingStartLines {number}
+ * codeFoldingStartLines {number} default 16
+ * ga {string} google analytics code
+ * memosUrl {string} memos server url
+ * memosUsername {string} memos login name
+ * memosPageSize {number} 10
  */
 export const config = {
   busuanzi: false,
-  lang: 'en', // English: en | 简体中文: zh-cn | 繁體中文: zh-Hant
+  lang: 'en', // English: en | 简体中文: zh-cn | 繁體中文: zh-Hant | cs
   codeFoldingStartLines: 16, // Need to re-run the project to take effect
+  ga: false, // If you want to integrate with Google Analytics, just enter your GA-ID here.
+  
+  // memos config
+  memosUrl: '', // https://xxxx.xxx.xx
+  memosUsername: '', // login name
+  memosPageSize: 10, // number
 }
 
 /**

@@ -5,6 +5,7 @@ export  const zhHant = {
   'home.readMore': '閱讀全文',
   'message.welcome': '歡迎留言',
   'message.welcomeTips': '既然來了就留個腳印吧！',
+  'memos.loadMore': '加載更多',
   'post.lastUpdated': '最後更新',
   'sidebar.categories': '分類',
   'sidebar.uncategorized': '未分類',
