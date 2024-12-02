@@ -5,7 +5,7 @@ const {index} = Astro.props;
 import {t} from '../i18n/utils'
 ---
 
-<div>
+<div class="mt-2 mb-4">
   <p
     class="break-all first-letter tracking-wide first-letter:font-semibold first-letter:text-2xl"
   >
@@ -18,8 +18,8 @@ import {t} from '../i18n/utils'
               .replace(/!?\[.*?\]\(.*?\)/g, "")
     }
   </p>
-  <div class="flex items-center justify-between mt-2 text-sm">
+  <p class="flex items-center justify-between text-sm">
     <FeedPostDate date={data.date} index={index}/>
     <a class="hover:text-skin-active text-sm border rounded py-1 px-2" href={`/feed/${slug}`}>{t('home.readMore')}</a>
-  </div>
+  </p>
 </div>

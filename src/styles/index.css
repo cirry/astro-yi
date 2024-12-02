@@ -86,7 +86,8 @@ menu {
 
   /*侧边栏每个栏目共有样式*/
   .aside-widget {
-    @apply flex items-center w-full border-b mb-2;
+    @apply flex items-center w-full mb-2;
+    border-bottom:  1px solid rgba(var(--color-text), .3);
   }
 
   /* 侧边最近评论列表样式 */
@@ -143,7 +144,7 @@ menu {
   width: 100%;
   height: 1px;
   min-width: 100%;
-  margin: 16px 0;
+  margin: 12px 0;
   background-color: rgba(var(--color-text), .3);
 }
 
