@@ -14,6 +14,10 @@
  * postPageSize {number} Number of articles on blog pages
  * feedPageSize {number} Number of articles on feed pages
  * beian {string} Chinese policy
+ * asideTagsMaxSize {number}
+ *    0: disable,
+ *    > 0: display the limited number of tags in the sidebar
+ *    All tags will be displayed in single page "/tags".
  */
 export const site = {
   title: 'Astro Theme Yi', // required
@@ -28,6 +32,7 @@ export const site = {
   postPageSize: 10,
   feedPageSize: 20,
   beian: '',
+  asideTagsMaxSize: 0,
 }
 
 /**

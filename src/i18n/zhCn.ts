@@ -44,4 +44,5 @@ export const zhCn = {
   'search.placeholder': '输入标题或摘要关键字',
   'feed.previous': '上一条动态',
   'feed.next': '下一条动态',
+  'more': '更多'
 }
