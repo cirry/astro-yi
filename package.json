@@ -1,7 +1,7 @@
 {
   "name": "astro-blog",
   "type": "module",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -28,7 +28,7 @@
     "mdast-util-to-string": "^4.0.0",
     "reading-time": "^1.5.0",
     "remark-directive": "^3.0.0",
-    "remixicon": "^4.5.0",
+    "remixicon": "^4.6.0",
     "solid-js": "^1.8.15",
     "tailwindcss": "^3.4.1",
     "tocbot": "^4.25.0",

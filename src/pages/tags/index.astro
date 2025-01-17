@@ -1,0 +1,22 @@
+---
+import IndexPage from "src/layouts/IndexPage.astro";
+import {getCollectionByName} from "../../utils/getCollectionByName";
+import getUniqueTags from "src/utils/getUniqueTags";
+
+const blogs = await getCollectionByName('blog')
+let tagArr = getUniqueTags(blogs);
+---
+
+<IndexPage>
+  <div class="flex flex-wrap">
+    {
+      (
+        tagArr
+        &&
+          tagArr.map((tag) =>
+            <a class="inline-block truncate m-1 border p-1 text-sm rounded hover:text-skin-active" title={tag} href={"/tags/" + tag}>{tag}</a>
+          )
+      )
+    }
+  </div>
+</IndexPage>

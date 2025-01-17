@@ -44,7 +44,8 @@ export  let cs = {
   'sidebar.uncategorized': 'nekategorizované',
   'title.draft': 'návrh',
   'title.minutes':' Minut',
-  'title.words':' Slov'
+  'title.words':' Slov',
+  'more': 'Více'
 }
 
 

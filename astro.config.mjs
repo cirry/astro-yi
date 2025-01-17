@@ -10,10 +10,12 @@ import {pluginCollapsibleSections} from '@expressive-code/plugin-collapsible-sec
 
 import {remarkModifiedTime,} from "./src/plugins/remark-modified-time.mjs";
 import {resetRemark} from "./src/plugins/reset-remark.js";
-import {remarkAsides} from  './src/plugins/remark-asides.js'
+import {remarkAsides} from './src/plugins/remark-asides.js'
 import {remarkCollapse} from "./src/plugins/remark-collapse.js";
 import {remarkGithubCard} from './src/plugins/remark-github-card.js'
 import {lazyLoadImage} from "./src/plugins/lazy-load-image.js";
+import {remarkButton} from "./src/plugins/remark-button.js";
+import {remarkHtml} from "./src/plugins/remark-html.js";
 
 
 export default defineConfig({
@@ -28,7 +30,7 @@ export default defineConfig({
     themeCssSelector: (theme) => `[data-theme="${theme.type}"]`
   }), mdx()],
   markdown: {
-    remarkPlugins: [remarkModifiedTime, resetRemark, remarkDirective, remarkAsides({}),remarkCollapse({}),remarkGithubCard()],
+    remarkPlugins: [remarkModifiedTime, resetRemark, remarkDirective, remarkAsides({}), remarkCollapse({}), remarkGithubCard(), remarkButton(), remarkHtml()],
     rehypePlugins: [lazyLoadImage],
   }
 });
