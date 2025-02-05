@@ -1,0 +1,22 @@
+---
+import { analytics } from "../consts";
+const { enable: allEnable, gaConfig } = analytics;
+const { enable: gaEnable, id } = gaConfig ?? {};
+const shouldLoadGA = allEnable && gaEnable && id;
+---
+
+{shouldLoadGA && (
+  <>
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${id}`}></script>
+    <script define:vars={{ ga: id }}>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      gtag('js', new Date());
+      gtag('config', id);
+    </script>
+  </>
+)}

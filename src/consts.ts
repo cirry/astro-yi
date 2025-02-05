@@ -1,6 +1,8 @@
 // Place any global data in this file.
 // You can import this data from anywhere in your site by using the `import` keyword.
 
+import { AnalyticsConfig } from "./types/analyticsTypes"
+
 /**
  * title {string} website title
  * favicon {string} website favicon url
@@ -48,7 +50,6 @@ export const config = {
   busuanzi: false,
   lang: 'en', // en | zh-cn | zh-Hant | cs
   codeFoldingStartLines: 16, // Need to re-run the project to take effect
-  ga: false, // If you want to integrate with Google Analytics, just enter your GA-ID here.
 
   // memos config
   memosUrl: '', // https://xxxx.xxx.xx
@@ -222,4 +223,25 @@ export const comment = {
     'data-lang': "",
     'crossorigin': "",
   }
+
+  // 
 }
+
+/**
+ * Analytics Feature Configuration
+ * 
+ * This file centralizes the analytics configuration for the application.
+ * It defines and exports the default settings for Umami and Google Analytics.
+ */
+export const analytics: AnalyticsConfig = {
+  enable: false,
+  umamiConfig: {
+    enable: false,
+    id: "",
+    url: ""
+  },
+  gaConfig: {
+    enable: false,
+    id: ""
+  }
+};

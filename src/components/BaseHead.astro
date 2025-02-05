@@ -1,6 +1,8 @@
 ---
 import '../styles/index.css'
 import {site, config} from "../consts";
+import UmamiAnalytics from '../components/UmamiAnalytics.astro';
+import GoogleAnalytics from '../components/GoogleAnalytics.astro';
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const {title = site.title, description = site.description, mathjax = false, mermaid = false} = Astro.props
@@ -58,22 +60,7 @@ if (title === site.title) {
   {
     config.busuanzi && <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
   }
-  <!-- Google tag (gtag.js) -->
-  {
-    config.ga &&
-    <>
-      <script src={"https://www.googletagmanager.com/gtag/js?id=" +　config.ga}></script>
-      <script define:vars={{ga: config.ga}}>
-        window.dataLayer = window.dataLayer || [];
+  <GoogleAnalytics />
+  <UmamiAnalytics />
 
-        function gtag() {
-          dataLayer.push(arguments);
-        }
-
-        gtag('js', new Date());
-
-        gtag('config', ga);
-      </script>
-    </>
-  }
 </head>
