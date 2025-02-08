@@ -1,8 +1,9 @@
 ---
 import '../styles/index.css'
-import {site, config} from "../consts";
+import {site} from "../consts";
 import UmamiAnalytics from '../components/UmamiAnalytics.astro';
 import GoogleAnalytics from '../components/GoogleAnalytics.astro';
+import BusuanziAnalytics from '../components/BusuanziAnalytics.astro';
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const {title = site.title, description = site.description, mathjax = false, mermaid = false} = Astro.props
@@ -55,12 +56,8 @@ if (title === site.title) {
   {
     mermaid &&
     <script async type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/mermaid/10.9.0/mermaid.min.js"></script>
-
-  }
-  {
-    config.busuanzi && <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
   }
   <GoogleAnalytics />
   <UmamiAnalytics />
-
+  <BusuanziAnalytics/>
 </head>

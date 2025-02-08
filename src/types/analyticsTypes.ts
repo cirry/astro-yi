@@ -27,5 +27,6 @@ export interface AnalyticsConfig {
   umamiConfig?: UmamiConfig;
   // Optional configuration for Google Analytics; if not provided, Google Analytics will not be active
   gaConfig?: GAConfig;
+  // Optional configuration for Busuanzi Analytics;
+  busuanzi?: boolean;
 }
-  

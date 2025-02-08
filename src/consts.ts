@@ -1,7 +1,7 @@
 // Place any global data in this file.
 // You can import this data from anywhere in your site by using the `import` keyword.
 
-import { AnalyticsConfig } from "./types/analyticsTypes"
+import {AnalyticsConfig} from "./types/analyticsTypes"
 
 /**
  * title {string} website title
@@ -47,7 +47,6 @@ export const site = {
  * memosPageSize {number} 10
  */
 export const config = {
-  busuanzi: false,
   lang: 'en', // en | zh-cn | zh-Hant | cs
   codeFoldingStartLines: 16, // Need to re-run the project to take effect
 
@@ -224,17 +223,17 @@ export const comment = {
     'crossorigin': "",
   }
 
-  // 
+  //
 }
 
 /**
  * Analytics Feature Configuration
- * 
+ *
  * This file centralizes the analytics configuration for the application.
  * It defines and exports the default settings for Umami and Google Analytics.
  */
 export const analytics: AnalyticsConfig = {
-  enable: false,
+  enable: true,
   umamiConfig: {
     enable: false,
     id: "",
@@ -243,5 +242,6 @@ export const analytics: AnalyticsConfig = {
   gaConfig: {
     enable: false,
     id: ""
-  }
+  },
+  busuanzi: true,
 };
