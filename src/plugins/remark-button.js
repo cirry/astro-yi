@@ -23,7 +23,6 @@ export function remarkButton() {
         return;
       }
       if (node.name === "btn" || node.name === 'button') {
-        console.log(node, parent)
         const attributes = node.attributes || {};
         parent.children[index] = h('a',
           {
