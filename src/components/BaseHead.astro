@@ -6,12 +6,8 @@ import GoogleAnalytics from '../components/GoogleAnalytics.astro';
 import BusuanziAnalytics from '../components/BusuanziAnalytics.astro';
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const {title = site.title, description = site.description, mathjax = false, mermaid = false} = Astro.props
-let ogImage = '';
-if (title === site.title) {
-  ogImage = new URL(site.avatar, Astro.site?.href).href;
-}
-// console.log(Astro.props.title)
+const {title = site.title, description = site.description, mathjax = false, mermaid = false, ogImage:ogimage = ''} = Astro.props
+let ogImage =  ogimage || new URL(site.avatar, Astro.site?.href).href;
 ---
 <head>
   <!-- Global Metadata -->

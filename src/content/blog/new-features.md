@@ -4,6 +4,7 @@ title: New features
 description: More new features specific to this theme.
 mermaid: true
 mathjax: true
+ogImage: https://astro-yi.obs.cn-east-3.myhuaweicloud.com/avatar.png
 ---
 
 ### Support Remixicon
