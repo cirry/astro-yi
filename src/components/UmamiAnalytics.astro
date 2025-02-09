@@ -1,0 +1,10 @@
+---
+import { analytics } from "../consts";
+const { enable: allEnable, umamiConfig } = analytics;
+const { enable: umamiEnable, id, url } = umamiConfig ?? {};
+const shouldLoadUmami = allEnable && umamiEnable && id && url;
+---
+
+{shouldLoadUmami && (
+  <script defer src={url} data-website-id={id}></script>
+)}

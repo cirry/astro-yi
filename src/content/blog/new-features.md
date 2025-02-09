@@ -6,6 +6,7 @@ tags: [feature]
 category: astro
 mermaid: true
 mathjax: true
+ogImage: https://astro-yi.obs.cn-east-3.myhuaweicloud.com/avatar.png
 ---
 
 ### Support Remixicon
