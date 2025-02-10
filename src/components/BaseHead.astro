@@ -11,38 +11,38 @@ let ogImage =  ogimage || new URL(site.avatar, Astro.site?.href).href;
 ---
 <head>
   <!-- Global Metadata -->
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <link rel="icon" type="image/svg+xml" href={site.favicon}/>
-  <meta name="generator" content={Astro.generator}/>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" type="image/svg+xml" href={site.favicon}>
+  <meta name="generator" content={Astro.generator}>
   <!-- Canonical URL -->
-  <link rel="canonical" href={canonicalURL}/>
+  <link rel="canonical" href={canonicalURL}>
 
   <!-- Primary Meta Tags -->
-  <meta name="title" content={title}/>
-  <meta name="description" content={description}/>
+  <meta name="title" content={title}>
+  <meta name="description" content={description}>
 
   <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website"/>
-  <meta property="og:url" content={Astro.url}/>
-  <meta property="og:title" content={title}/>
-  <meta property="og:description" content={description}/>
-  <meta property="og:image" content={ogImage}/>
+  <meta property="og:type" content="website">
+  <meta property="og:url" content={Astro.url}>
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:image" content={ogImage}>
   <!-- <meta property="og:image:alt" content={site.description}/> -->
 
   <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image"/>
-  <meta property="twitter:url" content={Astro.url}/>
-  <meta property="twitter:title" content={title}/>
-  <meta property="twitter:description" content={description}/>
-  <meta property="twitter:image" content={ogImage}/>
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content={Astro.url}>
+  <meta property="twitter:title" content={title}>
+  <meta property="twitter:description" content={description}>
+  <meta property="twitter:image" content={ogImage}>
 
-  <meta httpEquiv="X-UA-Compatible" content="IE=edge"/>
-  <meta name="msapplication-TileColor" content="#da532c"/>
-  <meta name="msapplication-config" content="/browserconfig.xml"/>
-  <meta name="theme-color" content="#ffffff"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-config" content="/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
 
-  <link rel="sitemap" href="/sitemap-0.xml"/>
+  <link rel="sitemap" href="/sitemap-0.xml">
   <title>{title}</title>
   <script is:inline src="/toggle-theme.js"></script>
   {
