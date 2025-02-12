@@ -11,6 +11,8 @@ export const zhCn = {
   'message.welcomeTips': '既然来了就留个脚印吧！',
   'memos.loadMore': '加载更多',
   'post.lastUpdated': '最后更新',
+  'post.lastUpdatedTip1':'温馨提示：本文最后更新于',
+  'post.lastUpdatedTip2':'，部分信息可能因时间推移而不再适用，欢迎反馈。',
   'remark.open': '展开',
   'sidebar.categories': '分类',
   'sidebar.uncategorized': '未分类',

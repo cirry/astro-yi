@@ -28,8 +28,10 @@ export  const en = {
   'memos.loadMore': 'Load more',
   'pagination.total':'Total',
   'pagination.unit': 'Pages',
-  'post.dateFormat': 'Do MMMM YYYY',
-  'post.lastUpdated': 'Last updated',
+  'post.dateFormat': 'MMM D, YYYY',
+  'post.lastUpdated': 'Last Updated',
+  'post.lastUpdatedTip1':'This article was last updated on',
+  'post.lastUpdatedTip2':' and some of the information may no longer be applicable due to the passage of time.',
   'remark.open': 'Open',
   'search.labelOne':'Viewing articles under the ',
   'search.labelTwo':'',
@@ -45,5 +47,5 @@ export  const en = {
   'title.draft': 'draft',
   'title.minutes':' Minutes',
   'title.words':' Words',
-  'more': 'More'
+  'more': 'More',
 }

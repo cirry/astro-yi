@@ -15,41 +15,35 @@ const {title, date, slug, category, tags, sticky = false, draft = false} = Astro
     </a>
   </div>
 
-  <div class="flex flex-wrap items-center my-2 space-x-2">
-    <!-- date -->
+  <div class="flex flex-wrap items-center my-2">
+    <!--date -->
     {
-      date && (
-        <i class="ri-calendar-2-fill"/>
-        <div>{formatDate(date)}</div>
-      )
+      date &&
+      <div class="mr-2"><i class="ri-calendar-2-fill mr-1"/>{formatDate(date)}</div>
     }
 
     <!-- draft -->
     {
       draft &&
-      <>
-        <div class="divider-vertical"/>
-        <i class="ri-git-pr-draft-line"/>
-        <div>{t('title.draft')}</div>
-      </>
+      <div class="mr-2"><i class="ri-git-pr-draft-line mr-1"/>{t('title.draft')}</div>
     }
 
     <!-- category -->
     {
-      category && dealLabel(category).filter(item => item !== 'uncategorized').map((categoryName) => (
-        <div class="divider-vertical"/>
-        <i class="ri-folder-3-line"/>
-        <a href={"/category/" + categoryName} class="text-wrap break-all hover:text-skin-active">{categoryName}</a>
-      ))
+      category && dealLabel(category).filter(item => item !== 'uncategorized').map((categoryName) =>
+        <a href={"/category/" + categoryName} class="text-wrap break-all hover:text-skin-active mr-2">
+          <i class="ri-folder-3-line"/>
+          {categoryName}
+        </a>
+      )
     }
 
     <!-- tag -->
     {
-      tags && dealLabel(tags).map((tagName) => (
-        <div class="divider-vertical"/>
-        <i class="ri-price-tag-3-line"/>
-        <a href={"/tags/" + tagName} class="text-wrap break-all hover:text-skin-active">{tagName}</a>
-      ))
+      tags && dealLabel(tags).map((tagName) =>
+        <a href={"/tags/" + tagName} class="text-wrap break-all hover:text-skin-active mr-2">
+          <i class="ri-hashtag"/>{tagName}</a>
+      )
     }
   </div>
 </div>
