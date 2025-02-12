@@ -2,68 +2,60 @@
 import {formatDate} from "../utils/formatDate";
 import {dealLabel} from "../utils/dealLabel";
 import {t} from '../i18n/utils'
+import dayjs from "dayjs";
 const {title, date, category, tags, lastModified = '', draft = false, readingTime = {}} = Astro.props
+let lastModifiedFormat = dayjs(lastModified).format('YYYY-MM-DD');
+let dateFormat = dayjs(date).format('YYYY-MM-DD');
 ---
 
-<div class="border-b-1">
+<div>
   <!-- title -->
   <h1 class="break-all text-xl font-bold">{title}</h1>
 
-  <div class="flex flex-wrap items-center my-2 space-x-2">
+  <div class="flex flex-wrap items-center my-2">
     <!-- date -->
     {
-      date && (
-        <i class="ri-calendar-2-fill"/>
-        <div class="tag">{formatDate(date)}</div>
-      )
+      date &&
+      <div class="mr-2"><i class="ri-calendar-2-fill mr-1"/>{formatDate(date)}</div>
     }
 
     <!-- draft -->
     {
       draft &&
-      <>
-        <div class="divider-vertical"/>
-        <i class="ri-git-pr-draft-line"/>
-        <div>{t('title.draft')}</div>
-      </>
+      <div class="mr-2"><i class="ri-git-pr-draft-line mr-1"/>{t('title.draft')}</div>
     }
 
     <!-- category -->
     {
-      category && dealLabel(category).filter(item => item !== 'uncategorized').map((categoryName) => (
-        <div class="divider-vertical"/>
-        <i class="ri-folder-3-line"/>
-        <a href={"/category/" + categoryName} class="text-wrap break-all  hover:text-skin-active cursor-pointer">{categoryName}</a>
-      ))
+      category && dealLabel(category).filter(item => item !== 'uncategorized').map((categoryName) =>
+        <a href={"/category/" + categoryName} class="text-wrap break-all hover:text-skin-active mr-2"><i class="ri-folder-3-line mr-1"/>{categoryName}</a>
+      )
     }
 
     <!-- tag -->
     {
-      tags && dealLabel(tags).map((tagName) => (
-        <div class="divider-vertical"/>
-        <i class="ri-price-tag-3-line"/>
-        <a href={"/tags/" + tagName} class="text-wrap break-all hover:text-skin-active cursor-pointer">{tagName}</a>
-      ))
+      tags && dealLabel(tags).map((tagName) =>
+        <a href={"/tags/" + tagName} class="text-wrap break-all hover:text-skin-active mr-2"><i class="ri-hashtag mr-1"/>{tagName}</a>
+      )
     }
 
     <!-- update -->
-    {
-      lastModified && (
-        <div class="divider-vertical"/>
-        <i class="ri-calendar-check-fill"></i>
-        <div class="tag">{t('post.lastUpdated')}：{lastModified}</div>
-      )
-    }
+    <!--{-->
+    <!--  lastModified && (-->
+    <!--    <div class="mr-2"><i class="ri-calendar-check-fill "></i>{t('post.lastUpdated')}:{lastModified}</div>-->
+    <!--  )-->
+    <!--}-->
 
     <!-- minutes -->
     {
       readingTime.minutes && (
-        <div class="divider-vertical"/>
-        <i class="ri-hourglass-fill"/>
-        <div class="tag">{Math.ceil(readingTime.minutes)}{t('title.minutes')}</div>
-        <div class="divider-vertical"/>
-        <div class="tag">{readingTime.words}{t('title.words')}</div>
+        <div class="mr-2 flex items-center"><i class="ri-hourglass-fill mr-1"/>{Math.ceil(readingTime.minutes)}{t('title.minutes')}</div>
+        <div class="mr-2 flex items-center"><i class="ri-quill-pen-line mr-1"></i>{readingTime.words}{t('title.words')}</div>
       )
     }
   </div>
+  {
+    lastModified && lastModifiedFormat !== dateFormat &&
+    <div class="shadow w-auto flex bg-skin-card p-2 rounded text-sm"><i class="ri-error-warning-line mr-1"/>{t('post.lastUpdatedTip1')} {formatDate(lastModified)} {t('post.lastUpdatedTip2')} </div>
+  }
 </div>

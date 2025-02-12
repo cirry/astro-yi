@@ -31,6 +31,8 @@ export  let cs = {
   'pagination.unit': 'Stránky',
   'post.dateFormat': 'D. MMMM YYYY',
   'post.lastUpdated': 'Poslední aktualizace',
+  'post.lastUpdatedTip1':'Tento článek byl naposledy aktualizován',
+  'post.lastUpdatedTip2':'a vzhledem k uplynulému času již některé informace nemusí být aktuální.',
   'search.labelOne':'Zobrazení článků pod',
   'search.labelTwo':'',
   'search.placeholder': 'Zadejte klíčová slova názvu nebo abstraktu',

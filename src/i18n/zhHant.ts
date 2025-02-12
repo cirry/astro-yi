@@ -7,6 +7,8 @@ export  const zhHant = {
   'message.welcomeTips': '既然來了就留個腳印吧！',
   'memos.loadMore': '加載更多',
   'post.lastUpdated': '最後更新',
+  'post.lastUpdatedTip1':'警告：本文最後更新日期為',
+  'post.lastUpdatedTip2':'，由於時間推移部分資訊可能不再適用。',
   'sidebar.categories': '分類',
   'sidebar.uncategorized': '未分類',
   'sidebar.tags': '標簽',
