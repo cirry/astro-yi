@@ -1,11 +1,12 @@
 ---
-import {site, config} from "../consts";
+import {site, analytics} from "../consts";
 import {t} from '../i18n/utils'
+let shouldLoadBusuanzi = analytics.enable && analytics.busuanzi
 ---
 
-<div class="footer container p-4">
+<div class:list={[shouldLoadBusuanzi ? 'h-16' : 'h-10', 'container p-1 absolute left-0 bottom-0']}>
   {
-    config.busuanzi && (
+    shouldLoadBusuanzi && (
       <div class="flex items-center justify-center text-skin-base">
     <span id="busuanzi_container_site_pv">
       {t('footer.busuanziSitePV')}<span id="busuanzi_value_site_pv"></span>{t('footer.busuanziSitePVUnit')}
@@ -17,31 +18,20 @@ import {t} from '../i18n/utils'
       </div>
     )
   }
-  <div class="flex items-center flex-wrap justify-center mb-4 text-skin-base">
+  <div class="flex items-center flex-col flex-wrap justify-center mb-4 text-skin-base first:mb-0 sm:flex-row">
     <div>
       <span class="cursor-default">Copyright</span>
       <i class="ri-copyright-line align-middle"></i>
-      <span class="align-middle">2024</span>
+      <span class="align-middle">2025</span>
     </div>
     {
       site.beian && (
-        <div class="divider-vertical"/>
+        <div class="divider-vertical hidden sm:block"></div>
         <a rel="nofollow" target="_blank" href="https://beian.miit.gov.cn/">
           {site.beian}
         </a>
       )
     }
-    <div class="divider-vertical"></div>
-
     <a href="/sitemap-0.xml">{t('footer.sitemap')}</a>
   </div>
 </div>
-
-<style>
-  .footer {
-    height: 80px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-  }
-</style>

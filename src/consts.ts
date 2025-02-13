@@ -27,7 +27,7 @@ export const site = {
   description: 'Welcome to my independent blog website! ',
   author: "Astro-Yi", // required
   avatar: '/avatar.png', // required
-  url: 'https://xxxxxx.com', // required
+  url: 'astro-yi-nu.vercel.app', // required
   motto: 'Actions speak louder than words.',
   recentBlogSize: 5,
   archivePageSize: 25,
@@ -121,27 +121,27 @@ export const infoLinks = [
   {
     icon: 'ri-telegram-fill',
     name: 'telegram',
-    outlink: 'xxxxxxx',
+    outlink: '',
   },
   {
     icon: 'ri-twitter-fill',
     name: 'twitter',
-    outlink: 'xxxxxxx',
+    outlink: '',
   },
   {
     icon: 'ri-instagram-fill',
     name: 'instagram',
-    outlink: 'xxxxxxx',
+    outlink: '',
   },
   {
     icon: 'ri-github-fill',
     name: 'github',
-    outlink: 'xxxxxxx',
+    outlink: 'https://github.com/cirry/astro-yi',
   },
   {
     icon: 'ri-rss-fill',
     name: 'rss',
-    outlink: 'xxxxxxx',
+    outlink: '',
   }
 ]
 
