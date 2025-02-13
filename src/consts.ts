@@ -27,7 +27,7 @@ export const site = {
   description: 'Welcome to my independent blog website! ',
   author: "Astro-Yi", // required
   avatar: '/avatar.png', // required
-  url: 'astro-yi-nu.vercel.app', // required
+  url: 'https://astro-yi-nu.vercel.app', // required
   motto: 'Actions speak louder than words.',
   recentBlogSize: 5,
   archivePageSize: 25,
