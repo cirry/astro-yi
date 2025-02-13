@@ -5,11 +5,11 @@ import {getCollectionByName} from "../utils/getCollectionByName";
 import {orderBySticky} from "../utils/orderBySticky";
 import {site} from '../consts'
 import Pagination from "../components/Pagination.astro";
-import _ from 'lodash'
+import {ceil, divide} from 'lodash-es'
 
 let currentPage = 1
 let blogs = await getCollectionByName("blog");
-let totalPage = _.ceil(_.divide(blogs.length, site.postPageSize))
+let totalPage = ceil(divide(blogs.length, site.postPageSize))
 
 let sortedPosts = await orderBySticky(blogs);
 if (sortedPosts.length > site.postPageSize) {

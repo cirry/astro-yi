@@ -7,7 +7,7 @@ import Comment from '../components/Comment.astro'
 import Toc from '../components/Toc.astro'
 import {comment, config} from "../consts";
 import ScrollToTop from '../components/ScrollToTop.astro'
-import {t}from '../i18n/utils'
+import {t} from '../i18n/utils'
 
 const {
   frontmatter = {
@@ -32,36 +32,37 @@ const {
 <body class="bg-skin-secondary">
 <Header/>
 <main class="container p-4  pt-20 text-skin-base min-h-full pb-32 relative" id="app">
-      <div class="grid grid-cols-4 gap-8">
-        <div class="col-span-4 xl:col-span-3 space-y-4">
+  <div class="grid grid-cols-4 gap-8">
+    <div class="col-span-4 xl:col-span-3 space-y-4 first:space-y-2">
       <button class="flex items-center text-md cursor-pointer hover:text-skin-active outline-none" style="background-color: inherit;" onclick="history.back()">
         <i class="ri-arrow-left-line mr-2"/>
         <span>{t('home.goBack')}</span>
-          </button>
+      </button>
       <slot/>
       {
         frontmatter.comment && comment.enable &&
         <Comment></Comment>
       }
-        </div>
-        <div class="hidden xl:block col-span-1 relative">
+    </div>
+    <div class="hidden xl:block col-span-1 relative">
       <Profile></Profile>
       {
         frontmatter.toc &&
         <Toc></Toc>
       }
-        </div>
+    </div>
     <ScrollToTop></ScrollToTop>
-      </div>
+  </div>
   <Footer/>
-    </main>
-  </body>
+</main>
+</body>
 </html>
 
 
 <script>
-  import { Fancybox } from "@fancyapps/ui";
+  import {Fancybox} from "@fancyapps/ui";
   import "@fancyapps/ui/dist/fancybox/fancybox.css";
+
   Fancybox.bind("[data-fancybox]");
   // 给所有的a标签添加target属性和不追踪
   const markdownBody = document.querySelector(".markdown-body");
@@ -75,10 +76,10 @@ const {
           const data_src = image.getAttribute("data-src");
           const data_alt = image.getAttribute("data-alt");
           image.setAttribute("data-fancybox", "gallery")
-          if(data_src){
+          if (data_src) {
             image.setAttribute("src", data_src);
           }
-          if(data_alt){
+          if (data_alt) {
             image.setAttribute("alt", data_alt);
           }
           observer.unobserve(image);

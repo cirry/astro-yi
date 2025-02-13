@@ -1,5 +1,5 @@
 import {createSignal} from "solid-js";
-import _ from 'lodash'
+import {toString,cloneDeep,} from 'lodash-es'
 import {dealLabel} from "../utils/dealLabel.ts"
 import {formatDate} from "../utils/formatDate.ts";
 import {t} from '../i18n/utils.ts'
@@ -14,10 +14,10 @@ export function Search(props) {
       setResultPosts([])
     } else {
       let filterBlogs = props.posts.filter(post =>
-        _.toString(post.data.title).toLowerCase().includes(inputVal().toLowerCase())
-        || _.toString(post.data.description).toLowerCase().includes(inputVal().toLowerCase())
+        toString(post.data.title).toLowerCase().includes(inputVal().toLowerCase())
+        || toString(post.data.description).toLowerCase().includes(inputVal().toLowerCase())
       )
-      let cloneBlogs = _.cloneDeep(filterBlogs)
+      let cloneBlogs = cloneDeep(filterBlogs)
       const reg = new RegExp(e.target.value, 'gi')
       cloneBlogs.forEach(blog => {
         blog.data.title = blog.data.title.replace(reg, (match) => {

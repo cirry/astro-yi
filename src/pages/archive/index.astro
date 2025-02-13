@@ -6,10 +6,10 @@ import getPostsByYear from "src/utils/getPostsByYear";
 import {sortPostsByDate} from "src/utils/sortPostsByDate";
 import Pagination from "src/components/Pagination.astro";
 import {getCollectionByName} from "../../utils/getCollectionByName";
-import _ from "lodash";
+import {ceil, divide} from "lodash-es";
 
 let posts = await getCollectionByName("blog");
-let totalPage = _.ceil(_.divide(posts.length, site.archivePageSize));
+let totalPage = ceil(divide(posts.length, site.archivePageSize));
 
 let sortedPosts = sortPostsByDate(posts);
 sortedPosts = sortedPosts.splice(0, site.archivePageSize);

@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import {orderBy} from 'lodash-es'
 import dayjs from 'dayjs'
 
 export const orderBySticky = (posts) => {
@@ -8,5 +8,5 @@ export const orderBySticky = (posts) => {
 
     return post
   })
-  return _.orderBy(handlePosts, ['sticky', 'dateTimestamp'], ['desc', 'desc'])
+  return orderBy(handlePosts, ['sticky', 'dateTimestamp'], ['desc', 'desc'])
 }
