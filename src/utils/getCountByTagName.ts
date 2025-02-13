@@ -1,5 +1,5 @@
-import _ from 'lodash'
-import { dealLabel } from './dealLabel'
+import {compact, flattenDeep, countBy} from 'lodash-es'
+import {dealLabel} from './dealLabel'
 
 const getCountByTagName = (posts) => {
   let tags: string[] = [];
@@ -7,9 +7,9 @@ const getCountByTagName = (posts) => {
     return import.meta.env.PROD ? !data.draft : true
   });
   filteredPosts.forEach(post => {
-    tags = _.compact([...tags, ..._.flattenDeep(dealLabel(post.data.tags))])
+    tags = compact([...tags, ...flattenDeep(dealLabel(post.data.tags))])
   });
-  return _.countBy(tags);
+  return countBy(tags);
 };
 
 export default getCountByTagName;

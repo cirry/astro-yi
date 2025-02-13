@@ -334,7 +334,7 @@ All the icons in the blog are using the open source icon library [remixicon](htt
 
 ### Note
 
-In the `astro.config.mjs` file in the root directory, it is recommended to modify the `site` property to correctly generate the site map.
+In the `astro.config.js` file in the root directory, it is recommended to modify the `site` property to correctly generate the site map.
 
 ```js
 export default defineConfig({

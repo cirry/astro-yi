@@ -1,7 +1,7 @@
-import _ from 'lodash'
-import { dealLabel } from './dealLabel';
+import {flattenDeep} from 'lodash-es'
+import {dealLabel} from './dealLabel';
 
 const getPostsByCategory = (posts, category: string) =>
-  posts.filter(post => _.flattenDeep(dealLabel(post.data.category)).includes(category))
+  posts.filter(post => flattenDeep(dealLabel(post.data.category)).includes(category))
 
 export default getPostsByCategory;
