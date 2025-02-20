@@ -48,7 +48,7 @@ let dateFormat = dayjs(date).format('YYYY-MM-DD');
 
     <!-- minutes -->
     {
-      readingTime.minutes && (
+      readingTime.minutes && readingTime.minutes !== 0 && (
         <div class="mr-2 flex items-center"><i class="ri-hourglass-fill mr-1"/>{Math.ceil(readingTime.minutes)}{t('title.minutes')}</div>
         <div class="mr-2 flex items-center"><i class="ri-quill-pen-line mr-1"></i>{readingTime.words}{t('title.words')}</div>
       )
