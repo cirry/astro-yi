@@ -7,15 +7,10 @@ import {t} from '../i18n/utils'
 
 <div class="mt-2 mb-4">
   <p
-    class="break-all first-letter tracking-wide first-letter:font-semibold first-letter:text-2xl"
+    class="break-all first-letter tracking-wide first-letter:font-semibold first-letter:text-2xl line-clamp-2"
   >
     {
-      body.length > 140
-        ? body.replace(/^#+/gm, "")
-              .replace(/!?\[.*?\]\(.*?\)/g, "")
-              .substring(0, 140) + "..."
-        : body.replace(/^#+/gm, "")
-              .replace(/!?\[.*?\]\(.*?\)/g, "")
+      body.replace(/^#+/gm, "").replace(/!?\[.*?\]\(.*?\)/g, "")
     }
   </p>
   <p class="flex items-center justify-between text-sm">

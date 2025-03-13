@@ -195,8 +195,8 @@ export const friendshipLinks =
 export const comment = {
   enable: false,
   type: 'giscus', // waline | giscus,
-  walineConfig:{
-    serverUrl: "https://xxxxx.xxxxx.app",
+  walineConfig: {
+    serverUrl: "",
     lang: 'en',
     pageSize: 20,
     wordLimit: '',

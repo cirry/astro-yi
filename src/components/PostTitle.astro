@@ -4,8 +4,11 @@ import {dealLabel} from "../utils/dealLabel";
 import {t} from '../i18n/utils'
 import dayjs from "dayjs";
 const {title, date, category, tags, lastModified = '', draft = false, readingTime = {}} = Astro.props
-let lastModifiedFormat = dayjs(lastModified).format('YYYY-MM-DD');
-let dateFormat = dayjs(date).format('YYYY-MM-DD');
+const lastModifiedDate = dayjs(lastModified === '' ? date : lastModified);
+const publishDate = dayjs(date);
+const mostRecentDate = lastModifiedDate.isAfter(publishDate) ? lastModifiedDate : publishDate;
+const mostRecent = mostRecentDate.format('YYYY-MM-DD');
+const currentDate = dayjs();
 ---
 
 <div>
@@ -48,14 +51,14 @@ let dateFormat = dayjs(date).format('YYYY-MM-DD');
 
     <!-- minutes -->
     {
-      readingTime.minutes && (
+      readingTime.minutes && readingTime.minutes !== 0 && (
         <div class="mr-2 flex items-center"><i class="ri-hourglass-fill mr-1"/>{Math.ceil(readingTime.minutes)}{t('title.minutes')}</div>
         <div class="mr-2 flex items-center"><i class="ri-quill-pen-line mr-1"></i>{readingTime.words}{t('title.words')}</div>
       )
     }
   </div>
   {
-    lastModified && lastModifiedFormat !== dateFormat &&
-    <div class="shadow w-auto flex bg-skin-card p-2 rounded text-sm"><i class="ri-error-warning-line mr-1"/>{t('post.lastUpdatedTip1')} {formatDate(lastModified)} {t('post.lastUpdatedTip2')} </div>
+    currentDate.isAfter(mostRecentDate.add(6, 'month')) &&
+    <div class="shadow w-auto flex bg-skin-card p-2 rounded text-sm"><i class="ri-error-warning-line mr-1"/>{t('post.lastUpdatedTip1')} {formatDate(mostRecent)} {t('post.lastUpdatedTip2')} </div>
   }
 </div>

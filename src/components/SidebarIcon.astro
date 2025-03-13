@@ -22,17 +22,16 @@
   let personalInfo = document.getElementById("personal-info");
   showAsideBtn.addEventListener("click", () => {
     if(menuIcon && menuIcon.classList.contains('hidden')){
-      menuIcon.classList.toggle('hidden')
-      menuCloseIcon.classList.toggle("hidden");
-      menu.classList.toggle("hidden");
+      toggleHidden([menuIcon, menuCloseIcon, menu])
     }
-    showAsideBtn.classList.toggle("hidden");
-    closeAsideBtn.classList.toggle("hidden");
-    personalInfo.classList.toggle("hidden");
+    toggleHidden([showAsideBtn, closeAsideBtn, personalInfo])
   });
   closeAsideBtn.addEventListener("click", () => {
-    closeAsideBtn.classList.toggle("hidden");
-    personalInfo.classList.toggle("hidden");
-    showAsideBtn.classList.toggle("hidden");
+    toggleHidden([closeAsideBtn, personalInfo, showAsideBtn])
   });
+  function toggleHidden(arr) {
+    arr.forEach(item => {
+      item.classList.toggle("hidden");
+    });
+  }
 </script>

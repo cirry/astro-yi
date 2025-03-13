@@ -1,12 +1,167 @@
 ---
-import IndexPage from "src/layouts/IndexPage.astro";
-import {Search} from '../components/Search'
-import {getCollectionByName} from "../utils/getCollectionByName";
-const posts = await getCollectionByName("blog");
+import IndexPage from "../layouts/IndexPage.astro";
 import {t} from '../i18n/utils'
 ---
 
 <IndexPage>
-  <div class="text-2xl mb-4 text-skin-base">{t('search.search')}</div>
-  <Search client:only="solid-js" posts={posts}/>
+  <aside>
+    <label for="search" class="text-2xl mb-4 text-skin-base ">
+      {t('search.search')}
+    </label>
+
+    <div class="relative">
+      <span class="absolute inset-y-0 flex items-center pl-2 opacity-75">
+        <i class="ri-search-line text-skin-active ml-1"></i>
+      </span>
+      <input
+        required
+        maxlength="24"
+        id="search"
+        class="block w-full rounded border border-opacity-40 mt-4 bg-skin-fill text-skin-base py-3 pl-10 pr-3 placeholder:italic placeholder:text-opacity-75 focus:border-skin-accent focus:outline-none"
+        placeholder={t('search.placeholder')}
+        type="search"
+        name="search"
+        autofocus
+      />
+    </div>
+
+  </aside>
+  <p id="searchReadout"></p>
+  <section aria-label="Search Results">
+    <div id="resultsList"></div>
+  </section>
+
+
 </IndexPage>
+<script>
+  import {t} from '../i18n/utils'
+  import DOMPurify from "dompurify";
+  import Fuse from "fuse.js";
+  import {isNumber} from 'lodash-es'
+  import {formatDate} from '../utils/formatDate'
+  import {dealLabel} from "../utils/dealLabel";
+
+
+  let SEARCH_DATA = '';
+  let FUSE_INSTANCE = '';
+  let FUSE_OPTIONS = {
+    includeScore: true,
+    shouldSort: true,
+    threshold: 0.5,
+    keys: [
+      {
+        name: 'title',
+        weight: 1
+      },
+      {
+        name: 'description',
+        weight: 0.75
+      }
+    ]
+  }
+  let SPINNER = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewBox="0 0 256 256" id="spinner"><path d="M232,128a104,104,0,0,1-208,0c0-41,23.81-78.36,60.66-95.27a8,8,0,0,1,6.68,14.54C60.15,61.59,40,93.27,40,128a88,88,0,0,0,176,0c0-34.73-20.15-66.41-51.34-80.73a8,8,0,0,1,6.68-14.54C208.19,49.64,232,87,232,128Z"></path>
+<style>
+#spinner {
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+</style>
+</svg>`
+
+  const search = document.querySelector('#search');
+  const searchReadout = document.querySelector('#searchReadout');
+  const resultsList = document.querySelector('#resultsList');
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const urlParams = DOMPurify.sanitize(new URLSearchParams(window.location.search).get('q'));
+    fetchSearchResults(urlParams);
+    search.value = urlParams
+    search.focus()
+  })
+
+  search.addEventListener("input", (e) => {
+    const searchTerm = DOMPurify.sanitize(search.value);
+    fetchSearchResults(searchTerm);
+    updateSearchPageUrl(searchTerm)
+  })
+
+  function updateReadout(length) {
+    if (isNumber(length)) {
+      searchReadout.innerHTML = `<div class="my-2">${t('search.searchLabelOne')}<span class="px-2 font-bold text-skin-active">${length}</span>${t('search.searchLabelTwo')}</div>`
+    } else {
+      searchReadout.innerHTML = ""
+    }
+  }
+
+  function updateSearchPageUrl(search) {
+    const url = new URL(window.location.href);
+    url.searchParams.set("q", search);
+    window.history.replaceState(null, '', url);
+  }
+
+  function generateSearchList(results, searchTerm) {
+    return results.map(r => {
+      const {title, description, date, slug, category, tags} = r.item
+      const reg = new RegExp(searchTerm, 'gi')
+      let titleStr = title.replace(reg, (match) => {
+        return `<span class="text-skin-active font-bold">${match}</span>`
+      })
+      let descriptionStr = description ? description.replace(reg, (match) => {
+        return `<span class="text-skin-active font-bold">${match}</span>`
+      }) : ''
+
+      let categoryStr = dealLabel(category).filter(item => item !== 'uncategorized').map(categoryName => (
+        `<a class="mr-2 hover:text-skin-active" href="/category/${categoryName}"><i class="ri-folder-3-line mr-1"></i>${categoryName}</a>`
+      )).join("")
+      let tagsStr = dealLabel(tags).map((tagName) => (
+        `<a class="mr-2 hover:text-skin-active" href="/tags/${tagName}"><i class="ri-hashtag mr-1"></i>${tagName}</a>`
+      )).join("")
+      return `
+        <div class="my-5">
+            <a
+              class="text-xl underline-offset-4 decoration-skin-base decoration-wavy hover:underline hover:decoration-sky-500 font-bold"
+              href="/blog/${slug}">${titleStr}
+            </a>
+            <div class="flex items-center my-2">
+              <div class="flex items-center mr-2"><i class="ri-calendar-2-fill mr-1"></i>${formatDate(date)}</div>
+              ${categoryStr} ${tagsStr}
+            </div>
+            <p class="break-all mb-4">${descriptionStr}</p>
+            </div>
+            <div class="divider-horizontal-mini"></div>`
+    }).join("")
+  }
+
+  async function fetchSearchResults(search) {
+    if (!search) {
+      updateReadout(null)
+      resultsList.innerHTML = ''
+      return
+    }
+    if (search.length === 0) return;
+    resultsList.innerHTML = SPINNER;
+    if (!SEARCH_DATA) {
+      try {
+        const res = await fetch("/search.json")
+        if (!res.ok) {
+          throw new Error("Something went wrong...Please try again.");
+        }
+        SEARCH_DATA = await res.json()
+      } catch (e) {
+        console.log(e)
+      }
+    }
+    if (SEARCH_DATA && !FUSE_INSTANCE) {
+      FUSE_INSTANCE = new Fuse(SEARCH_DATA, FUSE_OPTIONS)
+    }
+
+    if (!FUSE_INSTANCE) return;
+    const searchResults = FUSE_INSTANCE.search(search)
+    updateReadout(searchResults.length)
+    resultsList.innerHTML = searchResults.length > 0 ? generateSearchList(searchResults, search) : ""
+  }
+</script>

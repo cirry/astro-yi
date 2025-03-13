@@ -6,7 +6,7 @@ Demo：[Astro-Theme-Yi](https://astro-yi-nu.vercel.app/)
 
 A content-focused Astro blog theme, Yi, in Chinese, it means fast and concise.
 
-![](https://astro-yi.obs.cn-east-3.myhuaweicloud.com/7.png)
+![](https://astro-yi.obs.cn-east-3.myhuaweicloud.com/9.png)
 
 ![](https://astro-yi.obs.cn-east-3.myhuaweicloud.com/1.png)
 
@@ -89,19 +89,15 @@ export const site = {
   }
 
 /**
- * busuanzi {boolean} Enable Busuanzi Statistics Functionality
  * lang {string} Default website language: English
  * codeFoldingStartLines {number} default 16
- * ga {string} google analytics code
  * memosUrl {string} memos server url
  * memosUsername {string} memos login name
  * memosPageSize {number} 10
  */
 export const config = {
-  busuanzi: false,
   lang: 'en', // English: en | 简体中文: zh-cn | 繁體中文: zh-Hant | cs
   codeFoldingStartLines: 16, // Need to re-run the project to take effect
-  ga: false, // If you want to integrate with Google Analytics, just enter your GA-ID here.
   
   // memos config
   memosUrl: '', // https://xxxx.xxx.xx
@@ -273,6 +269,27 @@ export const comment = {
     'crossorigin': "anonymous",
   }
 }
+
+/**
+ * Analytics Feature Configuration
+ *
+ * This file centralizes the analytics configuration for the application.
+ * It defines and exports the default settings for Umami and Google Analytics.
+ */
+export const analytics: AnalyticsConfig = {
+  enable: false,
+  umamiConfig: {
+    enable: false,
+    id: "",
+    url: ""
+  },
+  gaConfig: {
+    enable: false,
+    id: ""
+  },
+  busuanzi: false,
+};
+
 ```
 
 Please modify your website configuration, comment system configuration, appreciation function image, personal information links, and of course, you can also modify other configuration content.
@@ -313,6 +330,7 @@ draft: false
 toc: true
 donate: false
 comment: false
+ogImage: https://xxxxx/xxxxx/xxxxx // cover image
 ---
 ```
 
