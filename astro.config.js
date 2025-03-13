@@ -2,7 +2,6 @@ import {defineConfig} from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
-import solid from '@astrojs/solid-js';
 import remarkDirective from "remark-directive";
 import expressiveCode from "astro-expressive-code";
 import {pluginLineNumbers} from '@expressive-code/plugin-line-numbers'
@@ -20,7 +19,7 @@ import {remarkHtml} from "./src/plugins/remark-html.js";
 
 export default defineConfig({
   site: 'https://astro-yi-nu.vercel.app',
-  integrations: [sitemap(), tailwind(), solid(), expressiveCode({
+  integrations: [sitemap(), tailwind(), expressiveCode({
     plugins: [pluginLineNumbers(), pluginCollapsibleSections()],
     themes: ["github-dark", "github-light"],
     styleOverrides: {

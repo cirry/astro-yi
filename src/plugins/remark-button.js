@@ -1,6 +1,5 @@
 import {h as _h, s as _s} from "hastscript";
 import {visit} from "unist-util-visit";
-import {children} from "solid-js";
 
 /** Hacky function that generates an mdast HTML tree ready for conversion to HTML by rehype. */
 function h(el, attrs = {}, children = []) {
