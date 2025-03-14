@@ -14,6 +14,7 @@ A content-focused Astro blog theme, Yi, in Chinese, it means fast and concise.
 
 ### 🔥 Features
 
+- [x] Support github pages.
 - [x] Supports multi-platform display.
 - [x] Supports dark mode.
 - [x] Supports Memos.
@@ -53,6 +54,31 @@ npm run dev # preview, starts local dev server at localhost:4321
 npm run build # build your production site to ./dist 
 ```
 After the packaging is completed, Upload the `dist` folder to the web server directory.
+
+### GitHub Pages deployment
+
+Modify the following sections in the astro.config.js:
+
+```js
+export default defineConfig({
+  site: 'https://cirry.github.io', // Something like this
+  // When using GitHub Pages, you need to fill in the repository name in the first single quote
+  // e.g. base: isProd ? 'github_repo_name' : '',
+  base: isProd ? 'yi.github.io' : '', // Something like this
+  trailingSlash: "never",
+// ...
+})
+```
+
+In /src/consts.ts, modify the contents of the site field:
+
+```js
+export const site = {
+  // ...
+  url: 'https://cirry.github.io', // It should be the same as the value of the site attribute in the astro.config.js
+  // ...
+}
+```
 
 ## Configuration
 

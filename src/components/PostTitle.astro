@@ -3,6 +3,7 @@ import {formatDate} from "../utils/formatDate";
 import {dealLabel} from "../utils/dealLabel";
 import {t} from '../i18n/utils'
 import dayjs from "dayjs";
+import getUrl from "../utils/getUrl";
 const {title, date, category, tags, lastModified = '', draft = false, readingTime = {}} = Astro.props
 const lastModifiedDate = dayjs(lastModified === '' ? date : lastModified);
 const publishDate = dayjs(date);
@@ -31,14 +32,14 @@ const currentDate = dayjs();
     <!-- category -->
     {
       category && dealLabel(category).filter(item => item !== 'uncategorized').map((categoryName) =>
-        <a href={"/category/" + categoryName} class="text-wrap break-all hover:text-skin-active mr-2"><i class="ri-folder-3-line mr-1"/>{categoryName}</a>
+        <a href={getUrl("/category/") + categoryName} class="text-wrap break-all hover:text-skin-active mr-2"><i class="ri-folder-3-line mr-1"/>{categoryName}</a>
       )
     }
 
     <!-- tag -->
     {
       tags && dealLabel(tags).map((tagName) =>
-        <a href={"/tags/" + tagName} class="text-wrap break-all hover:text-skin-active mr-2"><i class="ri-hashtag mr-1"/>{tagName}</a>
+        <a href={getUrl("/tags/") + tagName} class="text-wrap break-all hover:text-skin-active mr-2"><i class="ri-hashtag mr-1"/>{tagName}</a>
       )
     }
 

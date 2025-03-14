@@ -15,7 +15,7 @@
 ![](https://astro-yi.obs.cn-east-3.myhuaweicloud.com/8.png)
 
 ### 🔥 特色功能
-
+- [x] 支持GithubPages
 - [x] 支持多端显示
 - [x] 支持暗黑显示
 - [x] 集成Memos
@@ -58,6 +58,31 @@ npm run build # build
 ```
 
 打包完成后，在根目录中会生成一个 dist 文件夹。将 'dist' 文件夹上传到 Web 服务器目录中，即可完成部署。
+
+### github pages部署
+
+在 astro.config.js中修改如下部分：
+
+```js
+export default defineConfig({
+  site: 'https://cirry.github.io', // 类似这样的地址
+  // When using GitHub Pages, you need to fill in the repository name in the first single quote
+  // e.g. base: isProd ? 'github_repo_name' : '',
+  base: isProd ? 'yi.github.io' : '', // 类似这样的仓库名称
+  trailingSlash: "never",
+// ...
+})
+```
+
+在/src/consts.ts中修改如site字段内容：
+
+```js
+export const site = {
+  // ...
+  url: 'https://cirry.github.io', // required 应该和astro.config.js中的site属性值一样
+  // ...
+}
+```
 
 ## 配置
 

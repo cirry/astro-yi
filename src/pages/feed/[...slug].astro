@@ -5,6 +5,7 @@ import BlogPost from '../../layouts/BlogPost.astro'
 import {comment} from "../../consts";
 import {formatDate} from '../../utils/formatDate'
 import {t} from '../../i18n/utils'
+import getUrl from "../../utils/getUrl";
 
 export async function getStaticPaths() {
   const posts = await getCollectionByName("feed");
@@ -45,12 +46,12 @@ if (sortPosts[currentPostIndex + 1]) {
           <div class="divider-vertical"/>
           <a href="#" title="当前页面阅读量" class="flex items-center">
             <i class="ri-fire-fill mr-1"/>
-            <span class="waline-pageview-count" data-path={'/' + post.collection + '/' + post.slug}/>
+            <span class="waline-pageview-count" data-path={getUrl('/') + post.collection + '/' + post.slug}/>
           </a>
           <div class="divider-vertical"/>
           <a href="#waline" title="当前页面评论数" class="flex items-center">
             <i class="ri-discuss-fill mr-1"/>
-            <span class="waline-comment-count" data-path={'/' + post.collection + '/' + post.slug}/>
+            <span class="waline-comment-count" data-path={getUrl('/') + post.collection + '/' + post.slug}/>
           </a>
         )}
       </div>
@@ -67,7 +68,7 @@ if (sortPosts[currentPostIndex + 1]) {
         {prevPost ? (
           <a
             class="truncate  w-auto max-w-[40%] float-left"
-            href={'/' + prevPost.collection + '/' + prevPost.slug}
+            href={getUrl('/') + prevPost.collection + '/' + prevPost.slug}
             title={prevPost.data.title}
           >
             <i class="ri-arrow-left-s-fill"/>
@@ -80,7 +81,7 @@ if (sortPosts[currentPostIndex + 1]) {
           <div class="flex item-center float-right w-auto max-w-[40%] text-right">
             <a
               class="truncate "
-              href={'/' + nextPost.collection + '/' + nextPost.slug}
+              href={getUrl('/') + nextPost.collection + '/' + nextPost.slug}
               title={nextPost.data.title}
             >
               {t('feed.next')}

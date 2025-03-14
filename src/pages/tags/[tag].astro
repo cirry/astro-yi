@@ -6,6 +6,7 @@ import SearchTitle from "src/components/SearchTitle.astro";
 import {formatDate} from "../../utils/formatDate";
 import {sortPostsByDate} from "src/utils/sortPostsByDate";
 import {getCollectionByName} from "../../utils/getCollectionByName";
+import getUrl from "../../utils/getUrl";
 export async function getStaticPaths() {
   const posts = await getCollectionByName("blog");
   //   过滤没有分类的文章，todo 后期可能会强制需要文章分类
@@ -26,13 +27,9 @@ const resultPosts = sortPostsByDate(tagPosts);
     {
       resultPosts.map((post) => (
         <li style="list-style-type: disc;" class="ml-4 my-2">
-          <a href={'/' + post.collection + '/' + post.slug}>
-            <span class="mr-4">
-              {formatDate(post.data.date)}
-            </span>
-            <span class="hover:text-skin-active">
-            {post.data.title}
-            </span>
+          <a href={getUrl('/') + post.collection + '/' + post.slug}>
+            <span class="mr-4">{formatDate(post.data.date)}</span>
+            <span class="hover:text-skin-active">{post.data.title}</span>
           </a>
         </li>
       ))

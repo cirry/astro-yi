@@ -1,9 +1,10 @@
 ---
 import {site, infoLinks} from "../consts";
+import getUrl from "../utils/getUrl";
 ---
 
 <div class="shadow-lg rounded-lg h-64 w-auto flex flex-col items-center justify-center bg-skin-card p-2">
-  <img class="avatar mb-4" src={site.avatar} alt="avatar"/>
+  <img class="avatar mb-4" src={getUrl(site.avatar)} alt="avatar"/>
   <div class="mb-2 text-center">{site.motto}</div>
   <div class="flex items-center justify-center flex-wrap">
     {

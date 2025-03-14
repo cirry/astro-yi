@@ -7,6 +7,7 @@ import {sortPostsByDate} from "src/utils/sortPostsByDate";
 import Pagination from "src/components/Pagination.astro";
 import {getCollectionByName} from "../../utils/getCollectionByName";
 import {ceil, divide} from "lodash-es";
+import getUrl from "../../utils/getUrl";
 
 let posts = await getCollectionByName("blog");
 let totalPage = ceil(divide(posts.length, site.archivePageSize));
@@ -26,7 +27,7 @@ let resultPosts = getPostsByYear(sortedPosts);
           <ul>
             {resultPosts[year].map((post) => (
               <li style="list-style-type: disc;" class="ml-4 my-2">
-                <a href={'/' + post.collection + '/' + post.slug}>
+                <a href={getUrl('/') + post.collection + '/' + post.slug}>
                   <span class="mr-4">
                     {dayjs(post.data.date).format("YYYY-MM-DD")}
                   </span>
@@ -38,5 +39,5 @@ let resultPosts = getPostsByYear(sortedPosts);
         </div>
       ))
   }
-  <Pagination currentPage={1} totalPage={totalPage} prefixUrl="/archive/"/>
+  <Pagination currentPage={1} totalPage={totalPage} prefixUrl={getUrl("/archive/")}/>
 </IndexPage>

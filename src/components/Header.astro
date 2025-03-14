@@ -9,6 +9,7 @@ import {site, categories, infoLinks} from '../consts';
 import AsideIcon from "./SidebarIcon.astro";
 import {t} from "../i18n/utils";
 import getCountByTagName from "../utils/getCountByTagName";
+import getUrl from "../utils/getUrl";
 const blogs = await getCollectionByName('blog')
 let tagArr = getUniqueTags(blogs);
 let categoryCount = getCountByCategory(blogs);
@@ -20,7 +21,7 @@ let tagCount = getCountByTagName(blogs);
     <div class="block xl:hidden">
       <MenuIcon></MenuIcon>
     </div>
-    <a class="text-2xl p-4" href="/">{site.title}</a>
+    <a class="text-2xl p-4" href={getUrl("/")}>{site.title}</a>
     <div class="flex items-center">
       <div class="hidden xl:block">
         <div class="flex items-center space-x-5 pr-4">
@@ -41,7 +42,7 @@ let tagCount = getCountByTagName(blogs);
     {
       categories.map((category) => (
         <div class="py-2">
-          <a class=" hover:text-skin-active" href={category.href}>
+          <a class=" hover:text-skin-active" href={getUrl(category.href)}>
             <i class={category.iconClass}/>
             <span>{category.name}</span>
           </a>
@@ -53,7 +54,7 @@ let tagCount = getCountByTagName(blogs);
             {
               category.children && category.children.map(sub =>
                 (
-                  <a class="block hover:text-skin-active" href={sub.href}>
+                  <a class="block hover:text-skin-active" href={getUrl(sub.href)}>
                     <i class={sub.iconClass}/>
                     <span>{sub.name}</span>
                   </a>
@@ -66,7 +67,7 @@ let tagCount = getCountByTagName(blogs);
     }
   </div>
   <div id="personal-info" class="hidden break-all overflow-y-auto pb-8" style="height: calc(100vh - 64px)">
-    <img class="avatar my-4 mx-auto" src={site.avatar} alt="avatar"/>
+    <img class="avatar my-4 mx-auto" src={getUrl(site.avatar)} alt="avatar"/>
     <div class="mb-2 text-center">{site.motto}</div>
     <div class="flex items-center justify-center flex-wrap">
       {
@@ -89,7 +90,7 @@ let tagCount = getCountByTagName(blogs);
       {
         Object.keys(categoryCount).map((category) => (
           <div class="my-2 break-all truncate">
-            <a class="hover:text-skin-active" title={category + " (" + categoryCount[category] + ")"} href={"/category/" + category}>
+            <a class="hover:text-skin-active" title={category + " (" + categoryCount[category] + ")"} href={getUrl("/category/") + category}>
               {category + " (" + categoryCount[category] + ")"}
             </a>
           </div>
@@ -109,7 +110,7 @@ let tagCount = getCountByTagName(blogs);
         tagArr &&
         tagArr.map((tag) => (
           <div class="my-2 break-all truncate">
-            <a class="hover:text-skin-active my-2" title={tag} href={"/tags/" + tag}>{tag + " (" + tagCount[tag] + ")"}</a>
+            <a class="hover:text-skin-active my-2" title={tag} href={getUrl("/tags/") + tag}>{tag + " (" + tagCount[tag] + ")"}</a>
           </div>
         ))
       }

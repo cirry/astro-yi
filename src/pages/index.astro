@@ -6,6 +6,7 @@ import {orderBySticky} from "../utils/orderBySticky";
 import {site} from '../consts'
 import Pagination from "../components/Pagination.astro";
 import {ceil, divide} from 'lodash-es'
+import getUrl from "../utils/getUrl";
 
 let currentPage = 1
 let blogs = await getCollectionByName("blog");
@@ -27,7 +28,6 @@ if (sortedPosts.length > site.postPageSize) {
       <Pagination
         currentPage={currentPage}
         totalPage={totalPage}
-        url={{prev: '', next: '/blog/2'}}
       /> : ''
   }
 </IndexPage>
