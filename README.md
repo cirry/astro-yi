@@ -70,7 +70,7 @@ export const site = {
 
 ## Configuration
 
-The only profile for this blog is: `src/const.ts`, you can make some modifications according to your needs.
+The only profile for this blog is: `src/consts.ts`, you can make some modifications according to your needs.
 
 ```ts
 /**
