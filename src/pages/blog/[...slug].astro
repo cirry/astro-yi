@@ -7,6 +7,7 @@ import {getCollectionByName} from "../../utils/getCollectionByName";
 import {sortPostsByDate} from "../../utils/sortPostsByDate";
 import Donate from '../../components/Donate.astro'
 import {donate} from "../../consts";
+import getUrl from "../../utils/getUrl";
 
 export async function getStaticPaths() {
   const blogEntries = (await getCollection('blog')).filter(({data}) => {
@@ -39,7 +40,7 @@ if (sortPosts[currentPostIndex + 1]) {
 ---
 <BlogPost frontmatter={entry.data}>
   <div>
-    <PostTitle slug={`/blog/${entry.slug}`} {...entry.data} lastModified={lastModified} readingTime={readingTime}></PostTitle>
+    <PostTitle {...entry.data} lastModified={lastModified} readingTime={readingTime}></PostTitle>
     <div class="divider-horizontal"></div>
     <article class="markdown-body">
       <Content/>
@@ -50,7 +51,7 @@ if (sortPosts[currentPostIndex + 1]) {
         prevPost ? (
           <a
             class="truncate  w-auto max-w-[40%] float-left"
-            href={'/' + prevPost.collection + '/' + prevPost.slug}
+            href={getUrl('/') + prevPost.collection + '/' + prevPost.slug}
             title={prevPost.data.title}
           >
             <i class="ri-arrow-left-s-fill"/>
@@ -63,7 +64,7 @@ if (sortPosts[currentPostIndex + 1]) {
       {
         nextPost ? (
           <div class="flex item-center float-right w-auto max-w-[40%] text-right">
-            <a class="truncate " href={'/' + nextPost.collection + '/' + nextPost.slug} title={nextPost.data.title}>
+            <a class="truncate " href={getUrl('/') + nextPost.collection + '/' + nextPost.slug} title={nextPost.data.title}>
               {nextPost.data.title}
             </a>
             <i class="ri-arrow-right-s-fill float-right"/>
@@ -73,7 +74,7 @@ if (sortPosts[currentPostIndex + 1]) {
         )
       }
     </div>
-    <BlogFooter title={entry.data.title} url={entry.collection + '/' + entry.slug} date={entry.data.date}></BlogFooter>
+    <BlogFooter title={entry.data.title} url={getUrl('/') + entry.collection + '/' + entry.slug} date={entry.data.date}></BlogFooter>
     {
       donate.enable && entry.data.donate &&
       <Donate></Donate>

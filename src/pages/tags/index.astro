@@ -2,6 +2,7 @@
 import IndexPage from "src/layouts/IndexPage.astro";
 import {getCollectionByName} from "../../utils/getCollectionByName";
 import getUniqueTags from "src/utils/getUniqueTags";
+import getUrl from "../../utils/getUrl";
 
 const blogs = await getCollectionByName('blog')
 let tagArr = getUniqueTags(blogs);
@@ -14,7 +15,7 @@ let tagArr = getUniqueTags(blogs);
         tagArr
         &&
           tagArr.map((tag) =>
-            <a class="inline-block truncate m-1 border p-1 text-sm rounded hover:text-skin-active" title={tag} href={"/tags/" + tag}>{tag}</a>
+            <a class="inline-block truncate m-1 border p-1 text-sm rounded hover:text-skin-active" title={tag} href={getUrl("/tags/") + tag}>{tag}</a>
           )
       )
     }

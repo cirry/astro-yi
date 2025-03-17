@@ -1,11 +1,12 @@
 ---
 import {t} from '../i18n/utils'
+import getUrl from "../utils/getUrl";
 let pager = []; // 实际显示的分页组件内容
 //prefixUrl : 点击页面跳转的路由地址前缀，比如/blog/1,/tags/1, /category/1等等
 const {
   currentPage,
   totalPage,
-  prefixUrl = "/blog/",
+  prefixUrl = getUrl("/blog/"),
   url = { prev: "", next: "" },
 } = Astro.props;
 

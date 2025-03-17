@@ -5,6 +5,7 @@ import IndexPage from '../../layouts/IndexPage.astro'
 import Pagination from '../../components/Pagination.astro';
 import {getCollectionByName} from "../../utils/getCollectionByName";
 import {orderBySticky} from "../../utils/orderBySticky";
+import getUrl from "../../utils/getUrl";
 
 export async function getStaticPaths({paginate}) {
   let posts = await getCollectionByName("blog");
@@ -24,7 +25,7 @@ const {page} = Astro.props;
   <Pagination
     currentPage={page.currentPage}
     totalPage={page.lastPage}
-    url={page.url}
+    url={getUrl(page.url)}
   />
 </IndexPage>
 

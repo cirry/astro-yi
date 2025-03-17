@@ -7,6 +7,7 @@ import getCountByCategory from "../utils/getCountByCategory";
 import {sortPostsByDate} from "../utils/sortPostsByDate";
 import {site} from '../consts'
 import {t} from '../i18n/utils'
+import getUrl from "../utils/getUrl";
 const blogs = await getCollectionByName('blog')
 let tagArr = getUniqueTags(blogs);
 if(site.asideTagsMaxSize > 0)
@@ -29,7 +30,7 @@ let resultPosts = sortPosts.splice(0, site.recentBlogSize);
       <a
         class="my-1 truncate block hover:text-skin-active"
         title={category + " (" + categoryCount[category] + ")"}
-        href={"/category/" + category}
+        href={getUrl("/category/") + category}
       >
         {(category === 'uncategorized' ? t('sidebar.uncategorized') : category) + " (" + categoryCount[category] + ")"}
       </a>
@@ -49,14 +50,14 @@ let resultPosts = sortPosts.splice(0, site.recentBlogSize);
     {
       tagArr &&
       tagArr.map((tag) =>
-        <a class="inline-block truncate m-1 border p-1 text-sm rounded hover:text-skin-active" title={tag} href={"/tags/" + tag}>{tag}</a>
+        <a class="inline-block truncate m-1 border p-1 text-sm rounded hover:text-skin-active" title={tag} href={getUrl("/tags/") + tag}>{tag}</a>
       )
     }
     {
       tagArr &&
       site.asideTagsMaxSize > 0 &&
       (
-        <a class="inline-block truncate m-1 border p-1 text-sm rounded hover:text-skin-active" title={t('more')} href={"/tags"}>{t('more')} »</a>
+        <a class="inline-block truncate m-1 border p-1 text-sm rounded hover:text-skin-active" title={t('more')} href={getUrl("/tags")}>{t('more')} »</a>
       )
     }
   </div>
@@ -70,7 +71,7 @@ let resultPosts = sortPosts.splice(0, site.recentBlogSize);
     {
       resultPosts.map((post) => (
         <a
-          href={"/blog/" + post.slug}
+          href={getUrl("/blog/") + post.slug}
           class="truncate cursor-pointr mt-1 hover:text-skin-active"
           title={post.data.title}
         >

@@ -1,5 +1,6 @@
 ---
 const {href, icon: iconClass, children, target, ...props} = Astro.props;
+import getUrl from "../utils/getUrl";
 
 const {pathname} = Astro.url;
 let hrefMath = href.split('/')
@@ -7,7 +8,7 @@ let pathnameMatch = pathname.split('/')
 const isActive = hrefMath[1] === pathnameMatch[1]
 ---
 <div class="box relative h-10 w-auto flex items-center">
-  <a href={href} target={target} class:list={[isActive ? 'header-link-active' : '', 'hover:header-link-hover']} {...props}>
+  <a href={getUrl(href)} target={target} class:list={[isActive ? 'header-link-active' : '', 'hover:header-link-hover']} {...props}>
     <i class={iconClass}/>
     <slot/>
     {
@@ -21,7 +22,7 @@ const isActive = hrefMath[1] === pathnameMatch[1]
           children.map(child =>
             <li class="text-center hover:text-skin-active select-none">
               <i class={child.iconClass}></i>
-              <a target={child.target ? child.target : "_self"} href={child.href}>{child.name}</a>
+              <a target={child.target ? child.target : "_self"} href={getUrl(child.href)}>{child.name}</a>
             </li>
           )
         }

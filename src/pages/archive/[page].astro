@@ -6,6 +6,7 @@ import getPostsByYear from "src/utils/getPostsByYear";
 import  {site} from "../../consts";
 import dayjs from "dayjs";
 import { getCollectionByName } from "../../utils/getCollectionByName";
+import getUrl from "../../utils/getUrl";
 export async function getStaticPaths({ paginate }) {
   let posts = await getCollectionByName("blog");
   posts = sortPostsByDate(posts);
@@ -26,7 +27,7 @@ let resultPosts = getPostsByYear(page.data);
           <ul>
             {resultPosts[year].map((post) => (
               <li style="list-style-type: disc;" class="ml-4 my-2">
-                <a href={'/' + post.collection + '/' + post.slug}>
+                <a href={getUrl('/') + post.collection + '/' + post.slug}>
                   <span class="mr-4">
                     {dayjs(post.data.date).format("YYYY-MM-DD")}
                   </span>
@@ -43,7 +44,7 @@ let resultPosts = getPostsByYear(page.data);
   <Pagination
     currentPage={page.currentPage}
     totalPage={page.lastPage}
-    prefixUrl="/archive/"
+    prefixUrl={getUrl("/archive/")}
     url={page.slug}
   />
 </IndexPage>
