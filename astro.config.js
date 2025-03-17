@@ -2,6 +2,7 @@ import {defineConfig} from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
+import {site} from './src/consts.ts'
 import remarkDirective from "remark-directive";
 import expressiveCode from "astro-expressive-code";
 import {pluginLineNumbers} from '@expressive-code/plugin-line-numbers'
@@ -16,13 +17,9 @@ import {lazyLoadImage} from "./src/plugins/lazy-load-image.js";
 import {remarkButton} from "./src/plugins/remark-button.js";
 import {remarkHtml} from "./src/plugins/remark-html.js";
 
-const isProd = import.meta.env.PROD;
-
 export default defineConfig({
-  site: 'https://astro-yi-nu.vercel.app',
-  // When using GitHub Pages, you need to fill in the repository name in the first single quote
-  // e.g. base: isProd ? 'github_repo_name' : '',
-  base: isProd ? '' : '',
+  site: site.url,
+  base: import.meta.env.PROD ? site.baseUrl : '',
   trailingSlash: "never",
   integrations: [sitemap(), tailwind(), expressiveCode({
     plugins: [pluginLineNumbers(), pluginCollapsibleSections()],

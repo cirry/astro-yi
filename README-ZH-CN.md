@@ -61,32 +61,20 @@ npm run build # build
 
 ### github pages部署
 
-在 astro.config.js中修改如下部分：
-
-```js
-export default defineConfig({
-  site: 'https://cirry.github.io', // 类似这样的地址
-  // When using GitHub Pages, you need to fill in the repository name in the first single quote
-  // e.g. base: isProd ? 'github_repo_name' : '',
-  base: isProd ? 'yi.github.io' : '', // 类似这样的仓库名称
-  trailingSlash: "never",
-// ...
-})
-```
-
-在/src/consts.ts中修改如site字段内容：
+只需在`/src/consts.ts`中修改`site`对象中的`url`和`baseUrl`属性：
 
 ```js
 export const site = {
   // ...
-  url: 'https://cirry.github.io', // required 应该和astro.config.js中的site属性值一样
+  url: 'https://cirry.github.io', // 必填 你的网站主域名
+  baseUrl: 'yi.github.io', // 必填，仓库名称
   // ...
 }
 ```
 
 ## 配置
 
-在 src/const.ts 文件中，您可以根据自己的需求进行一些修改。
+本博客的唯一的配置文件就是：`src/const.ts`，您可以根据自己的需求进行一些修改。
 
 ```ts
 /**
@@ -96,6 +84,7 @@ export const site = {
  * author：作者
  * motto：格言
  * url：网站地址
+ * baseUrl： 当使用github pages时，必须填入仓库名称
  * recentBlogSize：最近文章数量
  * archivePageSize：归档页面每页显示的数量
  * postPageSize：文章页面每页显示的数量
@@ -110,6 +99,7 @@ export const site = {
     avatar: '/avatar.png',
     motto: '最重要的事情只有一件',
     url: 'https://astro-yi-nu.vercel.app',
+    baseUrl: '',
     recentBlogSize: 5,
     archivePageSize: 25,
     postPageSize: 10,
@@ -127,10 +117,8 @@ export const site = {
  * memosPageSize {number} 10
  */
 export const config = {
-  busuanzi: false,
   lang: 'en', // English: en | 简体中文: zh-cn | 繁體中文: zh-Hant | cs
   codeFoldingStartLines: 16, // Need to re-run the project to take effect
-  ga: false, // If you want to integrate with Google Analytics, just enter your GA-ID here.
   
   // memos config
   memosUrl: '', // https://xxxx.xxx.xx
@@ -310,23 +298,4 @@ export const analytics: AnalyticsConfig = {
 };
 ```
 
-
 请修改您的网站配置、评论系统配置、赞赏功能图片、个人信息链接，当然，您也可以修改其他配置内容。
-
-### 备注
-
-在根目录中的 astro.config.js 文件中，建议修改 site 属性以正确生成网站地图。
-
-```js
-export default defineConfig({
-  site: 'https://xxxx.com',// 修改为您自己的网站地址
-   // ...
-})
-```
-
-在public目录中的robots.txt文件最后添加一行您的sitemap文件路径。
-
-```text
-Sitemap: [博客地址]/sitemap-0.xml
-// 类似：Sitemap: https://astro-yi-nu.vercel.app/sitemap-0.xml
-```

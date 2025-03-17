@@ -57,32 +57,20 @@ After the packaging is completed, Upload the `dist` folder to the web server dir
 
 ### GitHub Pages deployment
 
-Modify the following sections in the astro.config.js:
-
-```js
-export default defineConfig({
-  site: 'https://cirry.github.io', // Something like this
-  // When using GitHub Pages, you need to fill in the repository name in the first single quote
-  // e.g. base: isProd ? 'github_repo_name' : '',
-  base: isProd ? 'yi.github.io' : '', // Something like this
-  trailingSlash: "never",
-// ...
-})
-```
-
 In /src/consts.ts, modify the contents of the site field:
 
 ```js
 export const site = {
   // ...
-  url: 'https://cirry.github.io', // It should be the same as the value of the site attribute in the astro.config.js
+  url: 'https://cirry.github.io', // required,  website origin
+  baseUrl: 'yi.github.io', // When using GitHubPages, you must enter the repository name
   // ...
 }
 ```
 
 ## Configuration
 
-In the `src/const.ts` file, you can make some modifications according to your needs.
+The only profile for this blog is: `src/const.ts`, you can make some modifications according to your needs.
 
 ```ts
 /**
@@ -93,6 +81,7 @@ In the `src/const.ts` file, you can make some modifications according to your ne
  * avatar {string} Avatar used in the profile
  * motto {string} used in the profile
  * url {string} Website link
+ * baseUrl {string} When using GitHubPages, you must enter the repository name
  * recentBlogSize {number} Number of recent articles displayed in the sidebar
  * archivePageSize {number} Number of articles on archive pages
  * postPageSize {number} Number of articles on blog pages
