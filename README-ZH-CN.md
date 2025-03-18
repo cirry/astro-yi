@@ -84,7 +84,7 @@ export const site = {
  * author：作者
  * motto：格言
  * url：网站地址
- * baseUrl： 当使用github pages时，必须填入仓库名称
+ * baseUrl： 当使用github pages时，必须填入仓库名称，用/开头
  * recentBlogSize：最近文章数量
  * archivePageSize：归档页面每页显示的数量
  * postPageSize：文章页面每页显示的数量
@@ -99,7 +99,7 @@ export const site = {
     avatar: '/avatar.png',
     motto: '最重要的事情只有一件',
     url: 'https://astro-yi-nu.vercel.app',
-    baseUrl: '',
+    baseUrl: '', // 用斜杠开头 '/astro-blog'
     recentBlogSize: 5,
     archivePageSize: 25,
     postPageSize: 10,

@@ -63,7 +63,7 @@ In /src/consts.ts, modify the contents of the site field:
 export const site = {
   // ...
   url: 'https://cirry.github.io', // required,  website origin
-  baseUrl: 'yi.github.io', // When using GitHubPages, you must enter the repository name
+  baseUrl: '/yi.github.io', // When using GitHubPages, you must enter the repository name startwith '/'
   // ...
 }
 ```

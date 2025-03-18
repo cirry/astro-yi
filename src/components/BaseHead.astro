@@ -47,7 +47,7 @@ let ogImage =  ogimage || new URL(Astro.url.pathname, Astro.site?.href).href;
   <title>{title}</title>
   <script is:inline src={getUrl("/toggle-theme.js")}></script>
   {
-    mathjax && <script async type="text/javascript" src={getUrl("/load-mathjax.js")}></script>
+    mathjax && <script async type="text/javascript" src=`${getUrl("/load-mathjax.js")}`></script>
   }
 
   {

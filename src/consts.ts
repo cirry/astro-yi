@@ -11,7 +11,7 @@ import {AnalyticsConfig} from "./types/analyticsTypes"
  * avatar {string} Avatar used in the profile
  * motto {string} used in the profile
  * url {string} Website link
- * baseUrl {string} When using GitHubPages, you must enter the repository name
+ * baseUrl {string} When using GitHubPages, you must enter the repository name, startWith '/', e.g. /repo_name
  * recentBlogSize {number} Number of recent articles displayed in the sidebar
  * archivePageSize {number} Number of articles on archive pages
  * postPageSize {number} Number of articles on blog pages
@@ -29,7 +29,7 @@ export const site = {
   author: "Astro-Yi", // required
   avatar: '/avatar.png', // required
   url: 'https://astro-yi-nu.vercel.app', // required
-  baseUrl: '',
+  baseUrl: '', // When using GitHubPages, you must enter the repository name startWith '/'. e.g. '/astro-blog'
   motto: 'Actions speak louder than words.',
   recentBlogSize: 5,
   archivePageSize: 25,
