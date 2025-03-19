@@ -1,8 +1,8 @@
 ---
-import IndexPage from "src/layouts/IndexPage.astro";
-import {getCollectionByName} from "../../utils/getCollectionByName";
-import getUniqueTags from "src/utils/getUniqueTags";
-import getUrl from "../../utils/getUrl";
+import IndexPage from "@/layouts/IndexPage.astro";
+import {getCollectionByName} from "@/utils/getCollectionByName";
+import getUniqueTags from "@/utils/getUniqueTags";
+import getUrl from "@/utils/getUrl";
 
 const blogs = await getCollectionByName('blog')
 let tagArr = getUniqueTags(blogs);

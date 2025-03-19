@@ -1,9 +1,9 @@
 ---
-import {formatDate} from "../utils/formatDate";
-import {dealLabel} from "../utils/dealLabel";
-import {t} from '../i18n/utils'
 import dayjs from "dayjs";
-import getUrl from "../utils/getUrl";
+import {formatDate} from "@/utils/formatDate";
+import {dealLabel} from "@/utils/dealLabel";
+import {t} from '@/i18n/utils'
+import getUrl from "@/utils/getUrl";
 const {title, date, category, tags, lastModified = '', draft = false, readingTime = {}} = Astro.props
 const lastModifiedDate = dayjs(lastModified === '' ? date : lastModified);
 const publishDate = dayjs(date);

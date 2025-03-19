@@ -1,12 +1,11 @@
 ---
-import '../styles/index.css'
-import {site} from "../consts";
-import UmamiAnalytics from '../components/UmamiAnalytics.astro';
-import GoogleAnalytics from '../components/GoogleAnalytics.astro';
-import BusuanziAnalytics from '../components/BusuanziAnalytics.astro';
-import getUrl from "../utils/getUrl";
+import '@/styles/index.css'
+import {site} from "@/consts";
+import UmamiAnalytics from '@/components/UmamiAnalytics.astro';
+import GoogleAnalytics from '@/components/GoogleAnalytics.astro';
+import BusuanziAnalytics from '@/components/BusuanziAnalytics.astro';
+import getUrl from "@/utils/getUrl";
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-
 const {title = site.title, description = site.description, mathjax = false, mermaid = false, ogImage:ogimage = ''} = Astro.props
 let ogImage =  ogimage || new URL(Astro.url.pathname, Astro.site?.href).href;
 ---

@@ -1,18 +1,15 @@
 ---
-import {getCollection} from 'astro:content';
-import BlogPost from '../../layouts/BlogPost.astro'
-import PostTitle from "../../components/PostTitle.astro";
-import BlogFooter from '../../components/BlogFooter.astro'
-import {getCollectionByName} from "../../utils/getCollectionByName";
-import {sortPostsByDate} from "../../utils/sortPostsByDate";
-import Donate from '../../components/Donate.astro'
-import {donate} from "../../consts";
-import getUrl from "../../utils/getUrl";
+import BlogPost from '@/layouts/BlogPost.astro'
+import PostTitle from "@/components/PostTitle.astro";
+import BlogFooter from '@/components/BlogFooter.astro'
+import {getCollectionByName} from "@/utils/getCollectionByName";
+import {sortPostsByDate} from "@/utils/sortPostsByDate";
+import Donate from '@/components/Donate.astro'
+import {donate} from "@/consts";
+import getUrl from "@/utils/getUrl";
 
 export async function getStaticPaths() {
-  const blogEntries = (await getCollection('blog')).filter(({data}) => {
-    return import.meta.env.PROD ? !data.draft : true
-  });
+  const blogEntries = await getCollectionByName("blog");
   return blogEntries.map(entry => ({
     params: {slug: entry.slug}, props: {entry,},
   }));

@@ -1,7 +1,7 @@
 // Place any global data in this file.
 // You can import this data from anywhere in your site by using the `import` keyword.
 
-import {AnalyticsConfig} from "./types/analyticsTypes"
+import type {AnalyticsConfig} from "./types/analyticsTypes"
 
 /**
  * title {string} website title

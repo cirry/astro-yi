@@ -1,12 +1,10 @@
 import rss from '@astrojs/rss';
 import {site} from "../consts";
-import {getCollection} from "astro:content";
 import getUrl from "../utils/getUrl.js";
+import {getCollectionByName} from "../utils/getCollectionByName.js";
 
 export async function GET(context) {
-  const blog = (await getCollection('blog')).filter(({data}) => {
-    return import.meta.env.PROD ? !data.draft : true
-  });
+  const blog = (await getCollectionByName('blog'))
   return rss({
     title: site.title,
     description: site.description,

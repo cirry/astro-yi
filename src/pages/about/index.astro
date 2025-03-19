@@ -1,6 +1,6 @@
 ---
-import IndexPage from "src/layouts/IndexPage.astro";
-let posts = await Astro.glob("./about.md");
+import IndexPage from "@/layouts/IndexPage.astro";
+const posts = Object.values(import.meta.glob("./about.md", { eager: true }));
 let {Content, frontmatter} = posts[0];
 ---
 

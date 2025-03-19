@@ -1,6 +1,6 @@
 ---
-import "../styles/donate.css";
-import {donate} from "../consts";
+import "@/styles/donate.css";
+import {donate} from "@/consts";
 ---
 <div class="mt-4">
   <div class="esa-sponsor">
@@ -33,22 +33,21 @@ import {donate} from "../consts";
   let qrDiv = document.getElementsByClassName("qrshow");
   let aliDiv = document.getElementById("alipay");
   let wechatDiv = document.getElementById("wechatpay");
-  if (qrDiv) {
-    if (aliDiv && donate.alipayQRCode) {
-      aliDiv.addEventListener("mouseenter", () => {
-        qrDiv[0].style.display = "block";
-      });
-      aliDiv.addEventListener("mouseleave", () => {
-        qrDiv[0].style.display = "none";
-      });
-    }
-    if (wechatDiv && donate.wechatQRCode) {
-      wechatDiv.addEventListener("mouseenter", () => {
-        qrDiv[1].style.display = "block";
-      });
-      wechatDiv.addEventListener("mouseleave", () => {
-        qrDiv[1].style.display = "none";
-      });
-    }
+
+  if (donate.alipayQRCode) {
+    aliDiv?.addEventListener("mouseenter", () => {
+      qrDiv[0].style.display = "block";
+    });
+    aliDiv?.addEventListener("mouseleave", () => {
+      qrDiv[0].style.display = "none";
+    });
+  }
+  if (donate.wechatQRCode) {
+    wechatDiv?.addEventListener("mouseenter", () => {
+      qrDiv[1].style.display = "block";
+    });
+    wechatDiv?.addEventListener("mouseleave", () => {
+      qrDiv[1].style.display = "none";
+    });
   }
 </script>
