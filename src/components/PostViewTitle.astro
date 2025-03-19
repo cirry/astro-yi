@@ -1,9 +1,9 @@
 ---
-import {formatDate} from "../utils/formatDate";
-import {dealLabel} from "../utils/dealLabel";
-import {t} from '../i18n/utils'
+import {formatDate} from "@/utils/formatDate";
+import {dealLabel} from "@/utils/dealLabel";
+import {t} from '@/i18n/utils'
+import getUrl from "@/utils/getUrl";
 const {title, date, slug, category, tags, sticky = false, draft = false} = Astro.props
-import getUrl from "../utils/getUrl";
 ---
 
 <div class="text-skin-base">

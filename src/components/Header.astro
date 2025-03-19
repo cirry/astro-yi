@@ -1,15 +1,15 @@
 ---
-import {getCollectionByName} from "../utils/getCollectionByName";
-import getUniqueTags from "../utils/getUniqueTags";
-import getCountByCategory from "../utils/getCountByCategory";
+import {getCollectionByName} from "@/utils/getCollectionByName";
+import getUniqueTags from "@/utils/getUniqueTags";
+import getCountByCategory from "@/utils/getCountByCategory";
 import HeaderLink from './HeaderLink.astro';
 import ThemeIcon from './ThemeIcon.astro'
 import MenuIcon from './MenuIcon.astro'
-import {site, categories, infoLinks} from '../consts';
+import {site, categories, infoLinks} from '@/consts';
 import AsideIcon from "./SidebarIcon.astro";
-import {t} from "../i18n/utils";
-import getCountByTagName from "../utils/getCountByTagName";
-import getUrl from "../utils/getUrl";
+import {t} from "@/i18n/utils";
+import getCountByTagName from "@/utils/getCountByTagName";
+import getUrl from "@/utils/getUrl";
 const blogs = await getCollectionByName('blog')
 let tagArr = getUniqueTags(blogs);
 let categoryCount = getCountByCategory(blogs);

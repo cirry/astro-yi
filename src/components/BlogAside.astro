@@ -1,13 +1,13 @@
 ---
-import CommentAside from "./CommentAside.astro";
-import {comment} from "../consts";
-import {getCollectionByName} from "../utils/getCollectionByName";
-import getUniqueTags from "../utils/getUniqueTags";
-import getCountByCategory from "../utils/getCountByCategory";
-import {sortPostsByDate} from "../utils/sortPostsByDate";
-import {site} from '../consts'
-import {t} from '../i18n/utils'
-import getUrl from "../utils/getUrl";
+import CommentAside from "@/components/CommentAside.astro";
+import {comment} from "@/consts";
+import {getCollectionByName} from "@/utils/getCollectionByName";
+import getUniqueTags from "@/utils/getUniqueTags";
+import getCountByCategory from "@/utils/getCountByCategory";
+import {sortPostsByDate} from "@/utils/sortPostsByDate";
+import {site} from '@/consts'
+import {t} from '@/i18n/utils'
+import getUrl from "@/utils/getUrl";
 const blogs = await getCollectionByName('blog')
 let tagArr = getUniqueTags(blogs);
 if(site.asideTagsMaxSize > 0)

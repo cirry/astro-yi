@@ -18,11 +18,8 @@
     "checkJs": false,
     "baseUrl": ".",
     "paths": {
-      "$components": [
-        "./src/components"
-      ],
-      "$": [
-        "./src"
+      "@/*": [
+        "src/*"
       ]
     },
     "types": [
@@ -32,12 +29,13 @@
     "jsxImportSource": "solid-js"
   },
   "include": [
-    "src/**/*.d.ts",
-    "src/**/*.js",
-    "src/**/*.ts",
+    ".astro/types.d.ts",
+    "**/*"
   ],
   "exclude": [
-    "src/**/.astro"
-
+    "node_modules",
+    "**/node_modules/*",
+    ".vscode",
+    "dist"
   ]
 }

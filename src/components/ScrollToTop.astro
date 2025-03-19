@@ -10,20 +10,19 @@
   let scrollToTopBtn = document.getElementById("scrollToTopBtn");
 
   // 监听窗口滚动事件
-  window.onscroll = function () {
-    // 显示/隐藏按钮根据滚动位置
-    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-      scrollToTopBtn.classList.add('block')
-      scrollToTopBtn.classList.remove('hidden')
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 200) {
+      scrollToTopBtn.style.display = 'block';
     } else {
-      scrollToTopBtn.classList.add('hidden')
-      scrollToTopBtn.classList.remove('block')
+      scrollToTopBtn.style.display = 'none';
     }
-  };
+  });
   // 获取按钮的引用
-  scrollToTopBtn.addEventListener("click", () => {
-    document.body.scrollTop = 0; // For Safari
-    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-  })
+  scrollToTopBtn.addEventListener('click', function() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth' // 平滑滚动
+    });
+  });
 </script>
 

@@ -1,12 +1,12 @@
 ---
-import IndexPage from "src/layouts/IndexPage.astro";
-import Pagination from "src/components/Pagination.astro";
-import { sortPostsByDate } from "src/utils/sortPostsByDate";
-import getPostsByYear from "src/utils/getPostsByYear";
-import  {site} from "../../consts";
+import IndexPage from "@/layouts/IndexPage.astro";
+import Pagination from "@/components/Pagination.astro";
+import { sortPostsByDate } from "@/utils/sortPostsByDate";
+import getPostsByYear from "@/utils/getPostsByYear";
+import  {site} from "@/consts";
+import { getCollectionByName } from "@/utils/getCollectionByName";
+import getUrl from "@/utils/getUrl";
 import dayjs from "dayjs";
-import { getCollectionByName } from "../../utils/getCollectionByName";
-import getUrl from "../../utils/getUrl";
 export async function getStaticPaths({ paginate }) {
   let posts = await getCollectionByName("blog");
   posts = sortPostsByDate(posts);
@@ -45,6 +45,5 @@ let resultPosts = getPostsByYear(page.data);
     currentPage={page.currentPage}
     totalPage={page.lastPage}
     prefixUrl={getUrl("/archive/")}
-    url={page.slug}
   />
 </IndexPage>

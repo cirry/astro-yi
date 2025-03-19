@@ -1,6 +1,6 @@
 ---
 const {href, icon: iconClass, children, target, ...props} = Astro.props;
-import getUrl from "../utils/getUrl";
+import getUrl from "@/utils/getUrl";
 
 const {pathname} = Astro.url;
 let hrefMath = href.split('/')

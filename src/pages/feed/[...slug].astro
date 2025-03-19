@@ -1,11 +1,11 @@
 ---
-import {sortPostsByDate} from "src/utils/sortPostsByDate";
-import {getCollectionByName} from "../../utils/getCollectionByName";
-import BlogPost from '../../layouts/BlogPost.astro'
-import {comment} from "../../consts";
-import {formatDate} from '../../utils/formatDate'
-import {t} from '../../i18n/utils'
-import getUrl from "../../utils/getUrl";
+import {sortPostsByDate} from "@/utils/sortPostsByDate";
+import {getCollectionByName} from "@/utils/getCollectionByName";
+import BlogPost from '@/layouts/BlogPost.astro'
+import {comment} from "@/consts";
+import {formatDate} from '@/utils/formatDate'
+import {t} from '@/i18n/utils'
+import getUrl from "@/utils/getUrl";
 
 export async function getStaticPaths() {
   const posts = await getCollectionByName("feed");

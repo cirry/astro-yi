@@ -1,12 +1,12 @@
 ---
-import IndexPage from "src/layouts/IndexPage.astro";
-import getUniqueTags from "src/utils/getUniqueTags";
-import getPostsByTag from "src/utils/getPostsByTag";
-import SearchTitle from "src/components/SearchTitle.astro";
-import {formatDate} from "../../utils/formatDate";
-import {sortPostsByDate} from "src/utils/sortPostsByDate";
-import {getCollectionByName} from "../../utils/getCollectionByName";
-import getUrl from "../../utils/getUrl";
+import IndexPage from "@/layouts/IndexPage.astro";
+import getUniqueTags from "@/utils/getUniqueTags";
+import getPostsByTag from "@/utils/getPostsByTag";
+import SearchTitle from "@/components/SearchTitle.astro";
+import {formatDate} from "@/utils/formatDate";
+import {sortPostsByDate} from "@/utils/sortPostsByDate";
+import {getCollectionByName} from "@/utils/getCollectionByName";
+import getUrl from "@/utils/getUrl";
 export async function getStaticPaths() {
   const posts = await getCollectionByName("blog");
   //   过滤没有分类的文章，todo 后期可能会强制需要文章分类

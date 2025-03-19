@@ -1,18 +1,17 @@
 ---
-import PostView from '../components/PostView.astro'
-import IndexPage from '../layouts/IndexPage.astro'
-import {getCollectionByName} from "../utils/getCollectionByName";
-import {orderBySticky} from "../utils/orderBySticky";
-import {site} from '../consts'
-import Pagination from "../components/Pagination.astro";
+import PostView from '@/components/PostView.astro'
+import IndexPage from '@/layouts/IndexPage.astro'
+import {getCollectionByName} from "@/utils/getCollectionByName";
+import {orderBySticky} from "@/utils/orderBySticky";
+import {site} from '@/consts'
+import Pagination from "@/components/Pagination.astro";
 import {ceil, divide} from 'lodash-es'
-import getUrl from "../utils/getUrl";
 
 let currentPage = 1
 let blogs = await getCollectionByName("blog");
 let totalPage = ceil(divide(blogs.length, site.postPageSize))
 
-let sortedPosts = await orderBySticky(blogs);
+let sortedPosts = orderBySticky(blogs);
 if (sortedPosts.length > site.postPageSize) {
   sortedPosts = sortedPosts.splice(0, site.postPageSize);
 }

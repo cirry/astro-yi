@@ -1,13 +1,14 @@
 ---
-import IndexPage from "src/layouts/IndexPage.astro";
-import {site} from "../../consts";
+import IndexPage from "@/layouts/IndexPage.astro";
+import {site} from "@/consts";
+import getPostsByYear from "@/utils/getPostsByYear";
+import {sortPostsByDate} from "@/utils/sortPostsByDate";
+import Pagination from "@/components/Pagination.astro";
+import {getCollectionByName} from "@/utils/getCollectionByName";
+import getUrl from "@/utils/getUrl";
+
 import dayjs from "dayjs";
-import getPostsByYear from "src/utils/getPostsByYear";
-import {sortPostsByDate} from "src/utils/sortPostsByDate";
-import Pagination from "src/components/Pagination.astro";
-import {getCollectionByName} from "../../utils/getCollectionByName";
 import {ceil, divide} from "lodash-es";
-import getUrl from "../../utils/getUrl";
 
 let posts = await getCollectionByName("blog");
 let totalPage = ceil(divide(posts.length, site.archivePageSize));
