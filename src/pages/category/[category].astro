@@ -27,7 +27,7 @@ const categoryPosts = getPostsByCategory(posts, category);
 const resultPosts = sortPostsByDate(categoryPosts);
 ---
 
-<IndexPage>
+<IndexPage title={category}>
   <SearchTitle label={category}/>
   <ul class="text-skin-base">
     {
