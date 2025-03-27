@@ -21,7 +21,7 @@ const tagPosts = getPostsByTag(posts, tag);
 const resultPosts = sortPostsByDate(tagPosts);
 ---
 
-<IndexPage>
+<IndexPage title={tag}>
   <SearchTitle label={tag}/>
   <ul class="text-skin-base">
     {
