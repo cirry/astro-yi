@@ -17,6 +17,7 @@ let ogImage =  ogimage || new URL(Astro.url.pathname, Astro.site?.href).href;
   <meta name="generator" content={Astro.generator}>
   <!-- Canonical URL -->
   <link rel="canonical" href={canonicalURL}>
+  <link rel="alternate" type="application/rss+xml" title={site.title} href={getUrl('/rss.xml')}>
 
   <!-- Primary Meta Tags -->
   <meta name="title" content={title}>
