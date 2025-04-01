@@ -40,6 +40,7 @@ menu {
     --color-fill-secondary: 251, 251, 251;
     --color-card: 241, 241, 241;
     --color-text: 80, 73, 69;
+    --color-text-dodge: 150, 150, 150;
     --color-text-active: 181, 118, 20;
     --color-border: 104, 157, 106;
     --color-border-active: 14, 192, 124;
@@ -51,6 +52,7 @@ menu {
     --color-fill-secondary: 52, 58, 64;
     --color-card: 40, 42, 54;
     --color-text: 249, 244, 227;
+    --color-text-dodge: 150, 150, 150;
     --color-text-active: 250, 189, 47;
     --color-border: 214, 93, 14;
     --color-border-active: 7, 102, 120;
