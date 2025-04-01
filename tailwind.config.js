@@ -35,6 +35,7 @@ export default {
     textColor: {
       skin: {
         base: withOpacity("--color-text"),
+        dodge: withOpacity("--color-text-dodge"),
         active: withOpacity("--color-text-active")
       },
     },

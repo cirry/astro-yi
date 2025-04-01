@@ -6,8 +6,9 @@ import GoogleAnalytics from '@/components/GoogleAnalytics.astro';
 import BusuanziAnalytics from '@/components/BusuanziAnalytics.astro';
 import getUrl from "@/utils/getUrl";
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const {title = site.title, description = site.description, mathjax = false, mermaid = false, ogImage:ogimage = ''} = Astro.props
+const {description = site.description, mathjax = false, mermaid = false, ogImage:ogimage = ''} = Astro.props
 let ogImage =  ogimage || new URL(Astro.url.pathname, Astro.site?.href).href;
+let title = Astro.props.title ? `${Astro.props.title} - ${site.title}` : site.title;
 ---
 <head>
   <!-- Global Metadata -->
@@ -17,6 +18,7 @@ let ogImage =  ogimage || new URL(Astro.url.pathname, Astro.site?.href).href;
   <meta name="generator" content={Astro.generator}>
   <!-- Canonical URL -->
   <link rel="canonical" href={canonicalURL}>
+  <link rel="alternate" type="application/rss+xml" title={site.title} href={getUrl('/rss.xml')}>
 
   <!-- Primary Meta Tags -->
   <meta name="title" content={title}>

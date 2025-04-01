@@ -12,7 +12,7 @@ const {frontmatter = {comment: false, donate: false}} = Astro.props
 ---
 
 <html lang={config.lang}>
-<BaseHead/>
+<BaseHead title={Astro.props.title} />
 
 <body class="bg-skin-secondary relative">
 <Header/>
