@@ -40,7 +40,7 @@ Give it a try! Click the button above, and you can deploy with just one click.
 
 ### 👨🏻‍💻 Manual Installation
 
-Recommended for use `nodejs >= 18`，`pnpm >= 8`。
+Recommended for use `nodejs >= 20`,`pnpm >= 8`。
 
 ```bash
 git clone https://github.com/cirry/astro-yi.git
