@@ -41,7 +41,7 @@
 
 ### 👨🏻‍💻 手动部署
 
-推荐使用：`nodejs >= 18`，`pnpm >= 8`。
+推荐使用：`nodejs >= 20`，`pnpm >= 8`。
 
 ```bash
 git clone https://github.com/cirry/astro-yi.git
