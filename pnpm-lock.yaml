@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@astrojs/mdx':
         specifier: ^4.3.0
-        version: 4.3.0(astro@5.9.2(jiti@1.21.0)(rollup@4.40.2)(sass@1.72.0)(typescript@5.4.2))
+        version: 4.3.0(astro@5.11.2(jiti@1.21.0)(rollup@4.40.2)(sass@1.72.0)(typescript@5.4.2))
       '@astrojs/rss':
         specifier: ^4.0.12
         version: 4.0.12
@@ -19,7 +19,7 @@ importers:
         version: 3.4.1
       '@astrojs/tailwind':
         specifier: ^6.0.2
-        version: 6.0.2(astro@5.9.2(jiti@1.21.0)(rollup@4.40.2)(sass@1.72.0)(typescript@5.4.2))(tailwindcss@3.4.1)
+        version: 6.0.2(astro@5.11.2(jiti@1.21.0)(rollup@4.40.2)(sass@1.72.0)(typescript@5.4.2))(tailwindcss@3.4.1)
       '@expressive-code/plugin-collapsible-sections':
         specifier: ^0.33.5
         version: 0.33.5
@@ -33,11 +33,11 @@ importers:
         specifier: ^3.1.3
         version: 3.1.3(typescript@5.4.2)
       astro:
-        specifier: ^5.9.2
-        version: 5.9.2(jiti@1.21.0)(rollup@4.40.2)(sass@1.72.0)(typescript@5.4.2)
+        specifier: ^5.11.2
+        version: 5.11.2(jiti@1.21.0)(rollup@4.40.2)(sass@1.72.0)(typescript@5.4.2)
       astro-expressive-code:
         specifier: ^0.33.5
-        version: 0.33.5(astro@5.9.2(jiti@1.21.0)(rollup@4.40.2)(sass@1.72.0)(typescript@5.4.2))
+        version: 0.33.5(astro@5.11.2(jiti@1.21.0)(rollup@4.40.2)(sass@1.72.0)(typescript@5.4.2))
       child_process:
         specifier: ^1.0.2
         version: 1.0.2
@@ -655,9 +655,6 @@ packages:
   '@shikijs/types@3.4.2':
     resolution: {integrity: sha512-zHC1l7L+eQlDXLnxvM9R91Efh2V4+rN3oMVS2swCBssbj2U/FBwybD1eeLaq8yl/iwT+zih8iUbTBCgGZOYlVg==}
 
-  '@shikijs/vscode-textmate@10.0.1':
-    resolution: {integrity: sha512-fTIQwLF+Qhuws31iw7Ncl1R3HUDtGwIipiJ9iU+UsDUwMhegFcQKQHd51nZjb7CArq0MvON8rbgCGQYWHUKAdg==}
-
   '@shikijs/vscode-textmate@10.0.2':
     resolution: {integrity: sha512-83yeghZ2xxin3Nj8z1NMd/NCuca+gsYXswywDy5bHvwlWL8tpTQmzGeUuHd9FC3E/SBEMvzJRwWEOz5gGes9Qg==}
 
@@ -831,8 +828,8 @@ packages:
     peerDependencies:
       astro: ^4.0.0-beta || ^3.3.0
 
-  astro@5.9.2:
-    resolution: {integrity: sha512-K/zZlQOWMpamfLDOls5jvG7lrsjH1gkk3ESRZyZDCkVBtKHMF4LbjwCicm/iBb3mX3V/PerqRYzLbOy3/4JLCQ==}
+  astro@5.11.2:
+    resolution: {integrity: sha512-jKJCqp0PMZ1ZpP2xySghsJ1xK7ZNh/ISTRNBf/7khY3iEGq/zup49ZMhNZXK5Cd/dFWP/pdBNHD91SByA42IvQ==}
     engines: {node: 18.20.8 || ^20.3.0 || >=22.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -2490,12 +2487,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/mdx@4.3.0(astro@5.9.2(jiti@1.21.0)(rollup@4.40.2)(sass@1.72.0)(typescript@5.4.2))':
+  '@astrojs/mdx@4.3.0(astro@5.11.2(jiti@1.21.0)(rollup@4.40.2)(sass@1.72.0)(typescript@5.4.2))':
     dependencies:
       '@astrojs/markdown-remark': 6.3.2
       '@mdx-js/mdx': 3.1.0(acorn@8.14.1)
       acorn: 8.14.1
-      astro: 5.9.2(jiti@1.21.0)(rollup@4.40.2)(sass@1.72.0)(typescript@5.4.2)
+      astro: 5.11.2(jiti@1.21.0)(rollup@4.40.2)(sass@1.72.0)(typescript@5.4.2)
       es-module-lexer: 1.6.0
       estree-util-visit: 2.0.0
       hast-util-to-html: 9.0.5
@@ -2524,9 +2521,9 @@ snapshots:
       stream-replace-string: 2.0.0
       zod: 3.24.2
 
-  '@astrojs/tailwind@6.0.2(astro@5.9.2(jiti@1.21.0)(rollup@4.40.2)(sass@1.72.0)(typescript@5.4.2))(tailwindcss@3.4.1)':
+  '@astrojs/tailwind@6.0.2(astro@5.11.2(jiti@1.21.0)(rollup@4.40.2)(sass@1.72.0)(typescript@5.4.2))(tailwindcss@3.4.1)':
     dependencies:
-      astro: 5.9.2(jiti@1.21.0)(rollup@4.40.2)(sass@1.72.0)(typescript@5.4.2)
+      astro: 5.11.2(jiti@1.21.0)(rollup@4.40.2)(sass@1.72.0)(typescript@5.4.2)
       autoprefixer: 10.4.21(postcss@8.5.3)
       postcss: 8.5.3
       postcss-load-config: 4.0.2(postcss@8.5.3)
@@ -2907,7 +2904,7 @@ snapshots:
       '@shikijs/engine-javascript': 1.29.2
       '@shikijs/engine-oniguruma': 1.29.2
       '@shikijs/types': 1.29.2
-      '@shikijs/vscode-textmate': 10.0.1
+      '@shikijs/vscode-textmate': 10.0.2
       '@types/hast': 3.0.4
       hast-util-to-html: 9.0.5
 
@@ -2921,7 +2918,7 @@ snapshots:
   '@shikijs/engine-javascript@1.29.2':
     dependencies:
       '@shikijs/types': 1.29.2
-      '@shikijs/vscode-textmate': 10.0.1
+      '@shikijs/vscode-textmate': 10.0.2
       oniguruma-to-es: 2.3.0
 
   '@shikijs/engine-javascript@3.4.2':
@@ -2933,7 +2930,7 @@ snapshots:
   '@shikijs/engine-oniguruma@1.29.2':
     dependencies:
       '@shikijs/types': 1.29.2
-      '@shikijs/vscode-textmate': 10.0.1
+      '@shikijs/vscode-textmate': 10.0.2
 
   '@shikijs/engine-oniguruma@3.4.2':
     dependencies:
@@ -2958,15 +2955,13 @@ snapshots:
 
   '@shikijs/types@1.29.2':
     dependencies:
-      '@shikijs/vscode-textmate': 10.0.1
+      '@shikijs/vscode-textmate': 10.0.2
       '@types/hast': 3.0.4
 
   '@shikijs/types@3.4.2':
     dependencies:
       '@shikijs/vscode-textmate': 10.0.2
       '@types/hast': 3.0.4
-
-  '@shikijs/vscode-textmate@10.0.1': {}
 
   '@shikijs/vscode-textmate@10.0.2': {}
 
@@ -3161,13 +3156,13 @@ snapshots:
 
   astring@1.8.6: {}
 
-  astro-expressive-code@0.33.5(astro@5.9.2(jiti@1.21.0)(rollup@4.40.2)(sass@1.72.0)(typescript@5.4.2)):
+  astro-expressive-code@0.33.5(astro@5.11.2(jiti@1.21.0)(rollup@4.40.2)(sass@1.72.0)(typescript@5.4.2)):
     dependencies:
-      astro: 5.9.2(jiti@1.21.0)(rollup@4.40.2)(sass@1.72.0)(typescript@5.4.2)
+      astro: 5.11.2(jiti@1.21.0)(rollup@4.40.2)(sass@1.72.0)(typescript@5.4.2)
       hast-util-to-html: 8.0.4
       remark-expressive-code: 0.33.5
 
-  astro@5.9.2(jiti@1.21.0)(rollup@4.40.2)(sass@1.72.0)(typescript@5.4.2):
+  astro@5.11.2(jiti@1.21.0)(rollup@4.40.2)(sass@1.72.0)(typescript@5.4.2):
     dependencies:
       '@astrojs/compiler': 2.12.2
       '@astrojs/internal-helpers': 0.6.1
@@ -4976,7 +4971,7 @@ snapshots:
       '@shikijs/langs': 1.29.2
       '@shikijs/themes': 1.29.2
       '@shikijs/types': 1.29.2
-      '@shikijs/vscode-textmate': 10.0.1
+      '@shikijs/vscode-textmate': 10.0.2
       '@types/hast': 3.0.4
 
   shiki@3.4.2:
