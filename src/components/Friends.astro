@@ -1,5 +1,5 @@
 ---
-const { name, avatar, description, url } = Astro.props;
+const {name, avatar = null, description, url} = Astro.props;
 ---
 
 <a
@@ -7,16 +7,32 @@ const { name, avatar, description, url } = Astro.props;
   href={url}
   target="_blank"
 >
-  <img class="h-16 w-16 rounded m-2" src={avatar} alt="avatar" />
-  <div
-    style="width:calc(100% - 6em);height:60%"
-    class="flex flex-col justify-around"
-  >
-    <div title={name} class="truncate font-bold">
-      {name}
+  {avatar ?
+    <div>
+      <img class="h-16 w-16 rounded m-2" src={avatar} alt="avatar"/>
+      <div
+        style="width:calc(100% - 6em);height:60%"
+        class="flex flex-col justify-around"
+      >
+        <div title={name} class="truncate font-bold">
+          {name}
+        </div>
+        <div title={description} class="truncate text-sm">
+          {description}
+        </div>
+      </div>
     </div>
-    <div title={description} class="truncate text-sm">
-      {description}
+    :
+    <div>
+      <div class="flex flex-col justify-around mx-2">
+        <div title={name} class="truncate font-bold">
+          {name}
+        </div>
+        <div title={description} class="truncate text-sm">
+          {description}
+        </div>
+      </div>
     </div>
-  </div>
+  }
+
 </a>
