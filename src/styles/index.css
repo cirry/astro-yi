@@ -1,6 +1,5 @@
 @import url('./github-markdown.css');
 @import "remixicon/fonts/remixicon.css";
-@import "tocbot/dist/tocbot.css";
 @import "remark-aside.css";
 @tailwind base;
 @tailwind components;
@@ -94,11 +93,11 @@ menu {
 
   /* 侧边最近评论列表样式 */
   .waline-comment-content {
-    @apply p-1 overflow-auto max-h-72 break-words hover:text-skin-active;
+    @apply p-1 overflow-auto break-words max-h-72 hover:text-skin-active;
   }
 
   .waline-comment-author {
-    @apply text-end mb-1 break-words hover:text-skin-active;
+    @apply mb-1 break-words text-end hover:text-skin-active;
   }
 
   a {
@@ -231,19 +230,8 @@ menu {
   border-radius: 2px 6px;
 }
 
-/* 修复toc 样式问题*/
-/*  覆写toc选中的链接文字颜色 */
-.is-active-link {
-  color: rgb(var(--color-text-active)) !important;
-}
-
 #toc a:hover {
   color: rgb(var(--color-text-active));
-}
-
-/* tocbot自带的border样式会穿透有问题，以被覆写 */
-.toc-link::before {
-  display: none !important;
 }
 
 .github-avatar{

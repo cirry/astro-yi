@@ -1,71 +1,122 @@
 ---
-import {t} from '@/i18n/utils'
+import { t } from '@/i18n/utils';
+const { headings = null } = Astro.props;
+
+const filtersHeadings = headings
+  ? headings.filter((item) => item.depth === 2 || item.depth === 3)
+  : [];
+
+const filtersHeadingsLength = filtersHeadings.length;
 ---
+
 <div
   id="toc"
-  class="shadow-lg rounded-lg my-4 py-2 px-2 bg-skin-card sticky top-20"
+  class="sticky px-2 py-2 my-4 rounded-lg shadow-lg bg-skin-card top-20"
 >
   <div class="aside-widget">
-    <i class="ri-list-check menu-icon"/>
+    <i class="ri-list-check menu-icon"></i>
     {t('blog.tableOfContent')}
   </div>
-  <div class="overflow-auto">
-    <div class="toc-container"/>
-  </div>
-</div>
+  <ul class="flex flex-col max-w-full mt-4">
+    {
+      filtersHeadings.map((item, index) => (
+        <li class="flex items-stretch">
+          {Array.from({ length: item.depth - 1 }).map((_v, _i) => (
+            <div class="flex flex-col">
+              <div
+                class:list={[
+                  _i === 0 ? 'border-left' : '',
+                  'border-skin-dodge',
+                  'border-box',
+                  'border-bottom',
+                ]}
+              />
+              {index === filtersHeadingsLength - 1 ? (
+                ''
+              ) : (
+                <div
+                  class:list={[
+                    _i === 0 ? 'border-left' : '',
+                    'border-skin-dodge',
+                    'border-box',
+                  ]}
+                />
+              )}
+            </div>
+          ))}
 
-<style>
-  .post-title:hover {
-    outline: 0;
-    color: #cc7a00;
-    text-shadow: 1px 1px 1px #ffd147;
-  }
-
-  .toc_container {
-    overflow-y: scroll;
-    /* webkit */
-    /* firefox */
-    scrollbar-width: none;
-    /* ie */
-    -ms-overflow-style: none;
-  }
-
-  .toc_container::-webkit-scrollbar {
-    width: 0;
-    height: 0;
-  }
-
-  .toc_container a{
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-  }
-</style>
-
-<script>
-  import * as tocbot from "tocbot";
-
-  tocbot.init({
-    tocSelector: ".toc-container",
-    contentSelector: ".markdown-body",
-    headingSelector: "h1,h2,h3",
-    hasInnerContainers: true,
-    headingsOffset: 80,
-    scrollSmoothOffset: -80,
-    scrollSmoothDuration: 200,
-    collapseDepth: 3,
-    onClick: function (){
-      return false
-    },
-  });
-  let toc = document.getElementById("toc");
-  if (toc) {
-    tocbot.refresh();
-    let tocContainer = document.getElementsByClassName('toc-container')
-    if (tocContainer[0].textContent.replace(/\s/g, '') === '') {
-      toc.classList.toggle('hidden')
-    } else {
-      toc.classList.add('block')
+          <a
+            title={item.slug}
+            href={`#${item.slug}`}
+            class="inline-block pl-2 truncate border-s-purple-500"
+          >
+            {item.text}
+          </a>
+        </li>
+      ))
     }
-  }
-</script>
+  </ul>
+
+  <style>
+    .toc_container {
+      overflow-y: scroll;
+      /* webkit */
+      /* firefox */
+      scrollbar-width: none;
+      /* ie */
+      -ms-overflow-style: none;
+    }
+
+    .toc_container::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
+
+    .active-heading {
+      color: #cc7a00;
+      font-weight: 600;
+    }
+    .border-left {
+      border-left: 1px solid;
+    }
+    .border-bottom {
+      border-bottom: 1px solid;
+    }
+    .border-box {
+      height: 13px;
+      width: 12px;
+    }
+  </style>
+
+  <script>
+    const anchors = document.querySelectorAll('h2, h3');
+    console.log('🚀 ~ anchors:', anchors);
+    const links = document.querySelectorAll('#toc> ul > li > a');
+    console.log('🚀 ~ links:', links);
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px  0px -75% 0px',
+      threshold: 0,
+    };
+
+    const callback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          let index = Array.from(anchors).indexOf(entry.target);
+          console.log('🚀 ~ callback ~ index:', index);
+
+          links.forEach((link) => {
+            link.classList.remove('active-heading');
+          });
+          links[index].classList.add('active-heading');
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(callback, observerOptions);
+    anchors.forEach((link) => {
+      observer.observe(link);
+    });
+  </script>
+</div>

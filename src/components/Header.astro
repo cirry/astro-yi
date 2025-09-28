@@ -16,15 +16,15 @@ let categoryCount = getCountByCategory(blogs);
 let tagCount = getCountByTagName(blogs);
 ---
 
-<header class="fixed top-0 w-full bg-skin-fill text-skin-base z-10">
-  <div class="flex items-center justify-between container">
+<header class="fixed top-0 z-10 w-full bg-skin-fill text-skin-base">
+  <div class="container flex items-center justify-between">
     <div class="block xl:hidden">
       <MenuIcon></MenuIcon>
     </div>
-    <a class="text-2xl p-4" href={getUrl("/")}>{site.title}</a>
+    <a class="p-4 text-2xl" href={getUrl("/")}>{site.title}</a>
     <div class="flex items-center">
       <div class="hidden xl:block">
-        <div class="flex items-center space-x-5 pr-4">
+        <div class="flex items-center pr-4 space-x-5">
           {
             categories.map(category => (
               <HeaderLink href={category.href} icon={category.iconClass} target={category.target ? category.target : '_self'} children={category.children ? category.children : []}>{category.name}</HeaderLink>
@@ -38,7 +38,7 @@ let tagCount = getCountByTagName(blogs);
       </div>
     </div>
   </div>
-  <div id="mobile-menu" class="hidden text-center overflow-y-auto pb-8" style="height: calc(100vh - 64px)">
+  <div id="mobile-menu" class="hidden pb-8 overflow-y-auto text-center" style="height: calc(100vh - 64px)">
     {
       categories.map((category) => (
         <div class="py-2">
@@ -66,10 +66,10 @@ let tagCount = getCountByTagName(blogs);
       ))
     }
   </div>
-  <div id="personal-info" class="hidden break-all overflow-y-auto pb-8" style="height: calc(100vh - 64px)">
-    <img class="avatar my-4 mx-auto" src={getUrl(site.avatar)} alt="avatar"/>
+  <div id="personal-info" class="hidden pb-8 overflow-y-auto break-all" style="height: calc(100vh - 64px)">
+    <img class="mx-auto my-4 avatar" src={getUrl(site.avatar)} alt="avatar"/>
     <div class="mb-2 text-center">{site.motto}</div>
-    <div class="flex items-center justify-center flex-wrap">
+    <div class="flex flex-wrap items-center justify-center">
       {
         infoLinks.map((infoItem) => (
           <a title={infoItem.name} href={infoItem.outlink} target="_blank">
@@ -110,7 +110,7 @@ let tagCount = getCountByTagName(blogs);
         tagArr &&
         tagArr.map((tag) => (
           <div class="my-2 break-all truncate">
-            <a class="hover:text-skin-active my-2" title={tag} href={getUrl("/tags/") + tag}>{tag + " (" + tagCount[tag] + ")"}</a>
+            <a class="my-2 hover:text-skin-active" title={tag} href={getUrl("/tags/") + tag}>{tag + " (" + tagCount[tag] + ")"}</a>
           </div>
         ))
       }

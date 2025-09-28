@@ -2,12 +2,12 @@
 import BaseHead from '@/components/BaseHead.astro';
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
-import Profile from '@/components/Profile.astro'
-import Comment from '@/components/Comment.astro'
-import Toc from '@/components/Toc.astro'
-import {comment, config} from "@/consts";
-import ScrollToTop from '@/components/ScrollToTop.astro'
-import {t} from '@/i18n/utils'
+import Profile from '@/components/Profile.astro';
+import Comment from '@/components/Comment.astro';
+import Toc from '@/components/Toc.astro';
+import { comment, config } from '@/consts';
+import ScrollToTop from '@/components/ScrollToTop.astro';
+import { t } from '@/i18n/utils';
 
 const {
   frontmatter = {
@@ -17,70 +17,71 @@ const {
     mathjax: false,
     mermaid: false,
   },
+  headings,
 } = Astro.props;
 ---
 
 <html lang={config.lang}>
-<BaseHead
-  title={frontmatter.title}
-  description={frontmatter.description}
-  mathjax={frontmatter.mathjax}
-  mermaid={frontmatter.mermaid}
-  ogImage={frontmatter.ogImage}
-/>
+  <BaseHead
+    title={frontmatter.title}
+    description={frontmatter.description}
+    mathjax={frontmatter.mathjax}
+    mermaid={frontmatter.mermaid}
+    ogImage={frontmatter.ogImage}
+  />
 
-<body class="bg-skin-secondary">
-<Header/>
-<main class="container p-4  pt-20 text-skin-base min-h-full pb-32 relative" id="app">
-  <div class="grid grid-cols-4 gap-8">
-    <div class="col-span-4 xl:col-span-3 space-y-4 first:space-y-2">
-      <button class="flex items-center text-md cursor-pointer hover:text-skin-active outline-none" style="background-color: inherit;" onclick="history.back()">
-        <i class="ri-arrow-left-line mr-2"/>
-        <span>{t('home.goBack')}</span>
-      </button>
-      <slot/>
-      {
-        frontmatter.comment && comment.enable &&
-        <Comment></Comment>
-      }
-    </div>
-    <div class="hidden xl:block col-span-1 relative">
-      <Profile></Profile>
-      {
-        frontmatter.toc &&
-        <Toc></Toc>
-      }
-    </div>
-    <ScrollToTop></ScrollToTop>
-  </div>
-  <Footer/>
-</main>
-</body>
+  <body class="bg-skin-secondary">
+    <Header />
+    <main
+      class="container relative min-h-full p-4 pt-20 pb-32 text-skin-base"
+      id="app"
+    >
+      <div class="grid grid-cols-4 gap-8">
+        <div class="col-span-4 space-y-4 xl:col-span-3 first:space-y-2">
+          <button
+            class="flex items-center outline-none cursor-pointer text-md hover:text-skin-active"
+            style="background-color: inherit;"
+            onclick="history.back()"
+          >
+            <i class="mr-2 ri-arrow-left-line"></i>
+            <span>{t('home.goBack')}</span>
+          </button>
+          <slot />
+          {frontmatter.comment && comment.enable && <Comment />}
+        </div>
+        <div class="relative hidden col-span-1 xl:block">
+          <Profile />
+          {frontmatter.toc && <Toc headings={headings} />}
+        </div>
+        <ScrollToTop />
+      </div>
+      <Footer />
+    </main>
+  </body>
 </html>
 
-
 <script>
-  import {Fancybox} from "@fancyapps/ui";
-  import "@fancyapps/ui/dist/fancybox/fancybox.css";
+  import { Fancybox } from '@fancyapps/ui';
+  import '@fancyapps/ui/dist/fancybox/fancybox.css';
 
-  Fancybox.bind("[data-fancybox]");
+  Fancybox.bind('[data-fancybox]');
   // 给所有的a标签添加target属性和不追踪
-  const markdownBody = document.querySelector(".markdown-body");
+  const markdownBody = document.querySelector('.markdown-body');
   // 如果没有markdownBody则直接返回
   if (markdownBody) {
-    let images = markdownBody.querySelectorAll("img");
+    let images = markdownBody.querySelectorAll('img');
     const callback = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const image = entry.target;
-          const data_src = image.getAttribute("data-src");
-          const data_alt = image.getAttribute("data-alt");
-          image.setAttribute("data-fancybox", "gallery")
+          const data_src = image.getAttribute('data-src');
+          const data_alt = image.getAttribute('data-alt');
+          image.setAttribute('data-fancybox', 'gallery');
           if (data_src) {
-            image.setAttribute("src", data_src);
+            image.setAttribute('src', data_src);
           }
           if (data_alt) {
-            image.setAttribute("alt", data_alt);
+            image.setAttribute('alt', data_alt);
           }
           observer.unobserve(image);
         }
@@ -92,14 +93,17 @@ const {
       observer.observe(image);
     });
 
-    var links = markdownBody.querySelectorAll("a");
+    var links = markdownBody.querySelectorAll('a');
     // 循环遍历链接标签
     for (var i = 0; i < links.length; i++) {
       // 给每个链接标签添加 target 属性
-      let names = links[i].getAttributeNames()
-      if (!names.includes('data-footnote-backref') && !names.includes('data-footnote-ref')) {
-        links[i].setAttribute("target", "_blank");
-        links[i].setAttribute("rel", "nofollow noreferrer");
+      let names = links[i].getAttributeNames();
+      if (
+        !names.includes('data-footnote-backref') &&
+        !names.includes('data-footnote-ref')
+      ) {
+        links[i].setAttribute('target', '_blank');
+        links[i].setAttribute('rel', 'nofollow noreferrer');
       }
     }
   }

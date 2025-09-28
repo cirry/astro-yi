@@ -7,7 +7,7 @@ let hrefMath = href.split('/')
 let pathnameMatch = pathname.split('/')
 const isActive = hrefMath[1] === pathnameMatch[1]
 ---
-<div class="box relative h-10 w-auto flex items-center">
+<div class="relative flex items-center w-auto h-10 box">
   <a href={getUrl(href)} target={target} class:list={[isActive ? 'header-link-active' : '', 'hover:header-link-hover']} {...props}>
     <i class={iconClass}/>
     <slot/>
@@ -16,11 +16,11 @@ const isActive = hrefMath[1] === pathnameMatch[1]
     }
   </a>
   {children && children.length > 0 && (
-    <div class="dropdown cursor-pointer border rounded bg-skin-fill p-4">
+    <div class="p-4 border rounded cursor-pointer dropdown bg-skin-fill">
       <ul class="space-y-4 w-28">
         {
           children.map(child =>
-            <li class="text-center hover:text-skin-active select-none">
+            <li class="text-center select-none hover:text-skin-active">
               <i class={child.iconClass}></i>
               <a target={child.target ? child.target : "_self"} href={getUrl(child.href)}>{child.name}</a>
             </li>
