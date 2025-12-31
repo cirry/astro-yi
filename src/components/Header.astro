@@ -67,7 +67,7 @@ let tagCount = getCountByTagName(blogs);
     }
   </div>
   <div id="personal-info" class="hidden pb-8 overflow-y-auto break-all" style="height: calc(100vh - 64px)">
-    <img class="mx-auto my-4 avatar" src={getUrl(site.avatar)} alt="avatar"/>
+    <img class="mx-auto my-4 avatar" src={site.avatar.startsWith('http') ? site.avatar : getUrl(site.avatar)} alt="avatar"/>
     <div class="mb-2 text-center">{site.motto}</div>
     <div class="flex flex-wrap items-center justify-center">
       {
