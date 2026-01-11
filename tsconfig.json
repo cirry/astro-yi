@@ -1,41 +1,12 @@
 {
+  "extends": "astro/tsconfigs/strict",
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist"],
   "compilerOptions": {
-    "moduleResolution": "node",
-    "module": "ES2022",
-    "lib": [
-      "es2020"
-    ],
-    "target": "es2019",
-    "importsNotUsedAsValues": "error",
-    "isolatedModules": false,
-    "resolveJsonModule": true,
-    "sourceMap": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": false,
-    "strictNullChecks": false,
-    "allowJs": false,
-    "checkJs": false,
+    "strictNullChecks": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
-    },
-    "types": [
-      "astro/env"
-    ],
-    "jsx": "preserve",
-    "jsxImportSource": "solid-js"
-  },
-  "include": [
-    ".astro/types.d.ts",
-    "**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "**/node_modules/*",
-    ".vscode",
-    "dist"
-  ]
+      "@/*": ["src/*"]
+    }
+  }
 }
