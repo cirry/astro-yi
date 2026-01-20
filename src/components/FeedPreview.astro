@@ -1,6 +1,6 @@
 ---
 import FeedPostDate from "./FeedPostDate.astro";
-const {data, body, slug} = Astro.props.post;
+const {data, body, id} = Astro.props.post;
 const {index} = Astro.props;
 import {t} from '@/i18n/utils'
 import getUrl from "@/utils/getUrl";
@@ -16,6 +16,6 @@ import getUrl from "@/utils/getUrl";
   </p>
   <p class="flex items-center justify-between text-sm">
     <FeedPostDate date={data.date} index={index}/>
-    <a class="hover:text-skin-active text-sm border rounded py-1 px-2" href={getUrl("/feed/") + slug}>{t('home.readMore')}</a>
+    <a class="hover:text-skin-active text-sm border rounded py-1 px-2" href={getUrl("/feed/") + id}>{t('home.readMore')}</a>
   </p>
 </div>

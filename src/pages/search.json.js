@@ -4,7 +4,7 @@ async function getBlogs(context) {
   const blog = await getCollectionByName('blog')
   return blog.map(blog => {
     return {
-      slug: blog.slug,
+      slug: blog.id,
       title: blog.data.title,
       description: blog.data.description,
       date: blog.data.date,

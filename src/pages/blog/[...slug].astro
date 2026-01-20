@@ -3,6 +3,7 @@ import BlogPost from '@/layouts/BlogPost.astro'
 import PostTitle from "@/components/PostTitle.astro";
 import BlogFooter from '@/components/BlogFooter.astro'
 import {getCollectionByName} from "@/utils/getCollectionByName";
+import {render} from "astro:content";
 import {sortPostsByDate} from "@/utils/sortPostsByDate";
 import Donate from '@/components/Donate.astro'
 import {donate} from "@/consts";
@@ -11,16 +12,16 @@ import getUrl from "@/utils/getUrl";
 export async function getStaticPaths() {
   const blogEntries = await getCollectionByName("blog");
   return blogEntries.map(entry => ({
-    params: {slug: entry.slug}, props: {entry,},
+    params: {slug: entry.id}, props: {entry,},
   }));
 }
 
 const {entry} = Astro.props;
-const {Content, headings, remarkPluginFrontmatter} = await entry.render();
+const {Content, headings, remarkPluginFrontmatter} = await render(entry);
 
 
-const lastModified = remarkPluginFrontmatter.lastModified
-const readingTime = remarkPluginFrontmatter.readingTime
+const lastModified = remarkPluginFrontmatter?.lastModified
+const readingTime = remarkPluginFrontmatter?.readingTime
 
 const posts = await getCollectionByName("blog");
 const sortPosts = sortPostsByDate(posts);
@@ -49,7 +50,7 @@ if (sortPosts[currentPostIndex + 1]) {
         prevPost ? (
           <a
             class="truncate  w-auto max-w-[40%] float-left"
-            href={getUrl('/') + prevPost.collection + '/' + prevPost.slug}
+            href={getUrl('/') + prevPost.collection + '/' + prevPost.id}
             title={prevPost.data.title}
           >
             <i class="ri-arrow-left-s-fill"/>
@@ -62,7 +63,7 @@ if (sortPosts[currentPostIndex + 1]) {
       {
         nextPost ? (
           <div class="flex item-center float-right w-auto max-w-[40%] text-right">
-            <a class="truncate " href={getUrl('/') + nextPost.collection + '/' + nextPost.slug} title={nextPost.data.title}>
+            <a class="truncate " href={getUrl('/') + nextPost.collection + '/' + nextPost.id} title={nextPost.data.title}>
               {nextPost.data.title}
             </a>
             <i class="float-right ri-arrow-right-s-fill"/>
@@ -72,7 +73,7 @@ if (sortPosts[currentPostIndex + 1]) {
         )
       }
     </div>
-    <BlogFooter title={entry.data.title} url={getUrl('/') + entry.collection + '/' + entry.slug} date={entry.data.date}></BlogFooter>
+    <BlogFooter title={entry.data.title} url={getUrl('/') + entry.collection + '/' + entry.id} date={entry.data.date}></BlogFooter>
     {
       donate.enable && entry.data.donate &&
       <Donate></Donate>
