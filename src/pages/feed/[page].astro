@@ -22,7 +22,6 @@ const { page } = Astro.props;
   <Pagination
     currentPage={page.currentPage}
     totalPage={page.lastPage}
-    url={page.slug}
     prefixUrl={getUrl("/feed/")}
   />
 </IndexPage>

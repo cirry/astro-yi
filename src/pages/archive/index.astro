@@ -28,7 +28,7 @@ let resultPosts = getPostsByYear(sortedPosts);
           <ul>
             {resultPosts[year].map((post) => (
               <li style="list-style-type: disc;" class="ml-4 my-2">
-                <a href={getUrl('/') + post.collection + '/' + post.slug}>
+                <a href={getUrl('/') + post.collection + '/' + post.id}>
                   <span class="mr-4">
                     {dayjs(post.data.date).format("YYYY-MM-DD")}
                   </span>

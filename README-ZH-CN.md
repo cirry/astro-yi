@@ -30,6 +30,9 @@
 - [x] 支持meriand
 - [x] 支持mathjax
 - [x] 支持expressive-code
+- [x] 支持按钮样式
+- [x] 支持显示Github仓库详情
+- [x] 支持旁白
 
 ......等等
 

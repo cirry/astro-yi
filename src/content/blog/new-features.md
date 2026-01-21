@@ -45,7 +45,7 @@ ogImage: https://astro-yi.obs.cn-east-3.myhuaweicloud.com/avatar.png
 
 ::github{repo="cirry/astro-yi"}
 
-### Support collapse
+### Support Collapse
 
 ```bash
 :::collapse
@@ -57,7 +57,7 @@ Hello World!
 Hello World!
 :::
 
-### Support admonitions
+### Support Admonitions
 
 ```markdown
 :::tip[Customized Title]
@@ -99,7 +99,7 @@ caution
 danger
 :::
 
-### Support mermaid
+### Support Mermaid
 
 Use:
 
@@ -163,7 +163,7 @@ classDiagram
     }
 ```
 
-### Support mathjax
+### Support Mathjax
 
 + set markdown frontmatter `mathjax: true`.
 

@@ -29,6 +29,9 @@ A content-focused Astro blog theme, Yi, in Chinese, it means fast and concise.
 - [x] Supports meriand
 - [x] Supports mathjax
 - [x] Supports expressive code
+- [x] Support Button
+- [x] Support Github Card
+- [x] Support Admonitions
 
 ......
 
