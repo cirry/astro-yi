@@ -3,6 +3,12 @@ import {t} from '@/i18n/utils'
 import getUrl from "@/utils/getUrl";
 let pager = []; // 实际显示的分页组件内容
 //prefixUrl : 点击页面跳转的路由地址前缀，比如/blog/1,/tags/1, /category/1等等
+interface Props {
+  currentPage: number;
+  totalPage: number;
+  prefixUrl?: string;
+}
+
 const {
   currentPage,
   totalPage,
@@ -12,7 +18,7 @@ const {
 if (totalPage === 1) {
   pager = [];
 } else if (totalPage <= 5) {
-  pager = new Array(totalPage).fill(0).map((i, index) => index + 1);
+  pager = new Array(totalPage).fill(0).map((_i, index) => index + 1);
 } else {
   if (currentPage > totalPage) {
     return

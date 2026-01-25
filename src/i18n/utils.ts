@@ -4,11 +4,17 @@ import {cs} from './cs'
 import {zhHant} from './zhHant'
 import {config} from "../consts";
 const ui = {
-  en, 'zh-cn': zhCn, 'zh-Hant': zhHant, cs
+  en, 'zh-cn': zhCn, 'zh-hant': zhHant, cs
 }
-export function useTranslations(lang: keyof typeof ui) {
-  return function t(key: string) {
-    return ui[lang][key];
+
+export type Lang = keyof typeof ui;
+export type Dict = typeof en;
+
+const translations: Record<Lang, Partial<Dict>> = ui;
+
+export function useTranslations(lang: Lang) {
+  return function t(key: keyof Dict) {
+    return translations[lang][key] || en[key];
   }
 }
 

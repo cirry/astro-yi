@@ -1,9 +1,16 @@
 ---
-const {href, icon: iconClass, children, target, ...props} = Astro.props;
+import type { HTMLAttributes } from 'astro/types';
 import getUrl from "@/utils/getUrl";
 
+interface Props extends HTMLAttributes<'a'> {
+  icon?: string;
+  children?: any[];
+}
+
+const {href, icon: iconClass, children = [], target, ...props} = Astro.props;
+
 const {pathname} = Astro.url;
-let hrefMath = href.split('/')
+let hrefMath = (href as string).split('/')
 let pathnameMatch = pathname.split('/')
 const isActive = hrefMath[1] === pathnameMatch[1]
 ---

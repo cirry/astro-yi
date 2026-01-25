@@ -1,4 +1,5 @@
 ---
+import type { MarkdownHeading } from 'astro';
 import BaseHead from '@/components/BaseHead.astro';
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
@@ -9,8 +10,23 @@ import { comment, config } from '@/consts';
 import ScrollToTop from '@/components/ScrollToTop.astro';
 import { t } from '@/i18n/utils';
 
+interface Props {
+  frontmatter: {
+    title: string;
+    description?: string;
+    comment?: boolean;
+    donate?: boolean;
+    toc?: boolean;
+    mathjax?: boolean;
+    mermaid?: boolean;
+    ogImage?: string;
+  };
+  headings: MarkdownHeading[];
+}
+
 const {
   frontmatter = {
+    title: '',
     comment: false,
     donate: false,
     toc: false,
@@ -30,10 +46,10 @@ const {
     ogImage={frontmatter.ogImage}
   />
 
-  <body class="bg-skin-secondary">
+  <body class="bg-skin-secondary flex flex-col min-h-screen">
     <Header />
     <main
-      class="container relative min-h-full p-4 pt-20 pb-32 text-skin-base"
+      class="container relative p-4 pb-32 text-skin-base flex-1"
       id="app"
     >
       <div class="grid grid-cols-4 gap-8">
@@ -70,7 +86,7 @@ const {
   // 如果没有markdownBody则直接返回
   if (markdownBody) {
     let images = markdownBody.querySelectorAll('img');
-    const callback = (entries) => {
+    const callback = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const image = entry.target;

@@ -1,6 +1,12 @@
 ---
+import type { MarkdownHeading } from 'astro';
 import { t } from '@/i18n/utils';
-const { headings = null } = Astro.props;
+
+interface Props {
+  headings: MarkdownHeading[];
+}
+
+const { headings = [] } = Astro.props;
 
 const filtersHeadings = headings
   ? headings.filter((item) => item.depth === 2 || item.depth === 3)
@@ -11,7 +17,7 @@ const filtersHeadingsLength = filtersHeadings.length;
 
 <div
   id="toc"
-  class="sticky px-2 py-2 my-4 rounded-lg shadow-lg bg-skin-card top-20"
+  class="sticky px-2 py-2 my-4 rounded-lg shadow-lg bg-skin-card top-4"
 >
   <div class="aside-widget">
     <i class="ri-list-check menu-icon"></i>
@@ -98,7 +104,7 @@ const filtersHeadingsLength = filtersHeadings.length;
       threshold: 0,
     };
 
-    const callback = (entries) => {
+    const callback = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           let index = Array.from(anchors).indexOf(entry.target);

@@ -114,7 +114,7 @@ export const site = {
  * memosPageSize {number} 10
  */
 export const config = {
-  lang: 'en', // English: en | 简体中文: zh-cn | 繁體中文: zh-Hant | cs
+  lang: 'en', // English: en | 简体中文: zh-cn | 繁體中文: zh-hant | cs
   codeFoldingStartLines: 16, // Need to re-run the project to take effect
   
   // memos config

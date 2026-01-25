@@ -7,6 +7,14 @@ import BusuanziAnalytics from '@/components/BusuanziAnalytics.astro';
 import { ClientRouter } from "astro:transitions";
 import getUrl from "@/utils/getUrl";
 
+interface Props {
+  title?: string;
+  description?: string;
+  mathjax?: boolean;
+  mermaid?: boolean;
+  ogImage?: string;
+}
+
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const {description = site.description, mathjax = false, mermaid = false, ogImage:ogimage = ''} = Astro.props
 let ogImage =  ogimage || new URL(Astro.url.pathname, Astro.site?.href).href;

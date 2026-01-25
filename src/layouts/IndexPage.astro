@@ -8,15 +8,23 @@ import Comment from '@/components/Comment.astro'
 import Donate from '@/components/Donate.astro'
 import {donate, comment, config} from "@/consts";
 
+interface Props {
+  title?: string;
+  frontmatter?: {
+    comment?: boolean;
+    donate?: boolean;
+  };
+}
+
 const {frontmatter = {comment: false, donate: false}} = Astro.props
 ---
 
 <html lang={config.lang}>
 <BaseHead title={Astro.props.title} />
 
-<body class="bg-skin-secondary relative">
+<body class="bg-skin-secondary relative flex flex-col min-h-screen">
 <Header/>
-<main class="container p-4 pt-20 text-skin-base pb-32 min-h-full relative" id="app">
+<main class="container p-4 text-skin-base pb-32 relative flex-1" id="app">
   <div class="grid grid-cols-4 gap-8">
     <div class="col-span-4 xl:col-span-3">
       <slot></slot>
@@ -40,7 +48,7 @@ const {frontmatter = {comment: false, donate: false}} = Astro.props
 </main>
 </body>
 <script>
-  document.body.querySelectorAll("a").forEach(item => {
+  document.body.querySelectorAll("a").forEach((item: HTMLAnchorElement) => {
     item.setAttribute("rel", "nofollow noreferrer");
   });
 </script>

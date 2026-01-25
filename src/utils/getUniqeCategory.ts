@@ -1,7 +1,8 @@
 import {flattenDeep, compact} from 'lodash-es'
 import {dealLabel} from './dealLabel';
+import type {CollectionEntry} from "astro:content";
 
-const getUniqueCategory = (posts) => {
+const getUniqueCategory = (posts: CollectionEntry<'blog'>[]) => {
   let category: string[] = [];
   const filteredPosts = posts.filter(({data}) => {
     return import.meta.env.PROD ? !data.draft : true
