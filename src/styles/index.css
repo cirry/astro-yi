@@ -54,6 +54,14 @@
 @utility decoration-skin-base { text-decoration-color: rgb(var(--color-border)); }
 @utility decoration-skin-active { text-decoration-color: rgb(var(--color-text-active)); }
 
+/* Header nav link highlight (wavy underline), mirroring .header-link-active.
+   Must be a @utility because HeaderLink.astro applies it as
+   `hover:header-link-hover` — plain @layer components classes can't take
+   variants (the class silently generated no CSS in v3 and v4 alike). */
+@utility header-link-hover {
+  @apply underline underline-offset-4 decoration-wavy decoration-skin-active;
+}
+
 @font-face {
   font-family: "jetbrains-mono";
   src: url('./JetBrainsMono-Regular.ttf');
@@ -82,15 +90,10 @@ menu {
 
 @layer base {
 
-  /* Tailwind v4 changed the default border color from gray-200 to currentColor.
-     Restore the v3 default so every bare `border` keeps its subtle gray. */
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
-  }
+  /* Bare `border` keeps v4's currentColor default ON PURPOSE: the v3 config
+     replaced borderColor with no DEFAULT, so v3 preflight also fell back to
+     currentColor — borders matched the text color and changed together with
+     hover:text-skin-active (.header-btn, tag pills, pagination, ...). */
 
   /* container.center (v3) — center the container utility (v4 does not by default). */
   .container {
@@ -139,10 +142,6 @@ menu {
   /* 导航栏的按钮样式 */
   .header-link-active {
     @apply underline underline-offset-4 decoration-wavy decoration-skin-active;
-  }
-
-  .header-link-hover {
-    @apply underline underline-offset-4 decoration-wavy decoration-skin-base;
   }
 
   .header-btn {
