@@ -37,8 +37,8 @@ jobs:
         uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
         name: Install pnpm
+        # 版本从 package.json 的 packageManager 字段读取，避免多处声明冲突
         with:
-          version: 11
           run_install: false
       - name: Install Node.js
         uses: actions/setup-node@v4
